@@ -1,0 +1,95 @@
+<div class="dashboard animate__animated animate__fadeInUp">
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">
+        <img src="/jirafitas_ico.ico" class="logo-img" />
+      </div>
+      <div>
+        <h1>Jirafita´s Garaje</h1>
+        <p>Bienvenido al sistema de gestión del taller mecánico</p>
+      </div>
+    </div>
+    <button class="logout" (click)="goLogin()">salir</button>
+  </header>
+  <!-- cntenido -->
+  <main class="main-grid">
+    <!-- columna principal -->
+    <section class="main-col">
+      <!-- vehiculos -->
+      <div class="card">
+        <h2>Vehiculos en servicio</h2>
+        <div class="vehiculos">
+          <div class="vehiculo activo">
+            <h4>Nissan</h4>
+            <p>2020</p>
+            <p>Placa:</p>
+            <span>45,000 KM</span>
+          </div>
+
+          <div class="vehiculo">
+            <h4>Toyota</h4>
+            <p>2018</p>
+            <p>Placa:</p>
+            <span>30,000 KM</span>
+          </div>
+        </div>
+      </div>
+
+      <!--Servicio -->
+      <div class="card service-active">
+        <h2>Servicios en proceso</h2>
+        <p class="service-title">Cambio de frenos</p>
+        <p class="service-desc">reemplazo de balatas</p>
+
+        <div class="progreso">
+          <div class="progress-text">
+            <span>progreso</span>
+            <span>50%</span>
+          </div>
+          <div class="bar">
+            <div class="bar-fill"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Historial -->
+      <div class="card">
+        <h2>Historial de Servicios</h2>
+
+        <div class="history completed">
+          <p>Afinación</p>
+          <span>$1,200</span>
+        </div>
+
+        <div class="history pending">
+          <p>Cambio de aceite</p>
+          <span>$600</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- columna derecha -->
+    <aside class="side-col">
+      <div class="card">
+        <h2>Informacion del vehiculo</h2>
+        <p>modelo:</p>
+        <p>placa:</p>
+        <p>color:</p>
+        <p>kilometraje:</p>
+      </div>
+
+      <div class="card">
+        <h2>Proximas citas</h2>
+        <div class="appointment">
+          <p>Diagnostico</p>
+          <span>20/10/2026</span>
+        </div>
+      </div>
+
+      <div class="card actions">
+        <button>Agendar cita</button>
+        <button>Solicitar Cotización</button>
+        <button>Reportar Problema</button>
+      </div>
+    </aside>
+  </main>
+</div>

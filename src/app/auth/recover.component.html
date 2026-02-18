@@ -1,0 +1,30 @@
+<div class="form-container animate__animated animate__fadeInDown">
+  <h1 class="animate__animated animate__bounce">RECUPERAR CONTRASEÑA</h1>
+  <img src="/logo2.png" class="logo animate__animated animate__backInLeft" />
+
+  <div class="input-group animate__animated animate__backInLeft">   
+    <label>Nombre:</label>
+    <input type="text" placeholder="" />
+  </div>
+
+  <div class="input-group animate__animated animate__backInLeft">
+    <img src="icons8-gmail-32.png" class="icon-input" />
+    <label>Correo:</label>
+    <input type="email" placeholder="ejemplo@gmail.com" />
+  </div>
+
+  <div class="input-group animate__animated animate__backInLeft">
+    <img src="icons8-phone-50.png" class="icon-input" />
+    <label>Telefono:</label>
+    <input type="text" placeholder="" />
+  </div>
+
+
+  <button class="btn btn-primary animate__animated animate__fadeIn" (click)="goLogin()">Enviar</button>
+  <br /><br />
+  <div class="footer animate__animated animate__backInUp">
+    ¿Ya tienes cuenta?
+    <br />
+    <a href="#" (click)="goLogin()">Iniciar sesión</a>
+  </div>
+</div>
