@@ -24,7 +24,7 @@ export class LoginComponent {
     this.error = false;
     this.loading = true;
 
-    //simular_login
+    //login
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     if (this.correo === 'admin@gmail.com' && this.pass === '1234') {

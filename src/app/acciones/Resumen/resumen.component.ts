@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-resumen.component',
   imports: [],
-  templateUrl: './resumen.component.html',
-  styleUrl: './resumen.component.css',
+  templateUrl: './Resumen.component.html',
+  styleUrl: './Resumen.component.css',
 })
 export class ResumenComponent {
 

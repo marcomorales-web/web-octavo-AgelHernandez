@@ -2,26 +2,17 @@
 .purple .icon { background: #9333ea; }
 .orange .icon { background: #f97316; }
 .green .icon { background: #16a34a; }
-
 .green { color: #16a34a; }
 
-
-
-
-
-.dashboard {
-  min-height: 100vh;
-  background: #F3E9D2;
-  font-family: system-ui;
+.resumen-page {
+  padding: 30px;
 }
 
 
-.header {
-  background: #F3E9D2;
-  padding: 16px 24px;
+.services-header {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #e5e7eb;
+  align-items: center;
 }
 
 .logo {
@@ -66,19 +57,25 @@
   border-bottom: 2px solid #4deb25;
 }
 
-
-.stats {
-  padding: 24px;
+.resumen-stats {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
+  margin-bottom: 30px;
 }
 
+
 .card {
-  background: #F3E9D2;
-  border-radius: 16px;
-  padding: 20px;
+  background: #ffffff;
+  padding: 20px 30px;
+  border-radius: 14px;
+  min-width: 160px;
   box-shadow: 0 4px 10px rgba(0,0,0,.05);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 .card .icon {
@@ -100,9 +97,14 @@
 }
 
 .chart {
-  background: #F3E9D2;
+  background: #fefdfc;
   border-radius: 16px;
   padding: 20px;
+}
+
+.chart:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 .btn-logout {
