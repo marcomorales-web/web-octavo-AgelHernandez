@@ -8,7 +8,6 @@
   padding: 30px;
 }
 
-
 .services-header {
   display: flex;
   justify-content: space-between;
@@ -73,6 +72,11 @@
   box-shadow: 0 4px 10px rgba(0,0,0,.05);
 }
 
+.card.purple { border-left: 5px solid #b905bf; }
+.card.green { border-left: 5px solid #22c55e; }
+.card.orange { border-left: 5px solid #ec7d07; }
+.card.blue { border-left: 5px solid #071eec; }
+
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
@@ -87,7 +91,6 @@
   justify-content: center;
   color: white;
 }
-
 
 .charts {
   padding: 24px;
@@ -105,26 +108,5 @@
 .chart:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.btn-logout {
-  border: none;
-  background: linear-gradient(135deg,#ef4444,#dc2626);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: .2s;
-  box-shadow: 0 4px 10px rgba(239,68,68,.4);
-}
-
-.btn-logout:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(239,68,68,.5);
-}
-
-.btn-logout:active {
-  transform: scale(.96);
 }
 

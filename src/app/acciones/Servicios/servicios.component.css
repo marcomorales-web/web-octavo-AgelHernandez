@@ -37,6 +37,11 @@
   transition: 0.3s ease;
 }
 
+.stat-card.orange { border-left: 5px solid #ec9c07; }
+.stat-card.blue { border-left: 5px solid #070bec; }
+.stat-card.green { border-left: 5px solid #07ec0f; }
+
+
 .stat-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);

@@ -34,14 +34,22 @@
   </div>
 </section>
 
+<!--GRAFICOS RESUMEN-->
 <section class="charts">
   <div class="chart">
-    <h3>Ingresos Mensuales</h3>
-    <canvas id="lineChart"></canvas>
+    <apx-chart
+      [series]="lineChartSeries"
+      [chart]="lineChart"
+      [xaxis]="lineChartXAxis"
+      [title]="lineChartTitle">
+    </apx-chart>
   </div>
 
   <div class="chart">
-    <h3>Distribución de Servicios</h3>
-    <canvas id="pieChart"></canvas>
+    <apx-chart
+      [series]="pieChartSeries"
+      [chart]="pieChart"
+      [labels]="pieChartLabels">
+    </apx-chart>
   </div>
 </section>

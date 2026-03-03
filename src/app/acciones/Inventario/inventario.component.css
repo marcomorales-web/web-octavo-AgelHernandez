@@ -1,150 +1,149 @@
+.blue .icon { background: #2563eb; }
+.purple .icon { background: #9333ea; }
+.red .icon { background: #ef4444; }
+.orange .icon { background: #f97316; }
+.green .icon { background: #16a34a; }
+.green { color: #16a34a; }
 
-.inventory-page {
+.services-page {
   padding: 30px;
-  background: #f4f6f9;
-  min-height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
 }
 
 
-.inventario-header {
+.services-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 25px;
 }
 
-.inventario-header h2 {
-  font-size: 24px;
-  font-weight: 600;
-  color: #1e293b;
+.logo {
+  display: flex;
+  gap: 12px;
 }
 
-
-.btn-primary {
-  background: #2563eb;
+.logo .icon {
+  background: #6366f1;
   color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 10px;
-  cursor: pointer;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.3);
+.user {
+  display: flex;
+  gap: 16px;
+  align-items: center;
 }
 
 
-.services-stats {
+.tabs {
+  background: #f279713f;
+  padding: 8px 24px;
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tabs a {
+  text-decoration: none;
+  color: #6b7280;
+  padding-bottom: 8px;
+}
+
+.tabs .active {
+  color: #000000;
+  border-bottom: 2px solid #4deb25;
+}
+
+.inventario-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   margin-bottom: 30px;
 }
 
-.stat-card {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-  transition: 0.3s ease;
+
+.card {
+  background: #ffffff;
+  padding: 20px 30px;
+  border-radius: 14px;
+  min-width: 160px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.05);
 }
 
-.stat-card:hover {
+.card.red { border-left: 5px solid #eb2525; }
+.card.green { border-left: 5px solid #22c55e; }
+
+.card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
-.stat-card p {
-  margin: 0;
-  font-size: 14px;
-  color: #64748b;
+.card .icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
-.stat-card h3 {
-  margin-top: 8px;
-  font-size: 22px;
+
+.charts {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.chart {
+  background: #fefdfc;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.chart:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+  border: none;
+  background: linear-gradient(135deg,#5244ef,#3b26dc);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 10px;
   font-weight: 600;
-  color: #111827;
+  cursor: pointer;
+  transition: .2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-
-.stat-card.red {
-  border-left: 5px solid #dc2626;
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(2, 1, 1, 0.5);
 }
 
-.stat-card.green {
-  border-left: 5px solid #16a34a;
+.btn-primary:active {
+  transform: scale(.96);
 }
 
-
-.inventario-list {
+.full-width {
+  width: 100%;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-  overflow: hidden;
+  padding: 10px;
 }
 
-
-.inventario-row {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  align-items: center;
-  padding: 18px 20px;
-  border-bottom: 1px solid #e5e7eb;
-  transition: 0.2s ease;
+.bajo {
+  color: red;
+  font-weight: bold;
 }
 
-.inventario-row:last-child {
-  border-bottom: none;
-}
-
-.inventario-row:hover {
-  background: #f9fafb;
-}
-
-.inventario-row strong {
-  font-size: 15px;
-  color: #1f2937;
-}
-
-.inventario-row p {
-  margin: 4px 0 0;
-  font-size: 13px;
-  color: #6b7280;
-}
-
-
-.badge {
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 500;
-  text-align: center;
-  width: fit-content;
-}
-
-.badge.green {
-  background: #dcfce7;
-  color: #166534;
-}
-
-.badge.red {
-  background: #fee2e2;
-  color: #b91c1c;
-}
-
-/*Responsividad */
-@media (max-width: 768px) {
-  .inventario-row {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  .inventario-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
+.normal {
+  color: green;
 }

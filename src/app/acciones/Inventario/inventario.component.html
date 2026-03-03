@@ -1,43 +1,45 @@
-<section class="inventory-page">
+<section class="services-page inventory-page">
 
+  <!-- HEADER -->
   <div class="services-header">
-    <h2>Inventario</h2>
-    <button class="btn-primary">Agregar Producto</button>
+    <div>
+      <h2>Inventario</h2>
+      <p class="subtitle">
+        Control y gestión de refacciones y suministros
+      </p>
+    </div>
+
+    <button class="btn-primary">
+      + Agregar Producto
+    </button>
   </div>
 
-  <div class="services-stats">
-    <div class="stat-card">
-      <p>Total Productos</p>
-      <h3>5</h3>
+  <!-- cards principales -->
+  
+  <div class="inventario-stats">
+    <div class="card blue">
+      <div class="icon"><img src="/icons8-box-26.png" /></div>
+      <p>Total de productos</p>
+      <h3>{{ totalProductos }}</h3>
     </div>
-    <div class="stat-card red">
+
+    <div class="card red">
+      <div class="icon"><img src="/icons8-danger-24.png" /></div>
       <p>Stock Bajo</p>
-      <h3>3</h3>
-    </div>
-    <div class="stat-card green">
-      <p>Valor Total</p>
-      <h3>$7K</h3>
-    </div>
-  </div>
-
-  <div class="services-list">
-    <div class="service-row">
-      <div>
-        <strong>Aceite</strong>
-        <p>Lubricantes</p>
-      </div>
-      <span class="badge green">Disponible</span>
-      <strong>$8,500</strong>
+      <h3>{{ totalStockBajo }}</h3>
     </div>
 
-    <div class="service-row">
-      <div>
-        <strong>Filtro de Aceite</strong>
-        <p>Filtros</p>
-      </div>
-      <span class="badge red">Stock Bajo</span>
-      <strong>$1,200</strong>
+    <div class="card green">
+      <div class="icon"><img src="/icons8-$-24.png" /></div>
+      <p>Valor de productos</p>
+      <h3>{{ valorTotal | currency:'MXN' }}</h3>
     </div>
   </div>
+  
+
+  <!-- tabla -->
+<h3 class="mt-4">Lista de Productos</h3>
+
+
 
 </section>
