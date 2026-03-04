@@ -37,24 +37,6 @@
 }
 
 
-.tabs {
-  background: #f279713f;
-  padding: 8px 24px;
-  display: flex;
-  gap: 24px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.tabs a {
-  text-decoration: none;
-  color: #6b7280;
-  padding-bottom: 8px;
-}
-
-.tabs .active {
-  color: #000000;
-  border-bottom: 2px solid #4deb25;
-}
 
 .resumen-stats {
   display: grid;
@@ -95,14 +77,15 @@
 .charts {
   padding: 24px;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 20px;
 }
 
 .chart {
-  background: #fefdfc;
-  border-radius: 16px;
-  padding: 20px;
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
 }
 
 .chart:hover {
@@ -110,3 +93,7 @@
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
+@media screen and (max-width: 640px) { 
+ .column {
+    width: 50%;
+}}

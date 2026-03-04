@@ -1,11 +1,12 @@
 import { Component } from "@angular/core";
-import { RouterModule, Router} from "@angular/router";
+import { RouterModule, Router} from "@angular/router";  
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @Component({
     selector: 'app-dashboard',
     standalone: true,
-    imports: [RouterModule],
+    imports: [RouterModule,MatTabsModule],
     templateUrl: '../Admin/admin.component.html',
     styleUrls: ['../Admin/admin.component.css']
 })

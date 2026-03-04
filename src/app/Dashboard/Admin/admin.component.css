@@ -6,22 +6,13 @@
 .green { color: #16a34a; }
 
 
-
-
-
-.dashboard {
-  min-height: 100vh;
-  background: #F3E9D2;
-  font-family: system-ui;
-}
-
-
 .header {
   background: #F3E9D2;
   padding: 16px 24px;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #e5e7eb;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -30,7 +21,7 @@
 }
 
 .logo .icon {
-  background: #6366f1;
+  background: #e9e9ee;
   color: white;
   width: 42px;
   height: 42px;
@@ -42,22 +33,23 @@
 
 .user {
   display: flex;
-  gap: 16px;
+  background-color: #456d86;
+  border-radius: 10px;
+  gap: 50px;
   align-items: center;
 }
 
-
 .tabs {
-  background: #f279713f;
+  background: #d3ad6e;
   padding: 8px 24px;
   display: flex;
   gap: 24px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #000000;
 }
 
 .tabs a {
   text-decoration: none;
-  color: #6b7280;
+  color: #e7e8ea;
   padding-bottom: 8px;
 }
 
@@ -67,43 +59,6 @@
 }
 
 
-.stats {
-  padding: 24px;
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 20px;
-}
-
-.card {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.05);
-}
-
-.card .icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-
-.charts {
-  padding: 24px;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-}
-
-.chart {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-}
 
 .btn-logout {
   border: none;
@@ -126,3 +81,17 @@
   transform: scale(.96);
 }
 
+@media (max-width: 768px) {
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .user {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+}

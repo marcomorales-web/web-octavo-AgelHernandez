@@ -11,7 +11,8 @@
     </div>
 
     <div class="user">
-      <div>
+      <div class="icon">
+        <img src="/icons8-user-24.png"/>
         <strong>Rafael</strong>
         <p>Administrador</p>
       </div>
@@ -20,15 +21,14 @@
   </header>
 
   <!-- pestañas -->
-  <nav class="tabs">
+  <mat-tab class="tabs">
     <a routerLink="resumen" routerLinkActive="active">Resumen</a>
     <a routerLink="servicios" routerLinkActive="active">Servicios</a>
     <a routerLink="calendario" routerLinkActive="active">Calendario</a>
     <a routerLink="inventario" routerLinkActive="active">Inventario</a>
     <a routerLink="analisis" routerLinkActive="active">Análisis</a>
-  </nav>
+  </mat-tab>
 
-  
   <router-outlet></router-outlet>
 
 </div>

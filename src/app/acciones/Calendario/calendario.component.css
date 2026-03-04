@@ -1,27 +1,17 @@
 .layout {
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 1fr; 
   gap: 30px;
   padding: 20px;
 }
 
 
-.left-panel {
-  flex: 1.2;
-  background: #fff;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-
+.left-panel,
 .right-panel {
-  flex: 0.8;
   background: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  display: flex;
-  flex-direction: column;
 }
 
 .header {
@@ -46,4 +36,11 @@ button:hover {
 ul {
   margin-top: 15px;
   padding-left: 20px;
+}
+
+
+@media (max-width: 992px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
 }
