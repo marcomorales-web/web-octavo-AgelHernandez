@@ -5,13 +5,25 @@
 
 .green { color: #16a34a; }
 
+.admin-bg {
+  background-color: #0f0808;
+  background-image: url(/Fondo2.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dashboard{
+  min-height: 100vh;
+}
+
 
 .header {
-  background: #F3E9D2;
+  background: #ecd090;
   padding: 16px 24px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #e5e7eb;
   flex-wrap: wrap;
 }
 
@@ -21,8 +33,7 @@
 }
 
 .logo .icon {
-  background: #e9e9ee;
-  color: white;
+ 
   width: 42px;
   height: 42px;
   border-radius: 12px;
@@ -31,34 +42,94 @@
   justify-content: center;
 }
 
-.user {
-  display: flex;
-  background-color: #456d86;
-  border-radius: 10px;
-  gap: 50px;
-  align-items: center;
+.user-container{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+
+.user-card{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:#5a7d96;
+  padding:10px 16px;
+  border-radius:14px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+
+.icono-perfil{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#ffffff20;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.icono-perfil img{
+  width:20px;
+}
+
+.user-text h3{
+  margin:0;
+  font-size:18px;
+}
+
+.user-text span{
+  font-size:13px;
+  opacity:0.8;
 }
 
 .tabs {
-  background: #d3ad6e;
-  padding: 8px 24px;
+  background: linear-gradient(90deg, #4c6394);
+  padding: 12px 30px;
   display: flex;
-  gap: 24px;
-  border-bottom: 1px solid #000000;
+  gap: 28px;
+  align-items: center;
+  
 }
 
+/*Links de la letras*/
 .tabs a {
+  position: relative;
   text-decoration: none;
-  color: #e7e8ea;
-  padding-bottom: 8px;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 8px 4px;
+  transition: all 0.3s ease;
 }
-
-.tabs .active {
-  color: #000000;
-  border-bottom: 2px solid #4deb25;
+/*animacion de letra*/
+.tabs a:hover {
+  color: #1b1b1b;
 }
-
-
+/*Tab activo */
+.tabs a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: #138a04;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+  
+.tabs a:hover::after {
+  width: 100%;
+}
+/*Color de letra*/
+.tabs a.active {
+  color: #1b1b1b;
+  font-weight: 600;
+}
+/*color del tab*/
+.tabs a.active::after {
+  width: 100%;
+}
 
 .btn-logout {
   border: none;
@@ -69,7 +140,6 @@
   font-weight: 600;
   cursor: pointer;
   transition: .2s;
-  box-shadow: 0 4px 10px rgba(239,68,68,.4);
 }
 
 .btn-logout:hover {

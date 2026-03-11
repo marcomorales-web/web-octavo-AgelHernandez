@@ -4,11 +4,11 @@ import { FormComponent } from './auth/form.component';
 import { RecoverComponent } from './auth/recover.component';
 import { DashboardComponent } from './Dashboard/Cliente/dashboard.component';
 import { DashboardComponent as AdminDashboard } from './Dashboard/Admin/admin.component';
-import { ResumenComponent } from './acciones/Resumen/resumen.component';
-import { ServiciosComponent } from './acciones/Servicios/servicios.component';
-import { CalendarioComponent } from './acciones/Calendario/calendario.component';
-import { InventarioComponent } from './acciones/Inventario/inventario.component';
-import { AnalisisComponent } from './acciones/Analisis/analisis.component';
+import { ResumenComponent } from './acciones_admin/Resumen/resumen.component';
+import { ServiciosComponent } from './acciones_admin/Servicios/servicios.component';
+import { CalendarioComponent } from './acciones_admin/Calendario/calendario.component';
+import { InventarioComponent } from './acciones_admin/Inventario/inventario.component';
+import { AnalisisComponent } from './acciones_admin/Analisis/analisis.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
