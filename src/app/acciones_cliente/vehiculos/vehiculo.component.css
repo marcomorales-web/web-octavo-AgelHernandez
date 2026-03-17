@@ -1,0 +1,330 @@
+/* Espacio header*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header*/
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+
+/* Grids */
+.mb-12 { margin-bottom: 12px; }
+.mb-14 { margin-bottom: 14px; }
+.mb-20 { margin-bottom: 20px; }
+.mb-24 { margin-bottom: 24px; }
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.grid-2-equal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* Botones */
+.btn-primary {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-secondary {
+  border: 1px solid #d1d5db;
+  background: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.btn-disabled {
+  opacity: .5;
+  pointer-events: none;
+}
+
+/* Cards*/
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  transition: .2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.card.green { border-left: 4px solid #16a34a; }
+.card.purple { border-left: 4px solid #7c3aed; }
+.card.orange { border-left: 4px solid #d97706; }
+
+
+/* texto-cards */
+.label-upper {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.text-mono-lg {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+.text-green { color: #16a34a; }
+.text-purple { color: #7c3aed; }
+.text-amber { color: #d97706; }
+
+/* vehiculos card */
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.vehicle-icon {
+  width: 2px;
+  height: 2px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.badge {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.badge-green {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badge-purple {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+.text-vehicle-name {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.text-plate {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.vehicle-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.meta-item {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.meta-item span {
+  display: block;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* añadir vehiculo */
+.card-add {
+  border: 2px dashed #d1d5db;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.card-add:hover {
+  background: #f9fafb;
+}
+
+.add-icon {
+  font-size: 24px;
+}
+
+.add-text {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+
+
+/* modal*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  width: 420px;
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.modal-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.btn-close {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* tabs-form */
+.tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.tab {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  cursor: pointer;
+}
+
+.tab-active {
+  background: #2563eb;
+  color: white;
+}
+
+/* modal-form */
+.field {
+  margin-bottom: 12px;
+}
+
+.field-label {
+  font-size: 12px;
+  color: #6b7280;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.field-input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.field-error {
+  color: red;
+  font-size: 11px;
+}
+
+.field-hint {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.field-counter {
+  font-size: 11px;
+  float: right;
+}
+
+.field-counter-ok {
+  color: #16a34a;
+}
+
+/* alerta */
+.alert-success {
+  background: #dcfce7;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.alert-error {
+  background: #fee2e2;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* footer */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+
+
+
+
+
+
+
+
+

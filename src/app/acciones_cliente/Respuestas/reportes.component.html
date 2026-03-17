@@ -1,0 +1,34 @@
+<div class="container">
+  <h3 class="sub-title">Resumen General</h3>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon"><img src="/car.png"></div>
+      <div class="stat-value">{{ totalVehiculos() }}</div>
+      <div class="stat-label">Vehículos registrados</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><img src="/icons8-wrench-24.png"></div>
+      <div class="stat-value">{{ totalServicios() }}</div>
+      <div class="stat-label">Servicios completados</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><img src="/icons8-$-24.png"></div>
+      <div class="stat-value green">${{ totalGastado() | number:'1.0-0' }}</div>
+      <div class="stat-label">Total invertido</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><img src="/icons8-calendar-24.png"></div>
+      <div class="stat-value red">{{ citasPendientes() }}</div>
+      <div class="stat-label">Citas pendientes</div>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="info-icon">(graf)</div>
+    <div>
+      <div class="info-title">Reportes detallados</div>
+      <div class="info-sub">Los reportes completos con gráficas y análisis estarán disponibles próximamente.</div>
+    </div>
+  </div>
+</div>

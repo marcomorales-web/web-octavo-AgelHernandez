@@ -1,0 +1,46 @@
+<div class="container">
+  <h3 class="sub-title">Solicitar Cotización</h3>
+
+  @if (enviado()) {
+    <div class="alert-success">Solicitud enviada. Te contactaremos en menos de 24 horas.</div>
+  }
+
+  <div class="form-card">
+    <div class="form-group">
+      <label>Vehículo</label>
+      <select [(ngModel)]="form.vehiculoId">
+        <option value="">Selecciona tu vehículo</option>
+        @for (v of vehiculos(); track v.id) {
+          <option [value]="v.id">{{ v.make }} {{ v.model }} {{ v.year }}</option>
+        }
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Urgencia</label>
+      <div class="radio-group">
+        <label class="radio-option" [class.active]="form.urgencia === 'normal'">
+          <input type="radio" [(ngModel)]="form.urgencia" value="normal" /> Normal
+        </label>
+        <label class="radio-option" [class.active]="form.urgencia === 'medio'">
+          <input type="radio" [(ngModel)]="form.urgencia" value="medio" /> Medio
+        </label>
+        <label class="radio-option" [class.active]="form.urgencia === 'urgente'">
+          <input type="radio" [(ngModel)]="form.urgencia" value="urgente" /> Urgente
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Descripción del problema</label>
+      <textarea
+        [(ngModel)]="form.descripcion"
+        rows="5"
+        placeholder="Describe detalladamente qué necesitas cotizar. Mientras más información, más precisa será la cotización."
+      ></textarea>
+    </div>
+    <div class="form-footer">
+      <button class="btn-primary" (click)="enviar()" [disabled]="!valido()">
+        Enviar Solicitud
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="hist-header">
+    <h3 class="sub-title">Historial de Servicios</h3>
+    <select [ngModel]="vehiculoId()" (ngModelChange)="vehiculoId.set($event)" class="vehicle-select">
+      @for (v of vehiculos(); track v.id) {
+        <option [value]="v.id">{{ v.make }} {{ v.model }} {{ v.year }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">Servicios realizados</div>
+      <div class="stat-value">{{ historialVehiculo().length }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total invertido</div>
+      <div class="stat-value green">${{ totalGastado() | number:'1.0-0' }}</div>
+    </div>
+  </div>
+
+  @if (historialVehiculo().length === 0) {
+    <div class="empty-card">Sin historial para este vehículo</div>
+  }
+
+  <div class="hist-list">
+    @for (s of historialVehiculo(); track s.id) {
+      <div class="hist-item">
+        <div class="hist-icon"><img src="/icons8-wrench-24.png"></div>
+        <div class="hist-info">
+          <div class="hist-name">{{ s.nombre }}</div>
+          <div class="hist-meta">{{ s.vehiculoNombre }}</div>
+        </div>
+        <div class="hist-right">
+          <div class="hist-cost">${{ s.costo | number:'1.0-0' }}</div>
+          <div class="hist-date">{{ s.fecha }}</div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="topbar">
+  <div>
+    <h2 class="page-title">Seguimiento</h2>
+    <p class="page-sub">Estado y historial de tus servicios</p>
+  </div>
+</div>
+
+<!-- CARDS DE ACCESO -->
+<div class="grid-3 mb-24">
+
+  <a class="card card-hover" routerLink="progreso" routerLinkActive="card-active">
+    <div class="card-icon"><img src="/icons8-wrench-24.png"></div>
+    <div class="card-label">Progreso</div>
+    <div class="card-sub">Estado actual en taller</div>
+  </a>
+
+  <a class="card card-hover" routerLink="historial" routerLinkActive="card-active">
+    <div class="card-icon"><img src="/documento.png"></div>
+    <div class="card-label">Historial</div>
+    <div class="card-sub">Servicios realizados</div>
+  </a>
+
+  <a class="card card-hover" routerLink="reportes" routerLinkActive="card-active">
+    <div class="card-icon"><img src="/icons8-futuros-24.png"></div>
+    <div class="card-label">Reportes</div>
+    <div class="card-sub">Resumen y estadísticas</div>
+  </a>
+
+</div>
+
+<!-- ALERTA SI HAY VEHÍCULO EN TALLER -->
+@if (servicioActivo) {
+  <div class="alert-activo mb-20">
+    <span class="alert-dot"></span>
+    <div>
+      <div class="alert-title">Vehículo en taller</div>
+      <div class="alert-sub">
+        {{ servicioActivo.vehiculoNombre }} · Entrega estimada: {{ servicioActivo.entrega }}
+      </div>
+    </div>
+    <a class="alert-link" routerLink="progreso">Ver progreso →</a>
+  </div>
+}
+
+<!-- CONTENIDO DE LA RUTA HIJA -->
+<router-outlet />

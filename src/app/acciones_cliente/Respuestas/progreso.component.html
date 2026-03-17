@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="prog-header">
+    <h3 class="sub-title">Vehículo en Taller</h3>
+    <select [ngModel]="vehiculoId()" (ngModelChange)="vehiculoId.set($event)" class="vehicle-select">
+      @for (v of vehiculos(); track v.id) {
+        <option [value]="v.id">{{ v.make }} {{ v.model }} {{ v.year }}</option>
+      }
+    </select>
+  </div>
+
+  @if (servicioActivo(); as s) {
+    <div class="progreso-card">
+      <div class="card-top">
+        <div>
+          <div class="service-name">{{ s.nombre }}</div>
+          <div class="service-tech">Técnico: {{ s.tecnico }}</div>
+        </div>
+        <div class="entrega-badge">
+          <span>Entrega</span>{{ s.entrega }}
+        </div>
+      </div>
+
+      <div class="stepper">
+        @for (paso of pasos; track paso; let i = $index) {
+          <div class="step {{ getEstado(i, s.progreso) }}">
+            @if (i < pasos.length - 1) {
+              <div class="step-line" [class.done]="getEstado(i, s.progreso) === 'done'"></div>
+            }
+            <div class="step-circle">
+              {{ getEstado(i, s.progreso) === 'done' ? '✓' : (i + 1) }}
+            </div>
+            <div class="step-label">{{ paso }}</div>
+          </div>
+        }
+      </div>
+
+      <div class="prog-bar">
+        <div class="prog-fill" [style.width.%]="getPct(s.progreso)"></div>
+      </div>
+      <div class="prog-pct">{{ getPct(s.progreso) }}% completado</div>
+    </div>
+  } @else {
+    <div class="empty-card">
+      <div style="font-size:32px;margin-bottom:8px"><img src="/check.png"></div>
+      <p>No hay servicios activos para este vehículo</p>
+    </div>
+  }
+</div>

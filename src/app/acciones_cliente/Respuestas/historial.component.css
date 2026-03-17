@@ -1,0 +1,111 @@
+
+.hist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+.sub-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+}
+.vehicle-select {
+  background: #ffffff;
+  border: 1px solid #e4ebe5;
+  border-radius: 8px;
+  color: #040406;
+  padding: 7px 12px;
+  font-size: 12px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+}
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.stat-card {
+  background: #f7f6fa;
+  border: 1px solid #8a8a8a;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.stat-label {
+  font-size: 10px;
+  color: #010102;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
+}
+.stat-value {
+  font-size: 22px;
+  font-weight: 600;
+  color: #000000;
+  font-family: 'DM Mono', monospace;
+}
+.stat-value.green {
+  color: #5fba7d;
+}
+.hist-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.hist-item {
+  background: #f6f6f8;
+  border: 1px solid #949296;
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: border-color 0.15s;
+}
+.hist-item:hover {
+  border-color: #000000;
+}
+.hist-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.hist-info {
+  flex: 1;
+  min-width: 0;
+}
+.hist-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #000000;
+}
+.hist-meta {
+  font-size: 10px;
+  color: #020204;
+  margin-top: 2px;
+}
+.hist-right {
+  text-align: right;
+  flex-shrink: 0;
+}
+.hist-cost {
+  font-size: 13px;
+  font-weight: 500;
+  color: #000000;
+  font-family: 'DM Mono', monospace;
+}
+.hist-date {
+  font-size: 10px;
+  color: #000000;
+  margin-top: 2px;
+}
+.empty-card {
+  background: #e8e7eb;
+  border: 1px solid #a8a8aa;
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  color: #000000;
+  font-size: 13px;
+}

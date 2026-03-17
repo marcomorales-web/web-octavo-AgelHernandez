@@ -1,0 +1,164 @@
+
+
+.sub-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 14px;
+}
+
+/* alertas */
+.alert-success {
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #166534;
+}
+
+/* form */
+.form-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 9px 11px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  font-family: inherit;
+  color: #111827;
+  background: white;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.form-group textarea { resize: none; }
+
+select option { background: white; color: #111827; }
+
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* forms */
+.form-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+  border-top: 1px solid #f3f4f6;
+  margin-top: 4px;
+}
+
+/* boton */
+.btn-primary {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .2s, transform .1s;
+}
+
+.btn-primary:hover    { background: #1d4ed8; transform: translateY(-1px); }
+.btn-primary:active   { transform: translateY(0); }
+.btn-primary:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+/* listas */
+.citas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* citas */
+.cita-item {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: box-shadow .2s;
+}
+
+.cita-item:hover { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); }
+
+/* fecha */
+.cita-date {
+  background: #eff6ff;
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-align: center;
+  min-width: 44px;
+  flex-shrink: 0;
+}
+
+.cita-day {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2563eb;
+  line-height: 1;
+}
+
+.cita-mon {
+  font-size: 9px;
+  color: #3b82f6;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-top: 2px;
+}
+
+/* informacion */
+.cita-info  { flex: 1; min-width: 0; }
+.cita-name  { font-size: 13px; font-weight: 600; color: #111827; }
+.cita-car   { font-size: 11px; color: #6b7280; margin-top: 2px; }
+
+/* badge */
+.cita-badge {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-pendiente  { background: #ede9fe; color: #5b21b6; }
+.badge-confirmada { background: #dcfce7; color: #166534; }
+.badge-completada { background: #f3f4f6; color: #6b7280; }

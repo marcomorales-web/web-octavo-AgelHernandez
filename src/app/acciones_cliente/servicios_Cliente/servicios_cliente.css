@@ -1,0 +1,58 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* disposicion */
+.mb-24 { margin-bottom: 24px; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* inicio pagina */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.page-sub {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+/* card diseño*/
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px 16px;
+  border: 1px solid #e5e7eb;
+  text-decoration: none;
+  display: block;
+  transition: transform .2s, box-shadow .2s;
+  cursor: pointer;
+}
+.card-active {
+  border-left: 4px solid #2563eb;
+  background: #eff6ff;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+
+/*card contenido*/
+.card-icon  { font-size: 26px; margin-bottom: 10px; }
+.card-label { font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 4px; }
+.card-sub   { font-size: 12px; color: #6b7280; line-height: 1.4; }
