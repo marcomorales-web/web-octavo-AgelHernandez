@@ -1,46 +1,273 @@
-.layout {
-  display: grid;
-  grid-template-columns: 2fr 1fr; 
-  gap: 30px;
-  padding: 20px;
+:root {
+  --g-dark: #1a1a1a;
+  --g-blue: #2e5f8a;
+  --g-red: #c0392b;
+  --g-gold: #c9a84c;
 }
 
-
-.left-panel,
-.right-panel {
+.cal-layout {
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  min-height: 600px;
+}
+.left-panel {
+  flex: 1;
   background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 16px;
+}
+.right-panel {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.header {
+.panel-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+.panel-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--g-dark);
+  font-family: "Courier New", monospace;
+}
 
-button {
-  background-color: #4f46e5;
-  color: white;
+.btn-nueva {
+  padding: 7px 14px;
+  background: var(--g-blue);
+  color: #fff;
   border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
+  border-radius: 8px;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-nueva:hover {
+  background: #25507a;
+}
+
+.fecha-label {
+  font-size: 12px;
+  color: #888;
+  font-family: "Courier New", monospace;
+  text-transform: capitalize;
+}
+
+.empty-day {
+  text-align: center;
+  padding: 28px 16px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+.empty-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+.empty-day p {
+  font-size: 13px;
+  color: #aaa;
+  font-family: "Courier New", monospace;
+}
+.btn-add-hint {
+  margin-top: 12px;
+  padding: 7px 14px;
+  background: transparent;
+  border: 1.5px solid var(--g-blue);
+  color: var(--g-blue);
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: "Courier New", monospace;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #4338ca;
+.citas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cita-card {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cita-hora {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--g-blue);
+  font-family: "Courier New", monospace;
+  min-width: 44px;
+}
+.cita-info {
+  flex: 1;
+}
+.cita-servicio {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--g-dark);
+  font-family: "Courier New", monospace;
+}
+.cita-vehiculo {
+  font-size: 11px;
+  color: #aaa;
 }
 
-ul {
-  margin-top: 15px;
-  padding-left: 20px;
+.badge-estado {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  font-family: "Courier New", monospace;
+}
+.badge-estado.confirmada {
+  background: #dbeafe;
+  color: #1e40af;
+}
+.badge-estado.pendiente {
+  background: #fff7ed;
+  color: #c2410c;
+}
+.badge-estado.completada {
+  background: #dcfce7;
+  color: #166534;
 }
 
+.leyenda {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 8px 0;
+}
+.ley-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #888;
+  font-family: "Courier New", monospace;
+}
+.ley-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
 
-@media (max-width: 992px) {
-  .layout {
-    grid-template-columns: 1fr;
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+.modal {
+  background: #fff;
+  border-radius: 14px;
+  padding: 28px;
+  width: 100%;
+  max-width: 400px;
+}
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.modal-head h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--g-dark);
+  font-family: "Courier New", monospace;
+}
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #888;
+}
+.warn-msg {
+  font-size: 12px;
+  color: var(--g-red);
+  margin-bottom: 14px;
+  font-family: "Courier New", monospace;
+}
+.field {
+  margin-bottom: 14px;
+}
+.field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--g-dark);
+  margin-bottom: 5px;
+  font-family: "Courier New", monospace;
+}
+.field input,
+.field select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  outline: none;
+}
+.field input:focus {
+  border-color: var(--g-blue);
+}
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
+.btn-ghost {
+  padding: 9px 16px;
+  background: transparent;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  cursor: pointer;
+}
+.btn-primary {
+  padding: 9px 18px;
+  background: var(--g-blue);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .cal-layout {
+    flex-direction: column;
+  }
+  .right-panel {
+    width: 100%;
   }
 }

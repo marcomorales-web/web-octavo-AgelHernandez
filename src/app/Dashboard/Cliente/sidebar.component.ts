@@ -1,19 +1,23 @@
-import { Component } from '@angular/core';
-import { RouterModule, Router} from "@angular/router";  
+import { Component, inject } from '@angular/core';
+import { Router, RouterModule, RouterLink, RouterLinkActive } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
-  constructor(private router: Router) {}
-    activeTab: string = 'dashboard';
+  private router = inject(Router);
+  private auth   = inject(AuthService);
 
-    setTab(tab: string) {
-    this.activeTab = tab;
-    }
+  nombre = this.auth.nombre;
 
+  cerrarSesion() {
+    this.auth.logout();
+    this.router.navigate(['/login']);
+  }
 }

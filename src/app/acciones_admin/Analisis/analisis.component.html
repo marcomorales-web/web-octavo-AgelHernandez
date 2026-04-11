@@ -1,35 +1,79 @@
-<section class="Analisis-page">
-  <div class="Analisis">
-    <h2>Analisis</h2>
+<section class="analisis-page">
+
+  <!-- KPIs -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-icon" style="background:#dbeafe">
+        <img src="/icons8-$-24.png" />
+      </div>
+      <div>
+        <p>Ingresos del mes</p>
+        <h3>${{ ingresosMes() | number:'1.0-0' }}</h3>
+        <span class="trend-up">+12% vs mes anterior</span>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon" style="background:#fce7f3">
+        <img src="/icons8-wrench-24.png" />
+      </div>
+      <div>
+        <p>Tipos de servicios</p>
+        <h3>6</h3>
+        <span>activos en catálogo</span>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon" style="background:#fee2e2">
+        <img src="/icons8-danger-24.png" />
+      </div>
+      <div>
+        <p>Stock bajo</p>
+        <h3>{{ stockBajo() }}</h3>
+        <span class="trend-warn">productos por reponer</span>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon" style="background:#dcfce7">
+        <img src="/icons8-user-24.png" />
+      </div>
+      <div>
+        <p>Satisfacción</p>
+        <h3>{{ satisfaccion }}/5</h3>
+        <span class="trend-up">calificación promedio</span>
+      </div>
+    </div>
   </div>
 
-  <div class="Analisis-card">
-    <div class="card blue">
-      <div class="icon"><img src="/icons8-$-24.png" /></div>
-      <p>Ingresos por Mes</p>
-      <h3>$2500</h3>
-      <span class="green">+12% vs mes anterior</span>
+  <!-- GRÁFICAS ROW 1 -->
+  <div class="charts-grid-2">
+    <div class="chart-card">
+      <h4 class="chart-title">Ingresos vs Meta mensual</h4>
+      <apx-chart [series]="lineSeries" [chart]="lineChart"
+                 [xaxis]="lineXAxis" [yaxis]="lineYAxis" [colors]="lineColors">
+      </apx-chart>
     </div>
-
-    <div class="card purple">
-      <div class="icon"><img src="/icons8-wrench-24.png" /></div>
-      <p>Tipos de Servicios</p>
-      <h3>6</h3>
-      <span>18 completados</span>
-    </div>
-
-    <div class="card orange">
-      <div class="icon"><img src="/icons8-calendar-24.png" /></div>
-      <p>Metricas Clave</p>
-      <h3>4</h3>
-      <span>Esta semana</span>
-    </div>
-
-    <div class="card green">
-      <div class="icon"><img src="/icons8-user-24.png" /></div>
-      <p>Tendencia</p>
-      <h3>4.1</h3>
-      <span>de 5.0 estrellas</span>
+    <div class="chart-card">
+      <h4 class="chart-title">Servicios por categoría</h4>
+      <apx-chart [series]="hbarSeries" [chart]="hbarChart"
+                 [xaxis]="hbarXAxis" [plotOptions]="hbarPlot" [colors]="hbarColors">
+      </apx-chart>
     </div>
   </div>
+
+  <!-- GRÁFICAS ROW 2 -->
+  <div class="charts-grid-2">
+    <div class="chart-card">
+      <h4 class="chart-title">Citas por día de la semana</h4>
+      <apx-chart [series]="areaSeries" [chart]="areaChart"
+                 [xaxis]="areaXAxis" [colors]="areaColors">
+      </apx-chart>
+    </div>
+    <div class="chart-card center">
+      <h4 class="chart-title">Índice de satisfacción</h4>
+      <apx-chart [series]="radialSeries" [chart]="radialChart"
+                 [labels]="radialLabels" [colors]="radialColors">
+      </apx-chart>
+    </div>
+  </div>
+
 </section>

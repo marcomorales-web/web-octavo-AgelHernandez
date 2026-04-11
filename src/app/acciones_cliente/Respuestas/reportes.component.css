@@ -1,64 +1,45 @@
+:root { --g-dark:#1A1A1A; --g-blue:#2E5F8A; --g-red:#C0392B; --g-gold:#C9A84C; }
+
+.container { padding: 0 4px; }
 
 .sub-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: #000000;
-  margin-bottom: 16px;
+  font-size: 16px; font-weight: 700;
+  color: var(--g-dark); font-family: 'Courier New', monospace;
+  margin-bottom: 16px; text-transform: uppercase; letter-spacing: .5px;
 }
+
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px; margin-bottom: 20px;
 }
+
 .stat-card {
-  background: #ffffff;
-  border: 1px solid #aaaaab;
-  border-radius: 12px;
-  padding: 18px 16px;
+  background: #fff; border-radius: 10px;
+  border: 1px solid #e5e7eb; padding: 14px;
   text-align: center;
 }
-.stat-icon {
-  font-size: 22px;
-  margin-bottom: 8px;
-}
-.stat-value {
-  font-size: 26px;
-  font-weight: 600;
-  color: #23a635;
-  margin-bottom: 4px;
-}
-.stat-value.green {
-  color: #5fba7d;
-}
-.stat-value.red {
-  color: #f03737;
-}
-.stat-label {
-  font-size: 10px;
-  color: #000000;
-}
-.info-card {
-  background: #fefeff;
-  border: 1px solid #b6b6b6;
-  border-radius: 12px;
-  padding: 18px 16px;
-  display: flex;
-  align-items: flex-start;
+.stat-card.green .stat-value { color: #16a34a; }
+.stat-card.red   .stat-value { color: var(--g-red); }
+
+.stat-icon { margin-bottom: 6px; }
+.stat-icon img { width: 22px; height: 22px; }
+.stat-value { font-size: 22px; font-weight: 700; font-family: 'Courier New', monospace; color: var(--g-dark); }
+.stat-label { font-size: 11px; color: #aaa; margin-top: 3px; font-family: 'Courier New', monospace; }
+
+.charts-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 14px;
 }
-.info-icon {
-  font-size: 24px;
-  flex-shrink: 0;
+
+.chart-card {
+  background: #fff; border-radius: 10px;
+  border: 1px solid #e5e7eb; padding: 16px;
 }
-.info-title {
-  font-size: 13px;
-  font-weight: 500;
-  color: #000000;
-  margin-bottom: 4px;
-}
-.info-sub {
-  font-size: 11px;
-  color: #060508;
-  line-height: 1.5;
+
+.chart-title {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .5px; color: var(--g-dark);
+  font-family: 'Courier New', monospace; margin-bottom: 10px;
 }

@@ -13,15 +13,13 @@
       <div class="user-container">
         <div class="user-card">
           <div class="icono-perfil">
-            <img src="/icons8-user-24.png" />
+            <span class="avatar-letter">{{ nombre()[0] }}</span>
           </div>
-
           <div class="user-text">
-            <h3>Rafael</h3>
+            <h3>{{ nombre() }}</h3>
             <span>Administrador</span>
           </div>
         </div>
-
         <button class="btn-logout" (click)="goLogin()">Salir</button>
       </div>
     </header>

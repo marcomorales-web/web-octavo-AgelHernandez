@@ -1,51 +1,129 @@
-<section class="services-page">
+<section class="servicios-page">
 
-  <div class="services-header">
-    <h2>Gestión de Servicios</h2>
-    <button class="btn-primary">Nuevo Servicio</button>
-  </div>
-
-  <!-- resumen -->
-  <div class="services-stats">
-    <div class="stat-card orange">
-      <p>Pendientes</p>
-      <h3>1</h3>
-    </div>
-    <div class="stat-card blue">
-      <p>En Proceso</p>
-      <h3>1</h3>
-    </div>
-    <div class="stat-card green">
-      <p>Completados</p>
-      <h3>1</h3>
+  <!-- HEADER -->
+  <div class="page-header">
+    <div>
+      <h2>Gestión de Servicios</h2>
+      <p>Seguimiento y control de todos los trabajos del taller</p>
     </div>
   </div>
 
-  <!-- tabla -->
-  <div class="services-list">
-
-    <div class="service-row">
-      <div>
-        <strong>Mantenimiento Preventivo</strong>
-        <p>Juan Pérez</p>
-      </div>
-
-      <span class="badge blue">En Proceso</span>
-      <span class="badge orange">Media</span>
-      <strong>$15,000</strong>
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-pill orange">
+      <span>En proceso</span>
+      <strong>{{ pendientes() }}</strong>
     </div>
-
-    <div class="service-row">
-      <div>
-        <strong>Reparación Frenos</strong>
-        <p>María López</p>
-      </div>
-
-      <span class="badge green">Completado</span>
-      <span class="badge red">Alta</span>
-      <strong>$25,000</strong>
+    <div class="stat-pill green">
+      <span>Completados</span>
+      <strong>{{ completados() }}</strong>
     </div>
+    <div class="stat-pill blue">
+      <span>Ingresos generados</span>
+      <strong>${{ ingresos() | number:'1.0-0' }}</strong>
+    </div>
+  </div>
 
+  <!-- FILTROS -->
+  <div class="toolbar">
+    <input class="search-input" [ngModel]="busqueda()"
+           (ngModelChange)="busqueda.set($event)"
+           placeholder="Buscar por vehículo, servicio o cliente..." />
+    <div class="filter-tabs">
+      <button [class.active]="filtro()==='todos'"      (click)="filtro.set('todos')">Todos</button>
+      <button [class.active]="filtro()==='activo'"     (click)="filtro.set('activo')">Activos</button>
+      <button [class.active]="filtro()==='completado'" (click)="filtro.set('completado')">Completados</button>
+    </div>
+  </div>
+
+  <!-- TABLA -->
+  <div class="tabla-wrap">
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th>Vehículo / Cliente</th>
+          <th>Servicio</th>
+          <th>Fecha</th>
+          <th>Técnico</th>
+          <th>Progreso</th>
+          <th>Costo</th>
+          <th>Estado</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (s of serviciosFiltrados(); track s.id) {
+          <tr>
+            <td>
+              <div class="vehicle-cell">
+                <strong>{{ s.vehiculoNombre }}</strong>
+                <span>{{ s.cliente ?? 'Sin asignar' }}</span>
+              </div>
+            </td>
+            <td>{{ s.nombre }}</td>
+            <td>{{ s.fecha }}</td>
+            <td>{{ s.tecnico ?? '—' }}</td>
+            <td>
+              <div class="prog-bar-sm">
+                <div class="prog-fill-sm" [style.width.%]="(s.progreso / 5) * 100"></div>
+              </div>
+              <span class="prog-label">{{ s.progreso }}/5</span>
+            </td>
+            <td><strong>${{ s.costo | number:'1.0-0' }}</strong></td>
+            <td>
+              <span class="badge-estado" [class]="s.estado">
+                {{ s.estado === 'activo' ? 'Activo' : 'Completado' }}
+              </span>
+            </td>
+            <td>
+              <button class="btn-detalle" (click)="abrirDetalle(s)">Ver</button>
+            </td>
+          </tr>
+        }
+        @if (serviciosFiltrados().length === 0) {
+          <tr><td colspan="8" class="empty-row">Sin resultados</td></tr>
+        }
+      </tbody>
+    </table>
   </div>
 
 </section>
+
+<!-- MODAL DETALLE -->
+@if (modalAbierto() && servicioSel(); as s) {
+  <div class="modal-overlay" (click)="cerrar()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-head">
+        <h3>{{ s.nombre }}</h3>
+        <button class="btn-close" (click)="cerrar()">✕</button>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-item"><span>Vehículo</span><strong>{{ s.vehiculoNombre }}</strong></div>
+        <div class="detail-item"><span>Cliente</span><strong>{{ s.cliente ?? '—' }}</strong></div>
+        <div class="detail-item"><span>Técnico</span><strong>{{ s.tecnico ?? '—' }}</strong></div>
+        <div class="detail-item"><span>Entrega estimada</span><strong>{{ s.entrega ?? '—' }}</strong></div>
+        <div class="detail-item"><span>Costo</span><strong>${{ s.costo | number:'1.0-0' }}</strong></div>
+        <div class="detail-item"><span>Estado</span>
+          <span class="badge-estado" [class]="s.estado">{{ s.estado === 'activo' ? 'Activo' : 'Completado' }}</span>
+        </div>
+      </div>
+
+      <!-- Stepper -->
+      <div class="stepper-wrap">
+        @for (paso of pasos; track paso; let i = $index) {
+          <div class="step" [class.done]="i + 1 < s.progreso" [class.active]="i + 1 === s.progreso">
+            <div class="step-circle">{{ i + 1 < s.progreso ? '✓' : (i + 1) }}</div>
+            <div class="step-lbl">{{ paso }}</div>
+          </div>
+        }
+      </div>
+
+      @if (s.estado === 'activo') {
+        <button class="btn-avanzar" (click)="avanzarProgreso(s)">
+          Avanzar al siguiente paso →
+        </button>
+      }
+    </div>
+  </div>
+}

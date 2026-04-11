@@ -67,7 +67,7 @@ export const routes: Routes = [
 
         { path: 'reportes', component: ReportesComponent },
 
-        { path: '', redirectTo: 'historial', pathMatch: 'full' }
+        { path: '', redirectTo: 'progreso', pathMatch: 'full' }
 
       ]
     },

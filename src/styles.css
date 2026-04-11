@@ -1,26 +1,39 @@
-* {
-  box-sizing: border-box;
+/* ══════════════════════════════════════════════
+   Jirafitas Garage — Global styles
+   src/styles.css
+   ══════════════════════════════════════════════ */
+
+:root {
+  --g-dark:  #1A1A1A;
+  --g-red:   #C0392B;
+  --g-blue:  #2E5F8A;
+  --g-gold:  #C9A84C;
+  --g-cream: #F5F0E8;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Animate.css — ya importado en index.html si lo tienes */
+
+/* Dashboard cliente: fondo crema */
+.body {
+  background: var(--g-cream);
+  min-height: 100vh;
 }
 
-
-
-@media (max-width: 768px) {
-
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-
-  .user {
-    width: 100%;
-    justify-content: space-between;
-  }
-
+.layout {
+  display: flex;
+  height: 100vh;
 }
+
+.content {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto;
+  background: var(--g-cream);
+}
+
+/* Scrollbar sutil */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }

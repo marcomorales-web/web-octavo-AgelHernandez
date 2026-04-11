@@ -1,26 +1,93 @@
+<div class="cal-layout">
 
-<div class="layout">
+  <!-- PANEL IZQUIERDO: FullCalendar -->
+  <div class="left-panel">
+    <full-calendar [options]="calendarOptions"></full-calendar>
+  </div>
 
+  <!-- PANEL DERECHO: Detalle del día -->
+  <div class="right-panel">
 
-    <div class="left-panel">
-        <full-calendar [options]="calendarOptions"></full-calendar>
-
+    <div class="panel-header">
+      <h3>Registro Diario</h3>
+      <button class="btn-nueva" (click)="modalNueva.set(true)">+ Nueva Cita</button>
     </div>
 
-    <div class="right-panel">
-        <div class="header">
-            <h2>REGISTRO DIARIO</h2>
-            <button>NUEVA CITA</button>
+    @if (fechaSel()) {
+      <p class="fecha-label">{{ formatFecha(fechaSel()) }}</p>
+
+      @if (citasDelDia().length === 0) {
+        <div class="empty-day">
+          <div class="empty-icon">📅</div>
+          <p>Sin citas para este día.</p>
+          <button class="btn-add-hint" (click)="modalNueva.set(true)">Agregar cita</button>
         </div>
+      }
 
-        <h3>fecha seleccionada- datos</h3>
+      <div class="citas-list">
+        @for (c of citasDelDia(); track c.id) {
+          <div class="cita-card">
+            <div class="cita-hora">{{ c.hora }}</div>
+            <div class="cita-info">
+              <div class="cita-servicio">{{ c.servicio }}</div>
+              <div class="cita-vehiculo">{{ c.vehiculoNombre }}</div>
+            </div>
+            <span class="badge-estado" [class]="c.estado">
+              {{ c.estado === 'confirmada' ? 'Confirmada' : c.estado === 'pendiente' ? 'Pendiente' : 'Completada' }}
+            </span>
+          </div>
+        }
+      </div>
 
-        <ul>
-            <p>mantenimiento</p>
-            <p>cambio de refacciones</p>
-        </ul>
+    } @else {
+      <div class="empty-day">
+        <div class="empty-icon">📅</div>
+        <p>Selecciona un día en el calendario para ver las citas.</p>
+      </div>
+    }
 
+    <!-- Leyenda -->
+    <div class="leyenda">
+      <div class="ley-item"><div class="ley-dot" style="background:#2E5F8A"></div>Confirmada</div>
+      <div class="ley-item"><div class="ley-dot" style="background:#f97316"></div>Pendiente</div>
+      <div class="ley-item"><div class="ley-dot" style="background:#16a34a"></div>Completada</div>
     </div>
 
-
+  </div>
 </div>
+
+<!-- MODAL NUEVA CITA -->
+@if (modalNueva()) {
+  <div class="modal-overlay" (click)="modalNueva.set(false)">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-head">
+        <h3>Nueva Cita</h3>
+        <button class="btn-close" (click)="modalNueva.set(false)">✕</button>
+      </div>
+
+      @if (fechaSel()) {
+        <p class="fecha-label" style="margin-bottom:16px">{{ formatFecha(fechaSel()) }}</p>
+      } @else {
+        <p class="warn-msg">Selecciona primero una fecha en el calendario.</p>
+      }
+
+      <div class="field">
+        <label>Servicio / Descripción</label>
+        <input [(ngModel)]="nuevaCita.titulo" type="text" placeholder="Ej: Cambio de aceite" />
+      </div>
+      <div class="field">
+        <label>Hora</label>
+        <select [(ngModel)]="nuevaCita.hora">
+          @for (h of horas; track h) { <option [value]="h">{{ h }}</option> }
+        </select>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-ghost" (click)="modalNueva.set(false)">Cancelar</button>
+        <button class="btn-primary" (click)="agregarCita()" [disabled]="!nuevaCita.titulo || !fechaSel()">
+          Confirmar Cita
+        </button>
+      </div>
+    </div>
+  </div>
+}

@@ -1,26 +1,23 @@
-import { Component } from "@angular/core";
-import { RouterModule, Router} from "@angular/router";  
-import {MatTabsModule} from '@angular/material/tabs';
-
+import { Component, inject } from '@angular/core';
+import { RouterModule, Router } from '@angular/router';
+import { MatTabsModule } from '@angular/material/tabs';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
-    selector: 'app-dashboard',
-    standalone: true,
-    imports: [RouterModule,MatTabsModule],
-    templateUrl: '../Admin/admin.component.html',
-    styleUrls: ['../Admin/admin.component.css']
+  selector: 'app-dashboard',
+  standalone: true,
+  imports: [RouterModule, MatTabsModule],
+  templateUrl: '../Admin/admin.component.html',
+  styleUrls: ['../Admin/admin.component.css'],
 })
 export class DashboardComponent {
-    constructor(private router: Router) {}
+  private router = inject(Router);
+  private auth = inject(AuthService);
 
-    goLogin() {
-        this.router.navigate(['login']);
-    }
+  nombre = this.auth.nombre;
 
-    activeTab: string = 'resumen';
-
-    setTab(tab: string) {
-    this.activeTab = tab;
-}
-
+  goLogin() {
+    this.auth.logout();
+    this.router.navigate(['/login']);
+  }
 }

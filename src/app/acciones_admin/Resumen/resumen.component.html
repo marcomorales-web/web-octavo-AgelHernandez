@@ -1,55 +1,97 @@
 <section class="resumen-page">
-  <div class="services-header">
-    <h2>RESUMEN</h2>
-  </div>
 
-  <div class="resumen-stats">
-    <div class="card blue">
-      <div class="icon"><img src="/icons8-$-24.png" /></div>
-      <p>Ingresos del Mes</p>
-      <h3>$2500</h3>
-      <span class="green">+12% vs mes anterior</span>
+  <!-- STATS -->
+  <div class="stats-grid">
+    <div class="stat-card blue">
+      <div class="stat-icon"><img src="/icons8-$-24.png" /></div>
+      <div class="stat-info">
+        <p>Ingresos del Mes</p>
+        <h3>${{ ingresosMes() | number:'1.0-0' }}</h3>
+        <span class="trend green">+12% vs mes anterior</span>
+      </div>
     </div>
 
-    <div class="card purple">
-      <div class="icon"><img src="/icons8-wrench-24.png" /></div>
-      <p>Servicios Activos</p>
-      <h3>6</h3>
-      <span>18 completados</span>
+    <div class="stat-card purple">
+      <div class="stat-icon"><img src="/icons8-wrench-24.png" /></div>
+      <div class="stat-info">
+        <p>Servicios Activos</p>
+        <h3>{{ serviciosActivos() }}</h3>
+        <span>en progreso ahora</span>
+      </div>
     </div>
 
-    <div class="card orange">
-      <div class="icon"><img src="/icons8-calendar-24.png" /></div>
-      <p>Citas Pendientes</p>
-      <h3>4</h3>
-      <span>Esta semana</span>
+    <div class="stat-card orange">
+      <div class="stat-icon"><img src="/icons8-calendar-24.png" /></div>
+      <div class="stat-info">
+        <p>Citas Pendientes</p>
+        <h3>{{ citasPendientes() }}</h3>
+        <span>por confirmar</span>
+      </div>
     </div>
 
-    <div class="card green">
-      <div class="icon"><img src="/icons8-user-24.png" /></div>
-      <p>Satisfacción</p>
-      <h3>4.1</h3>
-      <span>de 5.0 estrellas</span>
+    <div class="stat-card green">
+      <div class="stat-icon"><img src="/icons8-user-24.png" /></div>
+      <div class="stat-info">
+        <p>Vehículos Registrados</p>
+        <h3>{{ totalVehiculos() }}</h3>
+        <span>clientes activos</span>
+      </div>
     </div>
   </div>
-</section>
 
-<!--GRAFICOS RESUMEN-->
-<section class="charts">
-  <div class="chart">
-    <apx-chart
-      [series]="lineChartSeries"
-      [chart]="lineChart"
-      [xaxis]="lineChartXAxis"
-      [title]="lineChartTitle">
-    </apx-chart>
+  <!-- GRÁFICAS -->
+  <div class="charts-grid">
+    <div class="chart-card">
+      <h4 class="chart-title">Ingresos mensuales</h4>
+      <apx-chart
+        [series]="barSeries"
+        [chart]="barChart"
+        [xaxis]="barXAxis"
+        [colors]="barColors"
+        [plotOptions]="barPlot">
+      </apx-chart>
+    </div>
+
+    <div class="chart-card">
+      <h4 class="chart-title">Distribución de servicios</h4>
+      <apx-chart
+        [series]="pieSeries"
+        [chart]="pieChart"
+        [labels]="pieLabels"
+        [colors]="pieColors">
+      </apx-chart>
+    </div>
   </div>
 
-  <div class="chart">
-    <apx-chart
-      [series]="pieChartSeries"
-      [chart]="pieChart"
-      [labels]="pieChartLabels">
-    </apx-chart>
+  <!-- ÚLTIMAS CITAS -->
+  <div class="section-card">
+    <h4 class="chart-title">Actividad reciente</h4>
+    <div class="activity-list">
+      <div class="activity-row">
+        <div class="act-dot blue"></div>
+        <div class="act-info">
+          <span class="act-name">Cambio de frenos — Toyota Corolla 2019</span>
+          <span class="act-meta">Abr 22 · 10:00 · Confirmada</span>
+        </div>
+        <span class="badge-estado confirmada">Confirmada</span>
+      </div>
+      <div class="activity-row">
+        <div class="act-dot orange"></div>
+        <div class="act-info">
+          <span class="act-name">Afinación completa — Nissan Sentra 2021</span>
+          <span class="act-meta">May 05 · 09:00 · Pendiente</span>
+        </div>
+        <span class="badge-estado pendiente">Pendiente</span>
+      </div>
+      <div class="activity-row">
+        <div class="act-dot green"></div>
+        <div class="act-info">
+          <span class="act-name">Frenos y rotores — Nissan Sentra 2021</span>
+          <span class="act-meta">En taller · Ing. Ramírez</span>
+        </div>
+        <span class="badge-estado activo">Activo</span>
+      </div>
+    </div>
   </div>
+
 </section>
