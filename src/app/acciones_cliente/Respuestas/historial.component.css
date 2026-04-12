@@ -1,3 +1,9 @@
+:root {
+  --g-dark: #1a1a1a;
+  --g-red: #c0392b;
+  --g-blue: #2e5f8a;
+  --g-gold: #c9a84c;
+}
 
 .hist-header {
   display: flex;
@@ -5,58 +11,86 @@
   justify-content: space-between;
   margin-bottom: 14px;
   gap: 12px;
+  flex-wrap: wrap;
 }
+
 .sub-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: #000000;
+  font-size: 13px;
+  font-weight: 700;
+  color: #888;
+  font-family: "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
 }
+
 .vehicle-select {
-  background: #ffffff;
-  border: 1px solid #e4ebe5;
+  background: #fff;
+  border: 1.5px solid #ddd;
   border-radius: 8px;
-  color: #040406;
+  color: var(--g-dark);
   padding: 7px 12px;
   font-size: 12px;
-  font-family: 'DM Sans', sans-serif;
+  font-family: "Courier New", monospace;
   outline: none;
+  transition: border-color 0.15s;
 }
+.vehicle-select:focus {
+  border-color: var(--g-blue);
+}
+
 .stats-row {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
+
 .stat-card {
-  background: #f7f6fa;
-  border: 1px solid #8a8a8a;
+  background: #fff;
+  border: 1px solid #e5e7eb;
   border-radius: 10px;
   padding: 14px 16px;
 }
+
 .stat-label {
   font-size: 10px;
-  color: #010102;
+  color: #aaa;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
-  margin-bottom: 6px;
+  letter-spacing: 0.6px;
+  margin-bottom: 5px;
+  font-family: "Courier New", monospace;
 }
+
 .stat-value {
   font-size: 22px;
-  font-weight: 600;
-  color: #000000;
-  font-family: 'DM Mono', monospace;
+  font-weight: 700;
+  color: var(--g-dark);
+  font-family: "Courier New", monospace;
 }
 .stat-value.green {
-  color: #5fba7d;
+  color: #16a34a;
 }
+
+.empty-card {
+  background: #f9f9f9;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 28px;
+  text-align: center;
+  color: #bbb;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+}
+
 .hist-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
+
 .hist-item {
-  background: #f6f6f8;
-  border: 1px solid #949296;
+  background: #fff;
+  border: 1px solid #e5e7eb;
   border-radius: 10px;
   padding: 12px 16px;
   display: flex;
@@ -65,47 +99,42 @@
   transition: border-color 0.15s;
 }
 .hist-item:hover {
-  border-color: #000000;
+  border-color: var(--g-blue);
 }
-.hist-icon {
-  font-size: 18px;
-  flex-shrink: 0;
+
+.hist-icon img {
+  width: 20px;
+  height: 20px;
 }
+
 .hist-info {
   flex: 1;
   min-width: 0;
 }
 .hist-name {
-  font-size: 12px;
-  font-weight: 500;
-  color: #000000;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--g-dark);
+  font-family: "Courier New", monospace;
 }
 .hist-meta {
   font-size: 10px;
-  color: #020204;
+  color: #aaa;
   margin-top: 2px;
 }
+
 .hist-right {
   text-align: right;
   flex-shrink: 0;
 }
 .hist-cost {
   font-size: 13px;
-  font-weight: 500;
-  color: #000000;
-  font-family: 'DM Mono', monospace;
+  font-weight: 700;
+  color: var(--g-dark);
+  font-family: "Courier New", monospace;
 }
 .hist-date {
   font-size: 10px;
-  color: #000000;
+  color: #aaa;
   margin-top: 2px;
-}
-.empty-card {
-  background: #e8e7eb;
-  border: 1px solid #a8a8aa;
-  border-radius: 12px;
-  padding: 32px;
-  text-align: center;
-  color: #000000;
-  font-size: 13px;
 }

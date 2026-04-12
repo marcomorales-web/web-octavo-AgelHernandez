@@ -1,3 +1,9 @@
+:root {
+  --g-dark:  #1A1A1A;
+  --g-red:   #C0392B;
+  --g-blue:  #2E5F8A;
+  --g-gold:  #C9A84C;
+}
 
 .prog-header {
   display: flex;
@@ -5,28 +11,38 @@
   justify-content: space-between;
   margin-bottom: 14px;
   gap: 12px;
+  flex-wrap: wrap;
 }
+
 .sub-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: #c8c0f0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #888;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: .6px;
 }
+
 .vehicle-select {
-  background: #fffeff;
-  border: 1px solid #2a2830;
+  background: #fff;
+  border: 1.5px solid #ddd;
   border-radius: 8px;
-  color: #000000;
+  color: var(--g-dark);
   padding: 7px 12px;
   font-size: 12px;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Courier New', monospace;
   outline: none;
+  transition: border-color .15s;
 }
+.vehicle-select:focus { border-color: var(--g-blue); }
+
 .progreso-card {
-  background: #fefdff;
-  border: 1px solid #88888a;
-  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
   padding: 20px;
 }
+
 .card-top {
   display: flex;
   justify-content: space-between;
@@ -34,123 +50,143 @@
   margin-bottom: 20px;
   gap: 12px;
 }
+
 .service-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: #000000;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--g-dark);
+  font-family: 'Courier New', monospace;
 }
+
 .service-tech {
   font-size: 11px;
-  color: #000000;
+  color: #888;
   margin-top: 3px;
+  font-family: 'Courier New', monospace;
 }
+
+/* Badge entrega */
 .entrega-badge {
-  background: #f6f5f3;
-  border: 1px solid #4a3010;
+  background: var(--g-gold);
   border-radius: 8px;
   padding: 6px 12px;
-  text-align: right;
+  text-align: center;
   flex-shrink: 0;
+  font-family: 'Courier New', monospace;
 }
+
 .entrega-badge span {
   display: block;
   font-size: 9px;
-  color: #8a6020;
+  color: rgba(255,255,255,.75);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: .5px;
+  margin-bottom: 2px;
 }
+
 .entrega-badge {
-  font-size: 12px;
-  color: #c47f1a;
-  font-weight: 500;
+  font-size: 13px;
+  color: #fff;
+  font-weight: 700;
 }
+
+/* Stepper */
 .stepper {
   display: flex;
   align-items: flex-start;
   margin-bottom: 16px;
+  overflow-x: auto;
 }
+
 .step {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
+  min-width: 65px;
   position: relative;
 }
+
 .step-line {
   position: absolute;
   top: 13px;
   left: 50%;
   width: 100%;
-  height: 1px;
-  background: #0f6f1e;
+  height: 2px;
+  background: #e5e7eb;
   z-index: 0;
 }
-.step-line.done {
-  background: #0d6504;
-}
+
+.step-line.done { background: var(--g-blue); }
+
 .step-circle {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
   z-index: 1;
-  border: 2px solid #737275;
-  background: #f3f2f8;
-  color: #4a4860;
+  border: 2px solid #ddd;
+  background: #fff;
+  color: #bbb;
+  font-family: 'Courier New', monospace;
+  transition: .2s;
 }
-.step.done .step-circle {
-  background: #f3f6f3;
-  border-color: #5fba7d;
-  color: #5fba7d;
-}
-.step.active .step-circle {
-  background: #f3f1f5;
-  border-color: #a890ff;
-  color: #a890ff;
-}
+
+.step.done   .step-circle { background: var(--g-blue); border-color: var(--g-blue); color: #fff; }
+.step.active .step-circle { background: var(--g-gold); border-color: var(--g-gold); color: #fff; }
+
 .step-label {
   font-size: 9px;
-  color: #5a5878;
-  margin-top: 6px;
+  color: #bbb;
+  margin-top: 5px;
   text-align: center;
   max-width: 60px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-family: 'Courier New', monospace;
 }
-.step.active .step-label {
-  color: #2e7e2d;
-}
-.step.done .step-label {
-  color: #3a6a4a;
-}
+
+.step.done   .step-label { color: var(--g-blue); }
+.step.active .step-label { color: var(--g-gold); font-weight: 700; }
+
+/* Barra de progreso */
 .prog-bar {
-  background: #000000;
+  background: #e5e7eb;
   border-radius: 4px;
-  height: 4px;
-  margin-bottom: 6px;
+  height: 5px;
+  margin-bottom: 5px;
 }
+
 .prog-fill {
-  height: 4px;
+  height: 5px;
   border-radius: 4px;
-  background: #a6ff90;
-  transition: width 0.5s ease;
+  background: var(--g-blue);
+  transition: width .4s ease;
 }
+
 .prog-pct {
-  font-size: 10px;
-  color: #6b5fa8;
+  font-size: 11px;
+  color: var(--g-blue);
+  font-weight: 700;
   text-align: right;
+  font-family: 'Courier New', monospace;
 }
+
+/* Empty */
 .empty-card {
-  background: #efeff1;
-  border: 1px solid #2a2830;
+  background: #f9f9f9;
+  border: 1px solid #e5e7eb;
   border-radius: 12px;
   padding: 32px;
   text-align: center;
-  color: #5a5878;
+  color: #bbb;
   font-size: 13px;
+  font-family: 'Courier New', monospace;
 }
+
+.empty-card img { width: 36px; margin-bottom: 8px; opacity: .5; }
