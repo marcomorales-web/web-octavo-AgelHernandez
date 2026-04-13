@@ -1,24 +1,33 @@
-
+:root {
+  --g-dark: #1a1a1a;
+  --g-red: #c0392b;
+  --g-blue: #2e5f8a;
+  --g-gold: #c9a84c;
+}
 
 .sub-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: #c8c0f0;
+  font-size: 12px;
+  font-weight: 700;
+  color: #888;
+  font-family: "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
   margin-bottom: 14px;
 }
 .alert-success {
-  background: #1a2e1a;
-  border: 1px solid #2a4a2a;
-  border-radius: 10px;
-  padding: 12px 16px;
+  background: #f0faf3;
+  border: 1.5px solid #16a34a;
+  border-radius: 8px;
+  padding: 10px 14px;
   font-size: 12px;
-  color: #5fba7d;
-  margin-bottom: 16px;
+  color: #166534;
+  margin-bottom: 14px;
+  font-family: "Courier New", monospace;
 }
 .form-card {
-  background: #ffffff;
-  border: 1px solid #a8a8a9;
-  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
   padding: 20px;
 }
 .form-group {
@@ -26,29 +35,31 @@
 }
 .form-group label {
   display: block;
-  font-size: 11px;
-  color: #010102;
-  margin-bottom: 5px;
+  font-size: 10px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  color: #000000;
+  margin-bottom: 5px;
+  font-family: "Courier New", monospace;
 }
 .form-group select,
 .form-group textarea {
   width: 100%;
-  background: #ededf1;
-  border: 1px solid #9c9b9d;
-  border-radius: 8px;
-  color: #050407;
+  background: #fff;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  color: var(--g-dark);
   padding: 9px 12px;
   font-size: 13px;
-  font-family: 'DM Sans', sans-serif;
+  font-family: "Courier New", monospace;
   outline: none;
   transition: border-color 0.15s;
   resize: none;
 }
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: #4304c2;
+  border-color: var(--g-blue);
 }
 .chips {
   display: flex;
@@ -56,22 +67,23 @@
   gap: 6px;
 }
 .chip {
-  background: #e3e3eb;
-  border: 1px solid #000000;
+  background: #f5f5f5;
+  border: 1.5px solid #ddd;
   border-radius: 20px;
   padding: 4px 12px;
   font-size: 11px;
   color: #000000;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: 0.15s;
+  font-family: "Courier New", monospace;
 }
 .chip.active {
-  border-color: #000000;
-  color: #010004;
-  background: #72fd53;
+  border-color: var(--g-blue);
+  background: var(--g-blue);
+  color: #fff;
 }
 .upload-zone {
-  border: 1.5px dashed #2a2830;
+  border: 1.5px dashed #ddd;
   border-radius: 10px;
   padding: 24px;
   text-align: center;
@@ -80,16 +92,18 @@
   transition: border-color 0.15s;
 }
 .upload-zone:hover {
-  border-color: #5c3d99;
+  border-color: var(--g-blue);
 }
 .upload-zone p {
-  font-size: 12px;
-  color: #000000;
+  font-size: 13px;
+  color: #161111;
   margin-bottom: 2px;
+  font-family: "Courier New", monospace;
 }
 .upload-zone span {
   font-size: 10px;
-  color: #0e009f;
+  color: #261c1c;
+  font-family: "Courier New", monospace;
 }
 .form-footer {
   display: flex;
@@ -97,14 +111,16 @@
   margin-top: 8px;
 }
 .btn-primary {
-  background: #fa0202;
-  border: 1px solid #c53209;
-  border-radius: 8px;
-  color: #e8d8ff;
-  font-size: 13px;
-  font-weight: 500;
   padding: 9px 20px;
+  background: var(--g-red);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
+  transition: background 0.15s;
 }
 .btn-primary:hover {
   background: #660202;

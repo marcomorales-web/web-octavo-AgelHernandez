@@ -1,27 +1,33 @@
-
-:host {
-  display: block;
-  font-family: 'DM Sans', sans-serif;
+:root {
+  --g-dark: #1a1a1a;
+  --g-red: #c0392b;
+  --g-blue: #2e5f8a;
+  --g-gold: #c9a84c;
 }
+
 .sub-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: #000000;
+  font-size: 12px;
+  font-weight: 700;
+  color: #888;
+  font-family: "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
   margin-bottom: 14px;
 }
 .alert-success {
-  background: #f8f8f8;
-  border: 1px solid #e0eee0;
-  border-radius: 10px;
-  padding: 12px 16px;
+  background: #f0faf3;
+  border: 1.5px solid #16a34a;
+  border-radius: 8px;
+  padding: 10px 14px;
   font-size: 12px;
-  color: #5fba7d;
-  margin-bottom: 16px;
+  color: #166534;
+  margin-bottom: 14px;
+  font-family: "Courier New", monospace;
 }
 .form-card {
-  background: #faf9ff;
-  border: 1px solid #b1b0b0;
-  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
   padding: 20px;
 }
 .form-group {
@@ -29,54 +35,58 @@
 }
 .form-group label {
   display: block;
-  font-size: 11px;
-  color: #000000;
-  margin-bottom: 5px;
+  font-size: 10px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  color: #000000;
+  margin-bottom: 5px;
+  font-family: "Courier New", monospace;
 }
 .form-group select,
 .form-group textarea {
   width: 100%;
-  background: #e2e2ea;
-  border: 1px solid #7d7c81;
-  border-radius: 8px;
-  color: #000000;
+  background: #fff;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  color: var(--g-dark);
   padding: 9px 12px;
   font-size: 13px;
-  font-family: 'DM Sans', sans-serif;
+  font-family: "Courier New", monospace;
   outline: none;
   transition: border-color 0.15s;
   resize: none;
 }
 .form-group select:focus,
 .form-group textarea:focus {
-  border-color: #5c3d99;
+  border-color: var(--g-blue);
 }
 .radio-group {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 .radio-option {
-  background: #e6e6eb;
-  border: 1px solid #2a2830;
+  background: #f5f5f5;
+  border: 1.5px solid #ddd;
   border-radius: 8px;
-  padding: 8px 16px;
+  padding: 7px 14px;
   font-size: 12px;
-  color: #8882a8;
+  color: #888;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  transition: all 0.15s;
-}
-.radio-option.active {
-  border-color: #993d3d;
-  color: #c8c0f0;
-  background: #e76464;
+  gap: 6px;
+  transition: 0.15s;
+  font-family: "Courier New", monospace;
 }
 .radio-option input {
   display: none;
+}
+.radio-option.active {
+  border-color: #3d994e;
+  color: #c8c0f0;
+  background: #64e776;
 }
 .form-footer {
   display: flex;
@@ -84,8 +94,8 @@
   margin-top: 8px;
 }
 .btn-primary {
-  background: #f80707;
-  border: 1px solid #bf5c5c;
+  background: #64e776;
+  border: 1px solid #3d994e;
   border-radius: 8px;
   color: #e8d8ff;
   font-size: 13px;
@@ -96,7 +106,7 @@
   transition: background 0.15s;
 }
 .btn-primary:hover {
-  background: #6c0606;
+  background: #3d994e;
 }
 .btn-primary:disabled {
   opacity: 0.4;

@@ -38,7 +38,7 @@
 }
 .kpi-card p {
   font-size: 12px;
-  color: #aaa;
+  color: #000000;
   font-family: "Courier New", monospace;
   margin-bottom: 3px;
 }
@@ -50,7 +50,7 @@
 }
 .kpi-card span {
   font-size: 11px;
-  color: #aaa;
+  color: #000000;
 }
 .trend-up {
   color: #16a34a !important;

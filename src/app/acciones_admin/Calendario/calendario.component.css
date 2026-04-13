@@ -54,7 +54,7 @@
 
 .fecha-label {
   font-size: 12px;
-  color: #888;
+  color: #ffffff;
   font-family: "Courier New", monospace;
   text-transform: capitalize;
 }
@@ -154,7 +154,7 @@
   align-items: center;
   gap: 5px;
   font-size: 11px;
-  color: #888;
+  color: #ffffff;
   font-family: "Courier New", monospace;
 }
 .ley-dot {

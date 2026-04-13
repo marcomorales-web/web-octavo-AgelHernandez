@@ -1,7 +1,34 @@
+:root {
+  --g-dark:  #1A1A1A;
+  --g-red:   #C0392B;
+  --g-blue:  #2E5F8A;
+  --g-gold:  #C9A84C;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* disposicion */
+.page {
+  padding: 0 2px;
+}
+.page-header {
+  margin-bottom: 20px;
+}
 .mb-24 { margin-bottom: 24px; }
+
+
+.page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--g-dark);
+  font-family: "Courier New", monospace;
+}
+.page-sub {
+  font-size: 13px;
+  color: #888;
+  margin-top: 2px;
+  font-family: "Courier New", monospace;
+}
 
 .hero-grid {
   display: grid;
@@ -9,29 +36,9 @@
   gap: 16px;
 }
 
-/* inicio pagina */
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.page-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #111827;
-}
-
-.page-sub {
-  font-size: 13px;
-  color: #6b7280;
-  margin-top: 2px;
-}
-
 /* card diseño*/
 .card {
-  background: white;
+  background: #fff;
   border-radius: 14px;
   padding: 18px 16px;
   border: 1px solid #e5e7eb;
@@ -39,10 +46,12 @@
   display: block;
   transition: transform .2s, box-shadow .2s;
   cursor: pointer;
+  font-family: "Courier New", monospace;
 }
 .card-active {
-  border-left: 4px solid #2563eb;
-  background: #eff6ff;
+  border-color: var(--g-blue) !important;
+  border-left: 4px solid var(--g-blue);
+  background: #f0f6ff;
 }
 
 .card:hover {
@@ -50,9 +59,23 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
+.hero-icon {
+  margin-bottom: 10px;
+}
 
+.hero-icon img {
+  width: 24px;
+  height: 24px;
+}
 
-/*card contenido*/
-.card-icon  { font-size: 26px; margin-bottom: 10px; }
-.card-label { font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 4px; }
-.card-sub   { font-size: 12px; color: #6b7280; line-height: 1.4; }
+.hero-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--g-dark);
+  margin-bottom: 3px;
+}
+.hero-sub {
+  font-size: 11px;
+  color: #aaa;
+  line-height: 1.4;
+}
