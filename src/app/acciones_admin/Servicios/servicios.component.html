@@ -1,5 +1,4 @@
 <section class="servicios-page">
-
   <!-- HEADER -->
   <div class="page-header">
     <div>
@@ -8,31 +7,45 @@
     </div>
   </div>
 
-  <!-- STATS -->
+  <!-- STATS con border-left igual que resumen -->
   <div class="stats-row">
     <div class="stat-pill orange">
-      <span>En proceso</span>
-      <strong>{{ pendientes() }}</strong>
+      <div class="stat-pill-icon"><img src="/icons8-wrench-24.png" /></div>
+      <div class="stat-pill-info">
+        <span class="stat-pill-label">En proceso</span>
+        <span class="stat-pill-value">{{ pendientes() }}</span>
+      </div>
     </div>
     <div class="stat-pill green">
-      <span>Completados</span>
-      <strong>{{ completados() }}</strong>
+      <div class="stat-pill-icon"><img src="/check.png" /></div>
+      <div class="stat-pill-info">
+        <span class="stat-pill-label">Completados</span>
+        <span class="stat-pill-value">{{ completados() }}</span>
+      </div>
     </div>
     <div class="stat-pill blue">
-      <span>Ingresos generados</span>
-      <strong>${{ ingresos() | number:'1.0-0' }}</strong>
+      <div class="stat-pill-icon"><img src="/icons8-$-24.png" /></div>
+      <div class="stat-pill-info">
+        <span class="stat-pill-label">Ingresos generados</span>
+        <span class="stat-pill-value">${{ ingresos() | number: '1.0-0' }}</span>
+      </div>
     </div>
   </div>
 
   <!-- FILTROS -->
   <div class="toolbar">
-    <input class="search-input" [ngModel]="busqueda()"
-           (ngModelChange)="busqueda.set($event)"
-           placeholder="Buscar por vehículo, servicio o cliente..." />
+    <input
+      class="search-input"
+      [ngModel]="busqueda()"
+      (ngModelChange)="busqueda.set($event)"
+      placeholder="Buscar por vehículo, servicio o cliente..."
+    />
     <div class="filter-tabs">
-      <button [class.active]="filtro()==='todos'"      (click)="filtro.set('todos')">Todos</button>
-      <button [class.active]="filtro()==='activo'"     (click)="filtro.set('activo')">Activos</button>
-      <button [class.active]="filtro()==='completado'" (click)="filtro.set('completado')">Completados</button>
+      <button [class.active]="filtro() === 'todos'" (click)="filtro.set('todos')">Todos</button>
+      <button [class.active]="filtro() === 'activo'" (click)="filtro.set('activo')">Activos</button>
+      <button [class.active]="filtro() === 'completado'" (click)="filtro.set('completado')">
+        Completados
+      </button>
     </div>
   </div>
 
@@ -69,24 +82,25 @@
               </div>
               <span class="prog-label">{{ s.progreso }}/5</span>
             </td>
-            <td><strong>${{ s.costo | number:'1.0-0' }}</strong></td>
+            <td>
+              <strong>${{ s.costo | number: '1.0-0' }}</strong>
+            </td>
             <td>
               <span class="badge-estado" [class]="s.estado">
                 {{ s.estado === 'activo' ? 'Activo' : 'Completado' }}
               </span>
             </td>
-            <td>
-              <button class="btn-detalle" (click)="abrirDetalle(s)">Ver</button>
-            </td>
+            <td><button class="btn-detalle" (click)="abrirDetalle(s)">Ver</button></td>
           </tr>
         }
         @if (serviciosFiltrados().length === 0) {
-          <tr><td colspan="8" class="empty-row">Sin resultados</td></tr>
+          <tr>
+            <td colspan="8" class="empty-row">Sin resultados</td>
+          </tr>
         }
       </tbody>
     </table>
   </div>
-
 </section>
 
 <!-- MODAL DETALLE -->
@@ -99,21 +113,33 @@
       </div>
 
       <div class="detail-grid">
-        <div class="detail-item"><span>Vehículo</span><strong>{{ s.vehiculoNombre }}</strong></div>
-        <div class="detail-item"><span>Cliente</span><strong>{{ s.cliente ?? '—' }}</strong></div>
-        <div class="detail-item"><span>Técnico</span><strong>{{ s.tecnico ?? '—' }}</strong></div>
-        <div class="detail-item"><span>Entrega estimada</span><strong>{{ s.entrega ?? '—' }}</strong></div>
-        <div class="detail-item"><span>Costo</span><strong>${{ s.costo | number:'1.0-0' }}</strong></div>
-        <div class="detail-item"><span>Estado</span>
-          <span class="badge-estado" [class]="s.estado">{{ s.estado === 'activo' ? 'Activo' : 'Completado' }}</span>
+        <div class="detail-item">
+          <span>Vehículo</span><strong>{{ s.vehiculoNombre }}</strong>
+        </div>
+        <div class="detail-item">
+          <span>Cliente</span><strong>{{ s.cliente ?? '—' }}</strong>
+        </div>
+        <div class="detail-item">
+          <span>Técnico</span><strong>{{ s.tecnico ?? '—' }}</strong>
+        </div>
+        <div class="detail-item">
+          <span>Entrega estimada</span><strong>{{ s.entrega ?? '—' }}</strong>
+        </div>
+        <div class="detail-item">
+          <span>Costo</span><strong>${{ s.costo | number: '1.0-0' }}</strong>
+        </div>
+        <div class="detail-item">
+          <span>Estado</span>
+          <span class="badge-estado" [class]="s.estado">{{
+            s.estado === 'activo' ? 'Activo' : 'Completado'
+          }}</span>
         </div>
       </div>
 
-      <!-- Stepper -->
       <div class="stepper-wrap">
         @for (paso of pasos; track paso; let i = $index) {
           <div class="step" [class.done]="i + 1 < s.progreso" [class.active]="i + 1 === s.progreso">
-            <div class="step-circle">{{ i + 1 < s.progreso ? '✓' : (i + 1) }}</div>
+            <div class="step-circle">{{ i + 1 < s.progreso ? '✓' : i + 1 }}</div>
             <div class="step-lbl">{{ paso }}</div>
           </div>
         }

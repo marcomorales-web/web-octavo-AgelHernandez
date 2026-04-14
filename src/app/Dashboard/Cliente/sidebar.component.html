@@ -1,5 +1,5 @@
 <div class="sidebar">
-
+  <!-- BRAND -->
   <div class="sidebar-brand">
     <img src="/jirafitas_ico.ico" class="brand-ico" alt="logo" />
     <div>
@@ -8,14 +8,24 @@
     </div>
   </div>
 
-  <div class="user-pill">
-    <div class="user-avatar">{{ nombre()[0] }}</div>
-    <div class="user-name">{{ nombre() }}</div>
+  <!-- PERFIL DE USUARIO (era el "círculo azul" que se veía raro) -->
+  <div class="user-profile">
+    <div class="user-avatar-lg">{{ nombre()[0]?.toUpperCase() }}</div>
+    <div class="user-info">
+      <div class="user-nombre">{{ nombre() }}</div>
+      <div class="user-rol">Cliente</div>
+      <div class="user-email">{{ email() }}</div>
+    </div>
   </div>
 
+  <!-- NAVEGACIÓN -->
   <nav class="sidebar-nav">
-    <a class="nav-link" routerLink="/dashboard"
-       routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact:true}">
+    <a
+      class="nav-link"
+      routerLink="/dashboard"
+      routerLinkActive="nav-active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
       <img src="/car.png" class="nav-ico" alt="" />
       <span>Mis Vehículos</span>
     </a>
@@ -31,8 +41,8 @@
     </a>
   </nav>
 
+  <!-- FOOTER -->
   <div class="sidebar-footer">
     <button class="btn-logout" (click)="cerrarSesion()">Cerrar sesión</button>
   </div>
-
 </div>

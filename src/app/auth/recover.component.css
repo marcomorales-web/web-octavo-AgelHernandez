@@ -1,11 +1,9 @@
 :root {
-  --bg-main: #2a2018d6;        
-  --modal-bg: #F3E9D2;      
-  --primary: #2F5D73;
-  --secondary: #D9A441;
-  --accent: #C23B2A;
-  --text: #000000;
-  --shadow: 8px 8px 0px var(--secondary);
+  --g-dark: #1a1a1a;
+  --g-red: #c0392b;
+  --g-blue: #2e5f8a;
+  --g-gold: #c9a84c;
+  --g-cream: #f3e9d2;
 }
 
 * {
@@ -15,117 +13,156 @@
   font-family: 'Courier New', monospace;
 }
 
-
 body {
-  background-color: var(--bg-main) !important;
+  background-color: #0f0808;
+  background-image: url(/Fondo2.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   padding: 20px;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 0;
 }
 
 .form-container {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 400px;
-  border: 1px solid var(--secondary);
-  padding: 40px 30px;
-  background-color: var(--modal-bg);
-  box-shadow: var(--shadow);
-  position: relative;
-  border-radius: 12px;
+  background: var(--g-cream);
+  border: 2px solid var(--g-gold);
+  border-radius: 14px;
+  padding: 36px 30px;
+  box-shadow: 8px 8px 0 var(--g-gold);
 }
-
-.form-container::before {
-  content: '';
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  right: -6px;
-  bottom: -6px;
-  border: 1px solid var(--secondary);
-  z-index: -1;
-  border-radius: 12px;
-}
-
-
 
 h1 {
-  color: var(--primary);
-  margin-bottom: 30px;
-  font-size: 28px;
+  color: var(--g-blue);
+  font-size: 20px;
   font-weight: 700;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.logo {
+  display: block;
+  margin: 10px auto 20px;
+  width: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--g-gold);
+}
+
+.alert-success {
+  background: #f0faf3;
+  border: 1.5px solid #16a34a;
+  color: #166534;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 13px;
+  margin-bottom: 12px;
   text-align: center;
 }
 
-.logo{
-  display: block;
-  margin: 15px auto 30px auto;
-  width: 120px;
+.error-msg {
+  background: #fef2f2;
+  border: 1px solid var(--g-red);
+  color: var(--g-red);
+  border-radius: 6px;
+  padding: 7px 12px;
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-
 .input-group {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   position: relative;
 }
 
-.icon-input{
+.icon-input {
   position: absolute;
-  top: 60%;
+  top: 63%;
   left: 12px;
   transform: translateY(-50%);
-  width: 25px;
-  height: 25px;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
 }
 
 label {
   display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: var(--primary);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--g-blue);
+  margin-bottom: 5px;
 }
 
 input {
   width: 100%;
-  padding: 12px 15px 12px 45px;
-  border: 2px solid var(--secondary);
-  background-color: var(--primary);
-  color: var(--text);
-  font-size: 20px;
+  padding: 10px 14px 10px 38px;
+  border: 1.5px solid var(--g-gold);
+  background: #fff;
+  color: var(--g-dark);
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
   outline: none;
-  transition: all 0.3s;
+  border-radius: 6px;
+  transition: box-shadow 0.2s;
 }
-
-input::placeholder {
-  color: var(--text);
-}
-
 input:focus {
-  box-shadow: 4px 4px 0px var(--secondary);
+  box-shadow: 3px 3px 0 var(--g-gold);
 }
 
 button {
   width: 100%;
-  padding: 12px;
-  background-color: var(--secondary);
-  color: var(--primary);
-  border: 2px solid var(--primary);
-  font-size: 16px;
-  font-weight: bold;
+  padding: 11px;
+  background: var(--g-gold);
+  color: var(--g-dark);
+  border: 2px solid var(--g-dark);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
   cursor: pointer;
-  margin-top: 10px;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
-
 button:hover {
-  box-shadow: 4px 4px 0px var(--primary);
+  box-shadow: 4px 4px 0 var(--g-dark);
   transform: translate(-2px, -2px);
 }
 
-.footer{
+.footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 12px;
+  color: #666;
+  gap: 4px;
+}
+.footer a {
+  color: var(--g-blue);
+  cursor: pointer;
+  text-decoration: underline;
+}
 
+@media (max-width: 480px) {
+  .form-container {
+    padding: 24px 18px;
+  }
+  h1 {
+    font-size: 16px;
+  }
 }

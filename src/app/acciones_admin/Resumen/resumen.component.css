@@ -10,6 +10,7 @@
   padding: 24px;
 }
 
+/* ── Stats grid ── */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -29,13 +30,21 @@
 }
 .stat-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
-.stat-card.blue   {border-left: 4px solid var(--g-blue);}
-.stat-card.purple {border-left: 4px solid #7c3aed;}
-.stat-card.orange {border-left: 4px solid #f97316;}
-.stat-card.green  {border-left: 4px solid #16a34a;}
+.stat-card.blue {
+  border-left: 4px solid var(--g-blue);
+}
+.stat-card.purple {
+  border-left: 4px solid #7c3aed;
+}
+.stat-card.orange {
+  border-left: 4px solid #f97316;
+}
+.stat-card.green {
+  border-left: 4px solid #16a34a;
+}
 
 .stat-icon {
   background: #f4f4f4;
@@ -52,7 +61,7 @@
 
 .stat-info p {
   font-size: 12px;
-  color: #000000;
+  color: #888;
   margin-bottom: 4px;
   font-family: 'Courier New', monospace;
 }
@@ -64,13 +73,14 @@
 }
 .stat-info span {
   font-size: 11px;
-  color: #000000;
+  color: #aaa;
 }
 .stat-info .trend.green {
   color: #16a34a;
   font-weight: 600;
 }
 
+/* ── Charts ── */
 .charts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -95,13 +105,13 @@
   letter-spacing: 0.5px;
 }
 
+/* ── Actividad reciente ── */
 .section-card {
   background: #fff;
   border-radius: 12px;
   padding: 20px;
   border: 1px solid #e5e7eb;
 }
-
 .activity-list {
   display: flex;
   flex-direction: column;
@@ -116,6 +126,10 @@
   border-radius: 8px;
   background: #f9f9f9;
   border: 1px solid #eee;
+  transition: 0.15s;
+}
+.activity-row:hover {
+  border-color: var(--g-blue);
 }
 
 .act-dot {
@@ -148,7 +162,7 @@
 }
 .act-meta {
   font-size: 11px;
-  color: #1b1a1a;
+  color: #aaa;
 }
 
 .badge-estado {
@@ -170,4 +184,23 @@
 .badge-estado.activo {
   background: #dcfce7;
   color: #166534;
+}
+
+/* ── Responsive mobile ── */
+@media (max-width: 768px) {
+  .resumen-page {
+    padding: 16px;
+  }
+  .stat-card {
+    padding: 14px 16px;
+  }
+  .stat-info h3 {
+    font-size: 20px;
+  }
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+  .activity-row {
+    flex-wrap: wrap;
+  }
 }

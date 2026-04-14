@@ -6,7 +6,7 @@
   --g-cream: #F5F0E8;
 }
 
-/* ── Fondo con imagen + overlay oscuro para legibilidad ── */
+/* ── Fondo con imagen + overlay ── */
 .admin-bg {
   background-color: #0f0808;
   background-image: url(/Fondo2.jpg);
@@ -15,15 +15,13 @@
   background-repeat: no-repeat;
   background-position: center;
   min-height: 100vh;
-  /* Overlay semitransparente sobre la imagen — esto resuelve el texto invisible */
   position: relative;
 }
 
 .admin-bg::before {
   content: '';
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.55);
   z-index: 0;
   pointer-events: none;
 }
@@ -36,9 +34,9 @@
   z-index: 1;
 }
 
-/* ── Header ─────────────────────────────── */
+/* ── Header ── */
 .header {
-  background: rgba(26, 26, 26, 0.96);
+  background: rgba(26,26,26,.96);
   backdrop-filter: blur(4px);
   padding: 0 24px;
   height: 60px;
@@ -48,126 +46,160 @@
   border-bottom: 3px solid var(--g-gold);
   flex-shrink: 0;
   position: relative;
-  z-index: 2;
+  z-index: 100;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+.logo { display: flex; align-items: center; gap: 12px; }
 
-.icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  border: 1.5px solid var(--g-gold);
-}
+.icon { width: 36px; height: 36px; border-radius: 8px; border: 1.5px solid var(--g-gold); }
 
 .logo h2 {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--g-gold);
-  font-family: 'Courier New', monospace;
-  margin: 0;
+  font-size: 16px; font-weight: 700; color: var(--g-gold);
+  font-family: 'Courier New', monospace; margin: 0;
 }
+.logo p { font-size: 10px; color: #aaa; font-family: 'Courier New', monospace; }
 
-.logo p {
-  font-size: 10px;
-  color: #aaa;
-  font-family: 'Courier New', monospace;
-}
-
-/* ── User card ───────────────────────────── */
+/* ── User container (relativo para el dropdown) ── */
 .user-container {
   display: flex;
   align-items: center;
   gap: 12px;
+  position: relative;
 }
 
+/* ── User card — ahora es un botón de perfil clicable ── */
 .user-card {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
   padding: 6px 14px;
   border-radius: 8px;
+  cursor: pointer;
+  transition: .15s;
+  user-select: none;
 }
+.user-card:hover,
+.user-card.active { background: rgba(201,168,76,.15); border-color: var(--g-gold); }
 
 .icono-perfil {
-  width: 30px;
-  height: 30px;
+  width: 32px; height: 32px;
   border-radius: 50%;
   background: var(--g-blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 2px solid var(--g-gold);
+  display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
 
 .avatar-letter {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 14px; font-weight: 700; color: #fff;
+  font-family: 'Courier New', monospace;
+}
+
+.user-text h3 { margin: 0; font-size: 13px; font-weight: 700; color: var(--g-gold); font-family: 'Courier New', monospace; }
+.user-text span { font-size: 10px; color: #aaa; font-family: 'Courier New', monospace; }
+
+.chevron { font-size: 10px; color: #aaa; margin-left: 4px; }
+
+/* ── Dropdown de perfil ── */
+.perfil-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0.1px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 16px;
+  width: 230px;
+  z-index: 200;
+  box-shadow: 0 8px 24px rgba(0,0,0,.5);
+}
+
+.perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.perfil-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--g-blue);
+  border: 2px solid var(--g-gold);
   color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700;
+  font-family: 'Courier New', monospace;
+  flex-shrink: 0;
+}
+
+.perfil-nombre {
+  font-size: 14px; font-weight: 700; color: #eee;
+  font-family: 'Courier New', monospace;
+}
+.perfil-email {
+  font-size: 11px; color: #666;
+  font-family: 'Courier New', monospace;
+  margin-top: 2px;
+}
+.perfil-badge {
+  display: inline-block;
+  font-size: 10px; color: var(--g-gold);
+  background: rgba(201,168,76,.15);
+  border: 1px solid rgba(201,168,76,.3);
+  border-radius: 10px;
+  padding: 2px 8px;
+  margin-top: 4px;
   font-family: 'Courier New', monospace;
 }
 
-.user-text h3 {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--g-gold);
-  font-family: 'Courier New', monospace;
-}
+.perfil-divider { height: 1px; background: #2a2a2a; margin: 8px 0; }
 
-.user-text span {
-  font-size: 10px;
-  color: #aaa;
+.perfil-item {
+  display: block; width: 100%;
+  padding: 9px 12px;
+  background: transparent; border: none;
+  color: #ccc; font-size: 13px;
   font-family: 'Courier New', monospace;
+  text-align: center; cursor: pointer;
+  border-radius: 8px; transition: .15s;
 }
+.perfil-item:hover  { background: #2a2a2a; color: #fff; }
+.perfil-item.danger { color: var(--g-red); }
+.perfil-item.danger:hover { background: rgba(192,57,43,.15); }
 
-/* ── Botón salir ─────────────────────────── */
-.btn-logout {
+/* ── Botón Salir rápido ── */
+/* .btn-logout {
   border: 1.5px solid var(--g-red);
   background: transparent;
   color: var(--g-red);
-  padding: 6px 16px;
+  padding: 6px 14px;
   border-radius: 8px;
   font-family: 'Courier New', monospace;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: .15s;
+  font-size: 12px; font-weight: 700;
+  cursor: pointer; transition: .15s;
 }
-.btn-logout:hover {
-  background: #ff0000;
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(239,68,68,.5);
-}
+.btn-logout:hover { background: var(--g-red); color: #fff; } */
 
-.btn-logout:active {
-  transform: scale(.96);
-}
-
-/* ── Nav tabs ─────────────────────────────── */
+/* ── Nav tabs ── */
 .tabs {
-  background: rgba(26, 26, 26, 0.92);
+  background: rgba(26,26,26,.92);
   backdrop-filter: blur(4px);
   padding: 0 24px;
   display: flex;
   gap: 4px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
   flex-shrink: 0;
-  position: relative;
-  z-index: 2;
+  position: relative; z-index: 10;
+  overflow-x: auto;
 }
 
 .tabs a {
   position: relative;
   text-decoration: none;
-  color: #cccccc;
+  color: #aaa;
   font-weight: 500;
   padding: 13px 16px;
   font-family: 'Courier New', monospace;
@@ -178,21 +210,27 @@
 
 .tabs a::after {
   content: '';
-  position: absolute;
-  bottom: 0; left: 0;
+  position: absolute; bottom: 0; left: 0;
   width: 0; height: 3px;
   background: var(--g-gold);
   transition: width .2s;
 }
-
-.tabs a:hover       { color: var(--g-gold); }
+.tabs a:hover        { color: var(--g-gold); }
 .tabs a:hover::after { width: 100%; }
-.tabs a.active      { color: var(--g-gold); font-weight: 700; }
+.tabs a.active       { color: var(--g-gold); font-weight: 700; }
 .tabs a.active::after { width: 100%; }
 
-/* ── Responsive ───────────────────────────── */
+/* ── Responsive ── */
 @media (max-width: 768px) {
-  .header { height: auto; padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
-  .tabs   { overflow-x: auto; }
-  .tabs a { padding: 10px 12px; font-size: 12px; }
+  .header { height: auto; padding: 10px 14px; flex-wrap: wrap; gap: 10px; }
+  .tabs a  { padding: 10px 10px; font-size: 12px; }
+  .logo h2 { font-size: 14px; }
+  .user-text h3 { font-size: 12px; }
+  .perfil-dropdown { right: 0; width: 200px; }
+  .btn-logout { display: none; } /* en mobile solo el dropdown */
+}
+
+@media (max-width: 480px) {
+  .logo p { display: none; }
+  .chevron { display: none; }
 }

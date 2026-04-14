@@ -4,25 +4,48 @@
   --g-red: #c0392b;
   --g-gold: #c9a84c;
 }
+
 .analisis-page {
   padding: 24px;
 }
 
+/* ── KPI cards con border-left ── */
 .kpi-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
   margin-bottom: 24px;
 }
+
 .kpi-card {
   background: #fff;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
-  padding: 18px;
+  padding: 18px 20px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
+  transition: 0.2s;
 }
+.kpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* border-left por tipo — igual que resumen */
+.kpi-card.blue {
+  border-left: 4px solid var(--g-blue);
+}
+.kpi-card.pink {
+  border-left: 4px solid #ec4899;
+}
+.kpi-card.red {
+  border-left: 4px solid var(--g-red);
+}
+.kpi-card.green {
+  border-left: 4px solid #16a34a;
+}
+
 .kpi-icon {
   width: 44px;
   height: 44px;
@@ -36,22 +59,24 @@
   width: 22px;
   height: 22px;
 }
+
 .kpi-card p {
   font-size: 12px;
-  color: #000000;
-  font-family: "Courier New", monospace;
+  color: #888;
+  font-family: 'Courier New', monospace;
   margin-bottom: 3px;
 }
 .kpi-card h3 {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
 }
 .kpi-card span {
   font-size: 11px;
-  color: #000000;
+  color: #aaa;
 }
+
 .trend-up {
   color: #16a34a !important;
   font-weight: 600 !important;
@@ -61,12 +86,14 @@
   font-weight: 600 !important;
 }
 
+/* ── Gráficas ── */
 .charts-grid-2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 16px;
   margin-bottom: 16px;
 }
+
 .chart-card {
   background: #fff;
   border-radius: 12px;
@@ -78,12 +105,29 @@
   flex-direction: column;
   align-items: center;
 }
+
 .chart-title {
   font-size: 13px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 12px;
+}
+
+/* ── Responsive mobile ── */
+@media (max-width: 768px) {
+  .analisis-page {
+    padding: 16px;
+  }
+  .kpi-card {
+    padding: 14px 16px;
+  }
+  .kpi-card h3 {
+    font-size: 20px;
+  }
+  .charts-grid-2 {
+    grid-template-columns: 1fr;
+  }
 }

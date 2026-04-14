@@ -1,8 +1,8 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
+import { Component, signal, inject, ViewEncapsulation } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,42 +13,32 @@ import { FormsModule } from '@angular/forms';
   encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent {
-  correo: string = '';
-  pass: string = '';
+  private router = inject(Router);
+  private auth = inject(AuthService);
 
-  loading = false;
-  error = false;
+  correo = '';
+  pass = '';
+  loading = signal(false);
+  error = signal(false);
 
-  constructor(private router: Router) {}
   async login() {
-    this.error = false;
-    this.loading = true;
+    this.error.set(false);
+    this.loading.set(true);
+    await new Promise((r) => setTimeout(r, 800));
 
-    //login
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    if (this.correo === 'admin@gmail.com' && this.pass === '1234') {
-      this.router.navigate(['admin']);
-    }
-    else if (this.correo === 'user@gmail.com' && this.pass === '1234') {
-      this.router.navigate(['dashboard']);
+    const ok = this.auth.login(this.correo.trim().toLowerCase(), this.pass);
+    if (ok) {
+      this.router.navigate([this.auth.role() === 'admin' ? '/admin' : '/dashboard']);
     } else {
-      this.error = true; 
+      this.error.set(true);
     }
-
-    this.loading = false;
+    this.loading.set(false);
   }
 
   goRegister() {
-    this.router.navigate(['form']);
+    this.router.navigate(['/form']);
   }
   goRecover() {
-    this.router.navigate(['recover']);
-  }
-  goDashboard() {
-    this.router.navigate(['dashboard']);
-  }
-  goAdmin() {
-    this.router.navigate(['admin']);
-  }
+    this.router.navigate(['/recover']);
+  } // FIX: usaba navigate sin '/'
 }

@@ -1,34 +1,42 @@
 <div class="login-container animate__animated animate__fadeInDown">
-  <h1 class="animate__animated animate__bounce">JIRAFITA´S GARAJE</h1>
-  <img src="/logo2.png" class="logo animate__animated animate__backInLeft" />
+  <h1 class="animate__animated animate__bounce">JIRAFITA'S GARAGE</h1>
+  <img src="/logo2.png" class="logo animate__animated animate__backInLeft" alt="Jirafitas Garage" />
 
   <div class="input-group animate__animated animate__backInLeft">
-    <img src="icons8-gmail-32.png" class="icon-input" />
-    <label>Correo:</label>
-    <input [(ngModel)]="correo" type="email" placeholder="ejemplo@gmail.com" />
+    <img src="/icons8-gmail-32.png" class="icon-input" alt="" />
+    <label>Correo electrónico</label>
+    <input
+      [(ngModel)]="correo"
+      type="email"
+      placeholder="ejemplo@gmail.com"
+      (keyup.enter)="login()"
+    />
   </div>
 
   <div class="input-group animate__animated animate__backInLeft">
-    <img src="icons8-password-48.png" class="icon-input" />
-    <label>Contraseña:</label>
-    <input [(ngModel)]="pass" type="password" placeholder="********" />
+    <img src="/icons8-password-48.png" class="icon-input" alt="" />
+    <label>Contraseña</label>
+    <input [(ngModel)]="pass" type="password" placeholder="••••••••" (keyup.enter)="login()" />
   </div>
 
   <button
-    class="btn btn-primary animate__animated animate__fadeIn"
     (click)="login()"
-    [disabled]="loading">
-    <span *ngIf="!loading">Entrar</span>
-    <img *ngIf="loading" src="loading.gif" class="login-gif" alt="Cargando..." />
-    <span *ngIf="loading" class="spinner"></span>
+    [disabled]="loading() || !correo || !pass"
+    class="animate__animated animate__fadeIn"
+  >
+    @if (loading()) {
+      <img src="/loading.gif" class="login-gif" alt="Cargando..." />
+    } @else {
+      Entrar
+    }
   </button>
-  <p *ngIf="error" class="error-msg">Correo o contraseña incorrectos</p>
-  <br /><br />
-  <div class="footer animate__animated animate__backInUp">
-    <a href="#" (click)="goRegister()">Crear Cuenta</a>
-  </div>
-  <div class="footer animate__animated animate__backInUp">
-    ¿Perdiste tu contraseña?
-    <br /><a href="#" (click)="goRecover()">Recuperar contraseña</a>
+
+  @if (error()) {
+    <p class="error-msg animate__animated animate__shakeX">Correo o contraseña incorrectos</p>
+  }
+
+  <div class="footer animate__animated animate__backInUp" style="margin-top: 20px">
+    <a (click)="goRegister()">Crear cuenta</a>
+    <a (click)="goRecover()" style="margin-top: 6px">¿Olvidaste tu contraseña?</a>
   </div>
 </div>

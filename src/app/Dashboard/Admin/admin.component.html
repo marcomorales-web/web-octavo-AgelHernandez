@@ -1,9 +1,10 @@
 <div class="admin-bg">
   <div class="dashboard">
+
     <!-- HEADER -->
     <header class="header">
       <div class="logo">
-        <img class="icon" src="/jirafitas_ico.ico" />
+        <img class="icon" src="/jirafitas_ico.ico" alt="Jirafitas" />
         <div>
           <h2>Jirafita's Garaje</h2>
           <p>Panel de Administración</p>
@@ -11,7 +12,8 @@
       </div>
 
       <div class="user-container">
-        <div class="user-card">
+        <!-- Perfil mejorado — ya no es solo un círculo azul sin contexto -->
+        <div class="user-card" (click)="togglePerfil()" [class.active]="perfilAbierto()">
           <div class="icono-perfil">
             <span class="avatar-letter">{{ nombre()[0] }}</span>
           </div>
@@ -19,18 +21,44 @@
             <h3>{{ nombre() }}</h3>
             <span>Administrador</span>
           </div>
+          <span class="chevron">{{ perfilAbierto() ? '▲' : '▼' }}</span>
         </div>
-        <button class="btn-logout" (click)="goLogin()">Salir</button>
+
+        <!-- Dropdown del perfil -->
+        @if (perfilAbierto()) {
+          <div class="perfil-dropdown" (click)="$event.stopPropagation()">
+            <div class="perfil-header">
+              <div class="perfil-avatar">{{ nombre()[0] }}</div>
+              <div>
+                <div class="perfil-nombre">{{ nombre() }}</div>
+                <div class="perfil-email">{{ email() }}</div>
+                <span class="perfil-badge">Administrador</span>
+              </div>
+            </div>
+            <div class="perfil-divider"></div>
+            <button class="perfil-item" (click)="perfilAbierto.set(false)">
+              Mi perfil
+            </button>
+            <button class="perfil-item" (click)="perfilAbierto.set(false)">
+              Configuración
+            </button>
+            <div class="perfil-divider"></div>
+            <button class="perfil-item danger" (click)="goLogin()">
+              Cerrar sesión
+            </button>
+          </div>
+        }
+
       </div>
     </header>
 
-    <!-- pestañas -->
+    <!-- TABS -->
     <nav class="tabs">
-      <a routerLink="resumen" routerLinkActive="active">Resumen</a>
-      <a routerLink="servicios" routerLinkActive="active">Servicios</a>
+      <a routerLink="resumen"    routerLinkActive="active">Resumen</a>
+      <a routerLink="servicios"  routerLinkActive="active">Servicios</a>
       <a routerLink="calendario" routerLinkActive="active">Calendario</a>
       <a routerLink="inventario" routerLinkActive="active">Inventario</a>
-      <a routerLink="analisis" routerLinkActive="active">Análisis</a>
+      <a routerLink="analisis"   routerLinkActive="active">Análisis</a>
     </nav>
 
     <router-outlet></router-outlet>

@@ -12,9 +12,10 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class SidebarComponent {
   private router = inject(Router);
-  private auth   = inject(AuthService);
+  private auth = inject(AuthService);
 
   nombre = this.auth.nombre;
+  email = this.auth.email; // ← nuevo: exponer email para el perfil
 
   cerrarSesion() {
     this.auth.logout();

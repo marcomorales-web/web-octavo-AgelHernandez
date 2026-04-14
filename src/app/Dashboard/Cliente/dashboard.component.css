@@ -1,11 +1,26 @@
-.layout{
-  display:flex;
-  height:100vh;
-  
+.layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.content{
-  flex:1;
-  padding:25px;
-  
+.content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background: #F5F0E8;
+}
+
+/* ── Mobile: sidebar arriba, content debajo ── */
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
+  }
+
+  .content {
+    padding: 16px;
+  }
 }

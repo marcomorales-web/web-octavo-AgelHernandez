@@ -1,5 +1,4 @@
 <section class="inv-page">
-
   <!-- HEADER -->
   <div class="page-header">
     <div>
@@ -9,27 +8,39 @@
     <button class="btn-primary" (click)="abrirNuevo()">+ Agregar Producto</button>
   </div>
 
-  <!-- STATS -->
+  <!-- STATS con border-left igual que resumen -->
   <div class="stats-row">
     <div class="stat-pill blue">
-      <img src="/icons8-box-26.png" />
-      <div><span>Total productos</span><strong>{{ totalProd() }}</strong></div>
+      <div class="stat-pill-icon"><img src="/icons8-box-26.png" /></div>
+      <div class="stat-pill-info">
+        <span class="stat-pill-label">Total productos</span>
+        <span class="stat-pill-value">{{ totalProd() }}</span>
+      </div>
     </div>
     <div class="stat-pill red">
-      <img src="/icons8-danger-24.png" />
-      <div><span>Stock bajo</span><strong>{{ stockBajo() }}</strong></div>
+      <div class="stat-pill-icon"><img src="/icons8-danger-24.png" /></div>
+      <div class="stat-pill-info">
+        <span class="stat-pill-label">Stock bajo</span>
+        <span class="stat-pill-value">{{ stockBajo() }}</span>
+      </div>
     </div>
     <div class="stat-pill green">
-      <img src="/icons8-$-24.png" />
-      <div><span>Valor del inventario</span><strong>${{ valorTotal() | number:'1.0-0' }}</strong></div>
+      <div class="stat-pill-icon"><img src="/icons8-$-24.png" /></div>
+      <div class="stat-pill-info">
+        <span class="stat-pill-label">Valor del inventario</span>
+        <span class="stat-pill-value">${{ valorTotal() | number: '1.0-0' }}</span>
+      </div>
     </div>
   </div>
 
   <!-- BÚSQUEDA -->
   <div class="toolbar">
-    <input class="search-input" [ngModel]="busqueda()"
-           (ngModelChange)="busqueda.set($event)"
-           placeholder="Buscar por nombre o categoría..." />
+    <input
+      class="search-input"
+      [ngModel]="busqueda()"
+      (ngModelChange)="busqueda.set($event)"
+      placeholder="Buscar por nombre o categoría..."
+    />
   </div>
 
   <!-- TABLA -->
@@ -37,8 +48,13 @@
     <table class="tabla">
       <thead>
         <tr>
-          <th>ID</th><th>Producto</th><th>Categoría</th>
-          <th>Cantidad</th><th>Mínimo</th><th>Precio unit.</th><th>Acciones</th>
+          <th>ID</th>
+          <th>Producto</th>
+          <th>Categoría</th>
+          <th>Cantidad</th>
+          <th>Mínimo</th>
+          <th>Precio unit.</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -53,13 +69,15 @@
                 }
               </div>
             </td>
-            <td><span class="cat-badge">{{ p.categoria }}</span></td>
+            <td>
+              <span class="cat-badge">{{ p.categoria }}</span>
+            </td>
             <td>
               <span [class.qty-alert]="esStockBajo(p)">{{ p.cantidad }}</span>
               {{ p.unidad }}
             </td>
             <td>{{ p.minimo }}</td>
-            <td>${{ p.precio | number:'1.0-0' }}</td>
+            <td>${{ p.precio | number: '1.0-0' }}</td>
             <td>
               <div class="actions">
                 <button class="btn-edit" (click)="abrirEditar(p)">Editar</button>
@@ -74,12 +92,13 @@
           </tr>
         }
         @if (inventarioFiltrado().length === 0) {
-          <tr><td colspan="7" class="empty-row">Sin resultados</td></tr>
+          <tr>
+            <td colspan="7" class="empty-row">Sin resultados</td>
+          </tr>
         }
       </tbody>
     </table>
   </div>
-
 </section>
 
 <!-- MODAL AGREGAR / EDITAR -->
@@ -99,7 +118,9 @@
       <div class="field">
         <label>Categoría</label>
         <select [(ngModel)]="form.categoria">
-          @for (c of categorias; track c) { <option [value]="c">{{ c }}</option> }
+          @for (c of categorias; track c) {
+            <option [value]="c">{{ c }}</option>
+          }
         </select>
       </div>
 

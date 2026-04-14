@@ -1,88 +1,120 @@
 :root {
-  --g-dark:  #1A1A1A;
-  --g-red:   #C0392B;
-  --g-blue:  #2E5F8A;
-  --g-gold:  #C9A84C;
-  --g-cream: #F5F0E8;
+  --g-dark: #1a1a1a;
+  --g-red: #c0392b;
+  --g-blue: #2e5f8a;
+  --g-gold: #c9a84c;
+  --g-cream: #f5f0e8;
 }
 
+/* ── Shell ── */
 .sidebar {
   width: 220px;
   min-height: 100vh;
   background: var(--g-dark);
   display: flex;
   flex-direction: column;
-  padding: 20px 16px;
+  padding: 18px 14px;
   flex-shrink: 0;
+  border-right: 1px solid #2a2a2a;
 }
 
+/* ── Brand ── */
 .sidebar-brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding-bottom: 16px;
+  padding-bottom: 14px;
   border-bottom: 1px solid #333;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .brand-ico {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
   border: 1.5px solid var(--g-gold);
 }
 
 .brand-name {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--g-gold);
   font-family: 'Courier New', monospace;
 }
 
 .brand-sub {
-  font-size: 11px;
-  color: #888;
+  font-size: 10px;
+  color: #666;
   font-family: 'Courier New', monospace;
 }
 
-.user-pill {
+/* ── Perfil de usuario — esto era el "círculo azul confuso" ── */
+.user-profile {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #2a2a2a;
+  background: #1e1e1e;
+  border: 1px solid #2e2e2e;
   border-radius: 10px;
   padding: 10px 12px;
-  margin-bottom: 20px;
-  border: 1px solid #333;
+  margin-bottom: 18px;
 }
 
-.user-avatar {
-  width: 32px;
-  height: 32px;
+.user-avatar-lg {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: var(--g-blue);
+  border: 2px solid var(--g-gold);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 17px;
   font-weight: 700;
-  font-size: 14px;
+  font-family: 'Courier New', monospace;
   flex-shrink: 0;
 }
 
-.user-name {
+.user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-nombre {
   font-size: 13px;
-  color: #ccc;
+  font-weight: 700;
+  color: #eee;
   font-family: 'Courier New', monospace;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+.user-rol {
+  font-size: 10px;
+  color: var(--g-gold);
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 1px;
+}
+
+.user-email {
+  font-size: 10px;
+  color: #666;
+  font-family: 'Courier New', monospace;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Nav ── */
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
   flex: 1;
 }
 
@@ -92,17 +124,17 @@
   gap: 10px;
   padding: 10px 12px;
   border-radius: 8px;
-  color: #aaa;
+  color: #888;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   font-family: 'Courier New', monospace;
   transition: all 0.15s;
   border: 1px solid transparent;
 }
 
 .nav-link:hover {
-  background: #2a2a2a;
-  color: #fff;
+  background: #1e1e1e;
+  color: #ddd;
   border-color: #333;
 }
 
@@ -115,33 +147,85 @@
 .nav-ico {
   width: 18px;
   height: 18px;
-  filter: brightness(0) invert(0.6);
+  filter: brightness(0) invert(0.5);
 }
-
 .nav-active .nav-ico {
   filter: brightness(0) invert(1);
 }
 
+/* ── Footer ── */
 .sidebar-footer {
   margin-top: auto;
-  padding-top: 16px;
-  border-top: 1px solid #333;
+  padding-top: 14px;
+  border-top: 1px solid #2a2a2a;
 }
 
 .btn-logout {
   width: 100%;
   padding: 9px;
   background: transparent;
-  border: 1px solid var(--g-red);
+  border: 1.5px solid var(--g-red);
   color: var(--g-red);
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 12px;
   font-family: 'Courier New', monospace;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: 0.15s;
+  font-weight: 700;
 }
-
 .btn-logout:hover {
   background: var(--g-red);
   color: #fff;
+}
+
+/* ── Responsive mobile ── */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px 14px;
+    gap: 10px;
+    border-right: none;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .sidebar-brand {
+    padding-bottom: 0;
+    border-bottom: none;
+    margin-bottom: 0;
+    flex: 0 0 auto;
+  }
+  .user-profile {
+    flex: 1;
+    margin-bottom: 0;
+    min-width: 140px;
+  }
+  .sidebar-nav {
+    flex-direction: row;
+    flex: 0 0 100%;
+    order: 10;
+    gap: 4px;
+  }
+  .nav-link {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 6px;
+    font-size: 11px;
+  }
+  .nav-ico {
+    width: 14px;
+    height: 14px;
+  }
+  .sidebar-footer {
+    flex: 0 0 auto;
+    padding-top: 0;
+    border-top: none;
+  }
+  .btn-logout {
+    width: auto;
+    padding: 7px 12px;
+    font-size: 11px;
+  }
 }
