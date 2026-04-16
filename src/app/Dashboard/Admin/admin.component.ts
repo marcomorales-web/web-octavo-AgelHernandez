@@ -12,13 +12,15 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class DashboardComponent {
   private router = inject(Router);
-  private auth   = inject(AuthService);
+  private auth = inject(AuthService);
 
-  nombre       = this.auth.nombre;
-  email        = this.auth.email;      // ← nuevo
-  perfilAbierto = signal(false);       // ← nuevo: controla el dropdown
+  nombre = this.auth.nombre;
+  email = this.auth.email;
+  perfilAbierto = signal(false);
 
-  togglePerfil() { this.perfilAbierto.update(v => !v); }
+  togglePerfil() {
+    this.perfilAbierto.update((v) => !v);
+  }
 
   goLogin() {
     this.auth.logout();

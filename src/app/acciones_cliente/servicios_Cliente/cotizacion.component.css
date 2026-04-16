@@ -9,7 +9,7 @@
   font-size: 12px;
   font-weight: 700;
   color: #888;
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
   text-transform: uppercase;
   letter-spacing: 0.6px;
   margin-bottom: 14px;
@@ -22,7 +22,7 @@
   font-size: 12px;
   color: #166534;
   margin-bottom: 14px;
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
 }
 .form-card {
   background: #fff;
@@ -41,7 +41,7 @@
   letter-spacing: 0.5px;
   color: #000000;
   margin-bottom: 5px;
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
 }
 .form-group select,
 .form-group textarea {
@@ -52,7 +52,7 @@
   color: var(--g-dark);
   padding: 9px 12px;
   font-size: 13px;
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
   outline: none;
   transition: border-color 0.15s;
   resize: none;
@@ -78,7 +78,7 @@
   align-items: center;
   gap: 6px;
   transition: 0.15s;
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
 }
 .radio-option input {
   display: none;

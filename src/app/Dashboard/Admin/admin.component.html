@@ -24,7 +24,7 @@
           <span class="chevron">{{ perfilAbierto() ? '▲' : '▼' }}</span>
         </div>
 
-        <!-- Dropdown del perfil -->
+        <!-- Dropdown para el perfil -->
         @if (perfilAbierto()) {
           <div class="perfil-dropdown" (click)="$event.stopPropagation()">
             <div class="perfil-header">

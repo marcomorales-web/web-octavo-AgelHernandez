@@ -6,7 +6,7 @@
   --g-cream: #F5F0E8;
 }
 
-/* ── Fondo con imagen + overlay ── */
+/* ── Fondo con imagen── */
 .admin-bg {
   background-color: #0f0808;
   background-image: url(/Fondo2.jpg);
@@ -59,7 +59,7 @@
 }
 .logo p { font-size: 10px; color: #aaa; font-family: 'Courier New', monospace; }
 
-/* ── User container (relativo para el dropdown) ── */
+/* ── User container  ── */
 .user-container {
   display: flex;
   align-items: center;
@@ -67,7 +67,7 @@
   position: relative;
 }
 
-/* ── User card — ahora es un botón de perfil clicable ── */
+/* ── User card  ── */
 .user-card {
   display: flex;
   align-items: center;
@@ -220,7 +220,7 @@
 .tabs a.active       { color: var(--g-gold); font-weight: 700; }
 .tabs a.active::after { width: 100%; }
 
-/* ── Responsive ── */
+/* ── Responsividad ── */
 @media (max-width: 768px) {
   .header { height: auto; padding: 10px 14px; flex-wrap: wrap; gap: 10px; }
   .tabs a  { padding: 10px 10px; font-size: 12px; }

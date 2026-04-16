@@ -6,7 +6,7 @@
   --g-cream: #f5f0e8;
 }
 
-/* ── Shell ── */
+/* ── Sidebar ── */
 .sidebar {
   width: 220px;
   min-height: 100vh;
@@ -48,7 +48,7 @@
   font-family: 'Courier New', monospace;
 }
 
-/* ── Perfil de usuario — esto era el "círculo azul confuso" ── */
+/* ── Perfil de usuario ── */
 .user-profile {
   display: flex;
   align-items: center;
@@ -178,7 +178,7 @@
   color: #fff;
 }
 
-/* ── Responsive mobile ── */
+/* ── Responsividad ── */
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;

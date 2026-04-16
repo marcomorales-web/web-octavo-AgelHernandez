@@ -75,7 +75,7 @@ export class VehiculoComponent implements OnInit {
     this.errorVin = '';
   }
 
-  // enpoint 1 para cargar todos loc coches mediante el año seleccionado
+  // enpoint 1 
   cargarMarcas() {
     if (!this.form.year) return;
     this.cargandoMarcas = true;

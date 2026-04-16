@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TallerService } from '../../datos/datos.taller';
 
-
 @Component({
   selector: 'app-cotizacion.component',
   standalone: true,
@@ -11,7 +10,6 @@ import { TallerService } from '../../datos/datos.taller';
   templateUrl: './cotizacion.component.html',
   styleUrl: './cotizacion.component.css',
 })
-
 export class CotizacionComponent {
   private taller = inject(TallerService);
   vehiculos = this.taller.vehiculos;
@@ -24,5 +22,7 @@ export class CotizacionComponent {
     this.form = { vehiculoId: '', descripcion: '', urgencia: 'normal' };
     setTimeout(() => this.enviado.set(false), 3000);
   }
-  valido() { return !!this.form.vehiculoId && !!this.form.descripcion; }
+  valido() {
+    return !!this.form.vehiculoId && !!this.form.descripcion;
+  }
 }

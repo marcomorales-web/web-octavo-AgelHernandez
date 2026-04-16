@@ -9,7 +9,7 @@
   padding: 24px;
 }
 
-/* ── KPI cards con border-left ── */
+/* ── cards con border-left ── */
 .kpi-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -32,7 +32,7 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* border-left por tipo — igual que resumen */
+/* border-left por tipo */
 .kpi-card.blue {
   border-left: 4px solid var(--g-blue);
 }
@@ -116,7 +116,7 @@
   margin-bottom: 12px;
 }
 
-/* ── Responsive mobile ── */
+/* ── Responsividad celular ── */
 @media (max-width: 768px) {
   .analisis-page {
     padding: 16px;

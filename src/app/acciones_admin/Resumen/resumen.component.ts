@@ -15,7 +15,7 @@ import { TallerService } from '../../datos/datos.taller';
 export class ResumenComponent {
   private taller = inject(TallerService);
 
-  // Stats conectados al servicio
+  // Stats
   ingresosMes      = this.taller.ingresosMes;
   serviciosActivos = this.taller.serviciosActivos;
   citasPendientes  = this.taller.citasPendientes;

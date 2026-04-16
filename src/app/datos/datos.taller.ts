@@ -30,7 +30,7 @@ export interface Cotizacion {
 @Injectable({ providedIn: 'root' })
 export class TallerService {
 
-  // ── Cliente ──────────────────────────────────────────────
+  // Cliente datos_vehiculo
   vehiculos = signal<Vehiculo[]>([
     { id: '1', make: 'Toyota',  model: 'Corolla', year: 2019, placa: 'ABC-123-MX', km: 48200, estado: 'ok',      proximoEvento: 'Jun 25' },
     { id: '2', make: 'Nissan',  model: 'Sentra',  year: 2021, placa: 'XYZ-789-MX', km: 22500, estado: 'service', proximoEvento: 'Abr 20' },
@@ -52,7 +52,7 @@ export class TallerService {
     { id: '2', vehiculoId: '2', vehiculoNombre: 'Nissan Sentra 2021',  descripcion: 'Cambio de clutch completo', urgencia: 'urgente', estado: 'pendiente', fecha: '04 Abr 2026' },
   ]);
 
-  // ── Admin ─────────────────────────────────────────────────
+  // Admin datos de inventario
   inventario = signal<ProductoInventario[]>([
     { id: 1, nombre: 'Aceite de motor 5W-30',  categoria: 'Lubricantes',   cantidad: 24, minimo: 10, precio: 150, unidad: 'litros'  },
     { id: 2, nombre: 'Filtro de aire',          categoria: 'Filtros',       cantidad: 8,  minimo: 10, precio: 80,  unidad: 'piezas'  },
@@ -64,7 +64,7 @@ export class TallerService {
     { id: 8, nombre: 'Correa de distribución',  categoria: 'Motor',         cantidad: 3,  minimo: 4,  precio: 680, unidad: 'piezas'  },
   ]);
 
-  // ── Computed stats admin ──────────────────────────────────
+
   totalProductos   = computed(() => this.inventario().length);
   stockBajo        = computed(() => this.inventario().filter(p => p.cantidad <= p.minimo).length);
   valorInventario  = computed(() => this.inventario().reduce((a, p) => a + p.cantidad * p.precio, 0));
@@ -72,7 +72,7 @@ export class TallerService {
   citasPendientes  = computed(() => this.citas().filter(c => c.estado === 'pendiente').length);
   ingresosMes      = computed(() => this.historial().filter(s => s.estado === 'completado').reduce((a, s) => a + s.costo, 0));
 
-  // ── Mutaciones ────────────────────────────────────────────
+  
   agregarVehiculo(v: Vehiculo)           { this.vehiculos.update(l   => [v, ...l]); }
   agregarCita(c: Cita)                   { this.citas.update(l       => [c, ...l]); }
   agregarCotizacion(c: Cotizacion)       { this.cotizaciones.update(l => [c, ...l]); }

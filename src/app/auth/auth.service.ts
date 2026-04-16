@@ -9,8 +9,8 @@ interface Usuario {
 }
 
 const USUARIOS: { email: string; password: string; nombre: string; role: Role }[] = [
-  { email: 'user@gmail.com',  password: '1234',     nombre: 'María López',    role: 'cliente' },
-  { email: 'admin@gmail.com', password: '1234',     nombre: 'Rafael Méndez',  role: 'admin'   },
+  { email: 'user@gmail.com',  password: '1234',     nombre: 'Angel Hernandez',    role: 'cliente' },
+  { email: 'admin@gmail.com', password: '1234',     nombre: 'Rafael Peralta',  role: 'admin'   },
 ];
 
 @Injectable({ providedIn: 'root' })

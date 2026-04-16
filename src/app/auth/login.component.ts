@@ -40,5 +40,5 @@ export class LoginComponent {
   }
   goRecover() {
     this.router.navigate(['/recover']);
-  } // FIX: usaba navigate sin '/'
+  }
 }

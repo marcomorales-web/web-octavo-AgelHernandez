@@ -29,7 +29,6 @@
   margin-top: 3px;
 }
 
-/* ── Stats pills — ahora con border-left igual que resumen ── */
 .stats-row {
   display: flex;
   gap: 14px;
@@ -54,7 +53,6 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* border-left por color — mismo estilo que resumen */
 .stat-pill.orange {
   border-left: 4px solid #f97316;
 }
@@ -387,7 +385,7 @@
   background: #25507a;
 }
 
-/* ── Responsive mobile ── */
+/* ── Responsividad ── */
 @media (max-width: 768px) {
   .servicios-page {
     padding: 16px;
@@ -404,7 +402,7 @@
   .tabla th:nth-child(4),
   .tabla td:nth-child(4) {
     display: none;
-  } /* ocultar fecha y técnico en mobile */
+  }
   .detail-grid {
     grid-template-columns: 1fr;
   }

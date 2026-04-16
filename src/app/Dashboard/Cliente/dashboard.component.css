@@ -11,7 +11,7 @@
   background: #F5F0E8;
 }
 
-/* ── Mobile: sidebar arriba, content debajo ── */
+/* ── Responsividad ── */
 @media (max-width: 768px) {
   .layout {
     flex-direction: column;

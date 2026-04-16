@@ -16,7 +16,7 @@ import { TallerService } from '../../datos/datos.taller';
 export class AnalisisComponent {
   private taller = inject(TallerService);
 
-  // KPIs dinámicos
+  // 
   ingresosMes   = this.taller.ingresosMes;
   stockBajo     = this.taller.stockBajo;
   serviciosAct  = this.taller.serviciosActivos;
@@ -24,10 +24,10 @@ export class AnalisisComponent {
 
   totalVehiculos = computed(() => this.taller.vehiculos().length);
 
-  // Gráfica de ingresos por mes (line)
+  // Gráfica de ingresos por mes (line) Apexcharts
   lineChart: ApexChart = { type: 'line', height: 240, toolbar: { show: false }, fontFamily: 'Courier New, monospace' };
   lineSeries: ApexAxisChartSeries = [
-    { name: 'Ingresos', data: [15000, 18000, 20000, 22000, 19000, 25000] },
+    { name: 'Ingresos', data: [15000, 18000, 25000, 22000, 19000, 25000] },
     { name: 'Meta',     data: [18000, 18000, 20000, 20000, 22000, 22000] },
   ];
   lineXAxis: ApexXAxis  = { categories: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'] };
@@ -41,11 +41,7 @@ export class AnalisisComponent {
   hbarPlot: ApexPlotOptions = { bar: { horizontal: true, borderRadius: 3 } };
   hbarColors: string[] = ['#C0392B'];
 
-  // Satisfacción (radialBar)
-  radialChart: ApexChart = { type: 'radialBar', height: 200, fontFamily: 'Courier New, monospace' };
-  radialSeries: ApexNonAxisChartSeries = [94];
-  radialLabels = ['Satisfacción'];
-  radialColors: string[] = ['#2E5F8A'];
+
 
   // Citas por día de semana (área)
   areaChart: ApexChart = { type: 'area', height: 180, toolbar: { show: false }, fontFamily: 'Courier New, monospace' };

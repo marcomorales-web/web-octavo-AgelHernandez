@@ -1,5 +1,5 @@
 <section class="analisis-page">
-  <!-- KPIs con border-left igual que resumen -->
+  <!-- cards para ingresos -->
   <div class="kpi-grid">
     <div class="kpi-card blue">
       <div class="kpi-icon" style="background: #dbeafe">
@@ -34,22 +34,12 @@
       </div>
     </div>
 
-    <div class="kpi-card green">
-      <div class="kpi-icon" style="background: #dcfce7">
-        <img src="/icons8-user-24.png" />
-      </div>
-      <div>
-        <p>Satisfacción</p>
-        <h3>{{ satisfaccion }}/5</h3>
-        <span class="trend-up">calificación promedio</span>
-      </div>
-    </div>
   </div>
 
   <!-- GRÁFICAS ROW 1 -->
   <div class="charts-grid-2">
     <div class="chart-card">
-      <h4 class="chart-title">Ingresos vs Meta mensual</h4>
+      <h4 class="chart-title">Ingresos vs Meta Mensual</h4>
       <apx-chart
         [series]="lineSeries"
         [chart]="lineChart"
@@ -84,15 +74,6 @@
       >
       </apx-chart>
     </div>
-    <div class="chart-card center">
-      <h4 class="chart-title">Índice de satisfacción</h4>
-      <apx-chart
-        [series]="radialSeries"
-        [chart]="radialChart"
-        [labels]="radialLabels"
-        [colors]="radialColors"
-      >
-      </apx-chart>
-    </div>
+
   </div>
 </section>

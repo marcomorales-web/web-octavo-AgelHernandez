@@ -1,39 +1,72 @@
-<div>
-  <div class="form-container animate__animated animate__fadeInDown">
-    <h1 class="animate__animated animate__bounce">CREAR CUENTA</h1>
-    <img src="/logo2.png" class="logo animate__animated animate__backInLeft" />
+<div class="form-container animate__animated animate__fadeInDown">
+  <h1 class="animate__animated animate__bounce">CREAR CUENTA</h1>
+  <img src="/logo2.png" class="logo animate__animated animate__backInLeft" alt="Jirafitas Garage" />
 
+  <!-- registro exitoso -->
+  @if (enviado()) {
+    <div class="alert-success animate__animated animate__fadeIn">
+      ¡Cuenta creada correctamente!<br />
+      <small>Redirigiendo al login...</small>
+    </div>
+  } @else {
+    <!-- Errores de validación -->
+    @if (error()) {
+      <p class="error-msg animate__animated animate__shakeX">{{ error() }}</p>
+    }
+
+    <!-- NOMBRE -->
     <div class="input-group animate__animated animate__backInLeft">
-      <label>Nombre:</label>
-      <input type="text" placeholder="" />
+      <label>Nombre completo</label>
+      <input [(ngModel)]="form.nombre" type="text" placeholder="" />
     </div>
 
+    <!-- CORREO -->
     <div class="input-group animate__animated animate__backInLeft">
-      <img src="icons8-gmail-32.png" class="icon-input" />
-      <label>Correo:</label>
-      <input type="email" placeholder="ejemplo@gmail.com" />
+      <img src="/icons8-gmail-32.png" class="icon-input" alt="" />
+      <label>Correo electrónico</label>
+      <input [(ngModel)]="form.correo" type="email" placeholder="ejemplo@gmail.com" />
     </div>
 
+    <!-- TELÉFONO -->
     <div class="input-group animate__animated animate__backInLeft">
-      <img src="icons8-phone-50.png" class="icon-input" />
-      <label>Telefono:</label>
-      <input type="text" placeholder="" />
+      <img src="/icons8-phone-50.png" class="icon-input" alt="" />
+      <label>Teléfono</label>
+      <input [(ngModel)]="form.telefono" type="tel" placeholder="782 165 0000" />
     </div>
 
+    <!-- CONTRASEÑA -->
     <div class="input-group animate__animated animate__backInLeft">
-      <img src="icons8-password-48.png" class="icon-input" />
-      <label>Contraseña:</label>
-      <input type="password" placeholder="********" />
+      <img src="/icons8-password-48.png" class="icon-input" alt="" />
+      <label>Contraseña</label>
+      <input
+        [(ngModel)]="form.password"
+        [type]="mostrarPass() ? 'text' : 'password'"
+        placeholder="Mínimo 4 caracteres"
+      />
+      <button type="button" class="btn-toggle-pass" (click)="mostrarPass.set(!mostrarPass())">
+        {{ mostrarPass() ? 'Ocultar' : 'Ver' }}
+      </button>
     </div>
 
-    <button class="btn btn-primary animate__animated animate__fadeIn" (click)="goLogin()">
-      Registrarme
-    </button>
-    <br /><br />
+    <!-- CONFIRMAR CONTRASEÑA -->
+    <div class="input-group animate__animated animate__backInLeft">
+      <img src="/icons8-password-48.png" class="icon-input" alt="" />
+      <label>Confirmar contraseña</label>
+      <input
+        [(ngModel)]="form.confirmar"
+        [type]="mostrarPass() ? 'text' : 'password'"
+        placeholder="Repite tu contraseña"
+        (keyup.enter)="registrar()"
+      />
+    </div>
+
+    <!-- BOTÓN REGISTRAR -->
+    <button class="animate__animated animate__fadeIn" (click)="registrar()">Registrarme</button>
+
+    <!-- LINK A LOGIN -->
     <div class="footer animate__animated animate__backInUp">
       ¿Ya tienes cuenta?
-      <br />
-      <a href="#" (click)="goLogin()">Iniciar sesión</a>
+      <a (click)="goLogin()">Iniciar sesión</a>
     </div>
-  </div>
+  }
 </div>

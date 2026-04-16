@@ -48,7 +48,7 @@
   cursor: not-allowed;
 }
 
-/* ── Stats pills con border-left ── */
+/* ── Stats */
 .stats-row {
   display: flex;
   gap: 14px;
@@ -369,7 +369,7 @@
   color: #666;
 }
 
-/* ── Responsive mobile ── */
+/* ── Responsividad celular ── */
 @media (max-width: 768px) {
   .inv-page {
     padding: 16px;
@@ -385,7 +385,7 @@
   .stat-pill-value {
     font-size: 18px;
   }
-  /* Ocultar columnas menos importantes en mobile */
+
   .tabla th:nth-child(1),
   .tabla td:nth-child(1),
   .tabla th:nth-child(5),

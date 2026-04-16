@@ -15,7 +15,7 @@ export class SidebarComponent {
   private auth = inject(AuthService);
 
   nombre = this.auth.nombre;
-  email = this.auth.email; // ← nuevo: exponer email para el perfil
+  email = this.auth.email;
 
   cerrarSesion() {
     this.auth.logout();

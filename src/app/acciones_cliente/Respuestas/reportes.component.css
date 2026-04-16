@@ -1,31 +1,64 @@
-:root { --g-dark:#1A1A1A; --g-blue:#2E5F8A; --g-red:#C0392B; --g-gold:#C9A84C; }
+:root {
+  --g-dark: #1a1a1a;
+  --g-blue: #2e5f8a;
+  --g-red: #c0392b;
+  --g-gold: #c9a84c;
+}
 
-.container { padding: 0 4px; }
+.container {
+  padding: 0 4px;
+}
 
 .sub-title {
-  font-size: 16px; font-weight: 700;
-  color: var(--g-dark); font-family: 'Courier New', monospace;
-  margin-bottom: 16px; text-transform: uppercase; letter-spacing: .5px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--g-dark);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 12px; margin-bottom: 20px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .stat-card {
-  background: #fff; border-radius: 10px;
-  border: 1px solid #e5e7eb; padding: 14px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 14px;
   text-align: center;
 }
-.stat-card.green .stat-value { color: #16a34a; }
-.stat-card.red   .stat-value { color: var(--g-red); }
+.stat-card.green .stat-value {
+  color: #16a34a;
+}
+.stat-card.red .stat-value {
+  color: var(--g-red);
+}
 
-.stat-icon { margin-bottom: 6px; }
-.stat-icon img { width: 22px; height: 22px; }
-.stat-value { font-size: 22px; font-weight: 700; font-family: 'Courier New', monospace; color: var(--g-dark); }
-.stat-label { font-size: 11px; color: #aaa; margin-top: 3px; font-family: 'Courier New', monospace; }
+.stat-icon {
+  margin-bottom: 6px;
+}
+.stat-icon img {
+  width: 22px;
+  height: 22px;
+}
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  color: var(--g-dark);
+}
+.stat-label {
+  font-size: 11px;
+  color: #aaa;
+  margin-top: 3px;
+  font-family: 'Courier New', monospace;
+}
 
 .charts-row {
   display: grid;
@@ -34,12 +67,18 @@
 }
 
 .chart-card {
-  background: #fff; border-radius: 10px;
-  border: 1px solid #e5e7eb; padding: 16px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 16px;
 }
 
 .chart-title {
-  font-size: 12px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .5px; color: var(--g-dark);
-  font-family: 'Courier New', monospace; margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--g-dark);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 10px;
 }

@@ -15,7 +15,7 @@
     </div>
     <div class="stat-card green">
       <div class="stat-icon"><img src="/icons8-$-24.png" /></div>
-      <div class="stat-value">${{ totalGastado() | number:'1.0-0' }}</div>
+      <div class="stat-value">${{ totalGastado() | number: '1.0-0' }}</div>
       <div class="stat-label">Total invertido</div>
     </div>
     <div class="stat-card red">
@@ -29,20 +29,12 @@
   <div class="charts-row">
     <div class="chart-card">
       <h4 class="chart-title">Gasto por servicio</h4>
-      <apx-chart
-        [series]="barSeries"
-        [chart]="barChart"
-        [xaxis]="barXAxis">
-      </apx-chart>
+      <apx-chart [series]="barSeries" [chart]="barChart" [xaxis]="barXAxis"> </apx-chart>
     </div>
 
     <div class="chart-card">
       <h4 class="chart-title">Distribución de costos</h4>
-      <apx-chart
-        [series]="pieSeries"
-        [chart]="pieChart"
-        [labels]="pieLabels">
-      </apx-chart>
+      <apx-chart [series]="pieSeries" [chart]="pieChart" [labels]="pieLabels"> </apx-chart>
     </div>
   </div>
 </div>
