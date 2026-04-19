@@ -9,7 +9,7 @@
   font-size: 12px;
   font-weight: 700;
   color: #888;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.6px;
   margin-bottom: 14px;
@@ -23,7 +23,7 @@
   font-size: 12px;
   color: #166534;
   margin-bottom: 14px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 
 .form-card {
@@ -45,7 +45,7 @@
   letter-spacing: 0.5px;
   color: #888;
   margin-bottom: 6px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 
 .form-group select,
@@ -57,7 +57,7 @@
   color: var(--g-dark);
   padding: 9px 12px;
   font-size: 13px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   outline: none;
   transition: border-color 0.15s;
   resize: none;
@@ -83,7 +83,7 @@
   color: #888;
   cursor: pointer;
   transition: 0.15s;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 .chip.active {
   border-color: var(--g-blue);
@@ -124,7 +124,7 @@
 .upload-text {
   font-size: 13px;
   color: #888;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 .upload-text span {
   color: var(--g-blue);
@@ -134,7 +134,7 @@
 .upload-hint {
   font-size: 10px;
   color: #ccc;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 
 /* ── Preview grid ── */
@@ -182,7 +182,7 @@
   display: block;
   font-size: 9px;
   color: #aaa;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   margin-top: 3px;
   text-align: center;
   white-space: nowrap;
@@ -202,7 +202,7 @@
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;

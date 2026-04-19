@@ -28,17 +28,17 @@
 }
 
 .page-title {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 
 .page-sub {
   font-size: 13px;
   color: #6b7280;
   margin-top: 2px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 
 .grid-3 {
@@ -59,7 +59,7 @@
     transform 0.2s,
     box-shadow 0.2s;
   cursor: pointer;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 
 .card:hover {
@@ -114,7 +114,7 @@
   font-size: 13px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: 'Courier New', monospace;
+  font-family: "Barlow", sans-serif;
 }
 .alert-sub {
   font-size: 11px;
@@ -128,7 +128,7 @@
   color: #f97316;
   text-decoration: none;
   font-weight: 700;
-  font-family: 'Courier New', monospace;
+  font-family: "Barlow", sans-serif;
   white-space: nowrap;
   flex-shrink: 0;
 }

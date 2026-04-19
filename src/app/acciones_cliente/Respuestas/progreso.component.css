@@ -18,7 +18,7 @@
   font-size: 13px;
   font-weight: 700;
   color: #888;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   text-transform: uppercase;
   letter-spacing: .6px;
 }
@@ -30,7 +30,7 @@
   color: var(--g-dark);
   padding: 7px 12px;
   font-size: 12px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   outline: none;
   transition: border-color .15s;
 }
@@ -55,14 +55,14 @@
   font-size: 15px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 
 .service-tech {
   font-size: 11px;
   color: #888;
   margin-top: 3px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 
 /* Badge entrega */
@@ -72,7 +72,7 @@
   padding: 6px 12px;
   text-align: center;
   flex-shrink: 0;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 
 .entrega-badge span {
@@ -132,7 +132,7 @@
   border: 2px solid #ddd;
   background: #fff;
   color: #bbb;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   transition: .2s;
 }
 
@@ -148,7 +148,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 
 .step.done   .step-label { color: var(--g-blue); }
@@ -174,7 +174,7 @@
   color: var(--g-blue);
   font-weight: 700;
   text-align: right;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 
 /* Empty */
@@ -186,7 +186,7 @@
   text-align: center;
   color: #bbb;
   font-size: 13px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 
 .empty-card img { width: 36px; margin-bottom: 8px; opacity: .5; }

@@ -17,10 +17,10 @@
   margin-bottom: 20px;
 }
 .page-header h2 {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 .page-header p {
   font-size: 13px;
@@ -34,7 +34,7 @@
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
@@ -48,7 +48,7 @@
   cursor: not-allowed;
 }
 
-/* ── Stats */
+/* ── Stats pills con border-left ── */
 .stats-row {
   display: flex;
   gap: 14px;
@@ -105,13 +105,13 @@
 .stat-pill-label {
   font-size: 12px;
   color: #888;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   margin-bottom: 3px;
 }
 .stat-pill-value {
   font-size: 22px;
   font-weight: 700;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   color: var(--g-dark);
 }
 
@@ -135,7 +135,7 @@
   padding: 9px 14px;
   border: 1.5px solid #ddd;
   border-radius: 8px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   font-size: 13px;
   outline: none;
 }
@@ -153,7 +153,7 @@
 .tabla {
   width: 100%;
   border-collapse: collapse;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   font-size: 13px;
 }
 .tabla thead tr {
@@ -226,7 +226,7 @@
   color: var(--g-blue);
   border-radius: 6px;
   font-size: 11px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   cursor: pointer;
   transition: 0.15s;
 }
@@ -242,7 +242,7 @@
   color: var(--g-red);
   border-radius: 6px;
   font-size: 11px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   cursor: pointer;
   transition: 0.15s;
 }
@@ -258,7 +258,7 @@
   border: none;
   border-radius: 6px;
   font-size: 11px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   cursor: pointer;
 }
 .btn-cancel {
@@ -308,7 +308,7 @@
   font-size: 17px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 .btn-close {
   background: none;
@@ -329,7 +329,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 5px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 .field input,
 .field select {
@@ -337,7 +337,7 @@
   padding: 9px 12px;
   border: 1.5px solid #ddd;
   border-radius: 6px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   font-size: 13px;
   outline: none;
 }
@@ -363,13 +363,13 @@
   background: transparent;
   border: 1.5px solid #ddd;
   border-radius: 8px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   font-size: 13px;
   cursor: pointer;
   color: #666;
 }
 
-/* ── Responsividad celular ── */
+/* ── Responsive mobile ── */
 @media (max-width: 768px) {
   .inv-page {
     padding: 16px;
@@ -385,7 +385,7 @@
   .stat-pill-value {
     font-size: 18px;
   }
-
+  /* Ocultar columnas menos importantes en mobile */
   .tabla th:nth-child(1),
   .tabla td:nth-child(1),
   .tabla th:nth-child(5),

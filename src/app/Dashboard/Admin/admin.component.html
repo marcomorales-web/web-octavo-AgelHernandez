@@ -1,18 +1,16 @@
 <div class="admin-bg">
   <div class="dashboard">
 
-    <!-- HEADER -->
     <header class="header">
       <div class="logo">
         <img class="icon" src="/jirafitas_ico.ico" alt="Jirafitas" />
         <div>
-          <h2>Jirafita's Garaje</h2>
+          <h2>Jirafita's Garage</h2>
           <p>Panel de Administración</p>
         </div>
       </div>
 
       <div class="user-container">
-        <!-- Perfil mejorado — ya no es solo un círculo azul sin contexto -->
         <div class="user-card" (click)="togglePerfil()" [class.active]="perfilAbierto()">
           <div class="icono-perfil">
             <span class="avatar-letter">{{ nombre()[0] }}</span>
@@ -24,35 +22,38 @@
           <span class="chevron">{{ perfilAbierto() ? '▲' : '▼' }}</span>
         </div>
 
-        <!-- Dropdown para el perfil -->
         @if (perfilAbierto()) {
           <div class="perfil-dropdown" (click)="$event.stopPropagation()">
+
+            <!-- Header con espaciado correcto entre nombre / email / badge -->
             <div class="perfil-header">
               <div class="perfil-avatar">{{ nombre()[0] }}</div>
-              <div>
+              <div class="perfil-info">
                 <div class="perfil-nombre">{{ nombre() }}</div>
                 <div class="perfil-email">{{ email() }}</div>
                 <span class="perfil-badge">Administrador</span>
               </div>
             </div>
-            <div class="perfil-divider"></div>
-            <button class="perfil-item" (click)="perfilAbierto.set(false)">
-              Mi perfil
-            </button>
-            <button class="perfil-item" (click)="perfilAbierto.set(false)">
-              Configuración
-            </button>
-            <div class="perfil-divider"></div>
-            <button class="perfil-item danger" (click)="goLogin()">
-              Cerrar sesión
-            </button>
+
+            <!-- Menú de acciones -->
+            <div class="perfil-menu">
+              <button class="perfil-item" (click)="perfilAbierto.set(false)">
+                👤 Mi perfil
+              </button>
+              <button class="perfil-item" (click)="perfilAbierto.set(false)">
+                ⚙ Configuración
+              </button>
+              <div class="perfil-divider"></div>
+              <button class="perfil-item danger" (click)="goLogin()">
+                ⏻ Cerrar sesión
+              </button>
+            </div>
+
           </div>
         }
-
       </div>
     </header>
 
-    <!-- TABS -->
     <nav class="tabs">
       <a routerLink="resumen"    routerLinkActive="active">Resumen</a>
       <a routerLink="servicios"  routerLinkActive="active">Servicios</a>

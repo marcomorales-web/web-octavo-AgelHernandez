@@ -9,7 +9,7 @@
   padding: 24px;
 }
 
-/* ── cards con border-left ── */
+/* ── KPI cards con border-left ── */
 .kpi-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -32,7 +32,7 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* border-left por tipo */
+/* border-left por tipo — igual que resumen */
 .kpi-card.blue {
   border-left: 4px solid var(--g-blue);
 }
@@ -63,14 +63,14 @@
 .kpi-card p {
   font-size: 12px;
   color: #888;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   margin-bottom: 3px;
 }
 .kpi-card h3 {
   font-size: 24px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 .kpi-card span {
   font-size: 11px;
@@ -110,13 +110,13 @@
   font-size: 13px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 12px;
 }
 
-/* ── Responsividad celular ── */
+/* ── Responsive mobile ── */
 @media (max-width: 768px) {
   .analisis-page {
     padding: 16px;
@@ -125,7 +125,7 @@
     padding: 14px 16px;
   }
   .kpi-card h3 {
-    font-size: 20px;
+    font-size: 14px;
   }
   .charts-grid-2 {
     grid-template-columns: 1fr;

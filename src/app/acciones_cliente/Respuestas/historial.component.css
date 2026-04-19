@@ -18,7 +18,7 @@
   font-size: 13px;
   font-weight: 700;
   color: #888;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.6px;
 }
@@ -30,7 +30,7 @@
   color: var(--g-dark);
   padding: 7px 12px;
   font-size: 12px;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
   outline: none;
   transition: border-color 0.15s;
 }
@@ -58,14 +58,14 @@
   text-transform: uppercase;
   letter-spacing: 0.6px;
   margin-bottom: 5px;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
 }
 
 .stat-value {
   font-size: 22px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
 }
 .stat-value.green {
   color: #16a34a;
@@ -78,7 +78,7 @@
   padding: 28px;
   text-align: center;
   color: #bbb;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
   font-size: 13px;
 }
 
@@ -115,7 +115,7 @@
   font-size: 13px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
 }
 .hist-meta {
   font-size: 10px;
@@ -131,7 +131,7 @@
   font-size: 13px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
 }
 .hist-date {
   font-size: 10px;

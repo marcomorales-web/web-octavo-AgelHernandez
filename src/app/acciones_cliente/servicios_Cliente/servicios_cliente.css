@@ -18,16 +18,16 @@
 
 
 .page-title {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
 }
 .page-sub {
   font-size: 13px;
   color: #888;
   margin-top: 2px;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
 }
 
 .hero-grid {
@@ -46,7 +46,7 @@
   display: block;
   transition: transform .2s, box-shadow .2s;
   cursor: pointer;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
 }
 .card-active {
   border-color: var(--g-blue) !important;

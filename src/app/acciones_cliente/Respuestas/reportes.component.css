@@ -13,7 +13,7 @@
   font-size: 16px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   margin-bottom: 16px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -50,14 +50,14 @@
 .stat-value {
   font-size: 22px;
   font-weight: 700;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   color: var(--g-dark);
 }
 .stat-label {
   font-size: 11px;
   color: #aaa;
   margin-top: 3px;
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
 }
 
 .charts-row {
@@ -79,6 +79,6 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--g-dark);
-  font-family: 'Courier New', monospace;
+  font-family: 'Barlow', sans-serif;
   margin-bottom: 10px;
 }

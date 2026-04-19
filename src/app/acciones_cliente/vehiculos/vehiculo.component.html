@@ -1,208 +1,249 @@
 <!-- TOPBAR -->
 <div class="topbar">
   <div>
-    <h2 class="page-title">Mi Dashboard</h2>
-    <p class="page-sub">Bienvenido de nuevo</p>
+    <h2 class="page-title">Mis Vehículos</h2>
+    <p class="page-sub">Gestiona y registra tus vehiculos</p>
   </div>
   <button class="btn-primary" (click)="abrirModal()">+ Agregar Vehículo</button>
 </div>
 
 <!-- STATS -->
-<div class="grid-3 mb-24">
-  <div class="card green">
-    <div class="label-upper">Vehículos</div>
-    <div class="text-mono-lg">{{ vehiculos().length }}</div>
-    <div class="text-green">registrados</div>
+<div class="stats-row mb-24">
+  <div class="stat-card green">
+    <div class="stat-icon green-bg">
+      <img src="/car.png" />
+    </div>
+    <div class="stat-info">
+      <div class="stat-label">Vehículos</div>
+      <div class="stat-num">{{ vehiculos().length }}</div>
+      <div class="stat-sub green-txt">registrados</div>
+    </div>
   </div>
-  <div class="card purple">
-    <div class="label-upper">En servicio</div>
-    <div class="text-mono-lg">{{ vehiculosEnServicio }}</div>
-    <div class="text-purple">en progreso</div>
+  <div class="stat-card purple">
+    <div class="stat-icon purple-bg">
+      <img src="/icons8-wrench-24.png" />
+    </div>
+    <div class="stat-info">
+      <div class="stat-label">En servicio</div>
+      <div class="stat-num">{{ vehiculosEnServicio }}</div>
+      <div class="stat-sub purple-txt">en progreso</div>
+    </div>
   </div>
-  <div class="card orange">
-    <div class="label-upper">Citas</div>
-    <div class="text-mono-lg">{{ citas().length }}</div>
-    <div class="text-amber">agendadas</div>
+  <div class="stat-card orange">
+    <div class="stat-icon orange-bg">
+      <img src="/icons8-calendar-24.png" />
+    </div>
+    <div class="stat-info">
+      <div class="stat-label">Citas</div>
+      <div class="stat-num">{{ citas().length }}</div>
+      <div class="stat-sub orange-txt">agendadas</div>
+    </div>
   </div>
 </div>
 
 <!-- VEHÍCULOS -->
-<h3 class="section-title mb-12">Mis Vehículos</h3>
+<div class="section-header mb-14">
+  <h3 class="section-title">Mis Vehículos</h3>
+  <span class="section-count">{{ vehiculos().length }} registrados</span>
+</div>
 
-<div class="grid-2 mb-24">
+<div class="vehicle-grid mb-24">
   @for (v of vehiculos(); track v.id) {
-    <div class="card card-hover">
-      <div class="card-top">
-        <div class="vehicle-icon"><img src="/car.png" /></div>
-        <span class="badge" [class]="v.estado === 'ok' ? 'badge-green' : 'badge-purple'">
-          {{ v.estado === 'ok' ? 'Al día' : 'En servicio' }}
-        </span>
-      </div>
+    <div class="vehicle-card" [style.--brand-color]="getBrandColor(v.make)">
 
-      <div class="text-vehicle-name">{{ v.make }} {{ v.model }}</div>
-      <div class="text-plate">{{ v.placa }}</div>
+      <!-- Franja de color del fabricante -->
+      <div class="brand-stripe"></div>
 
-      <div class="vehicle-meta">
-        <div class="meta-item">
-          Año<span>{{ v.year }}</span>
+      <div class="vehicle-card-body">
+        <!-- Header: avatar de marca + badge estado -->
+        <div class="vc-top">
+          <div class="brand-avatar" [style.background]="getBrandColor(v.make)">
+            {{ getBrandInitials(v.make) }}
+          </div>
+          <span class="badge" [class]="v.estado === 'ok' ? 'badge-ok' : 'badge-service'">
+            {{ v.estado === 'ok' ? '✓ Al día' : '⚙ En servicio' }}
+          </span>
         </div>
-        <div class="meta-item">
-          Km<span>{{ v.km | number }}</span>
-        </div>
-        <div class="meta-item">
-          Próx.<span>{{ v.proximoEvento }}</span>
+
+        <!-- Nombre y placa -->
+        <div class="vc-name">{{ v.make }} {{ v.model }}</div>
+        <div class="vc-year">{{ v.year }}</div>
+        <div class="vc-plate">{{ v.placa }}</div>
+
+        <!-- Métricas -->
+        <div class="vc-meta">
+          <div class="vc-meta-item">
+            <span class="vc-meta-label">Km</span>
+            <span class="vc-meta-value">{{ v.km | number }}</span>
+          </div>
+          <div class="vc-meta-item">
+            <span class="vc-meta-label">Próx. evento</span>
+            <span class="vc-meta-value">{{ v.proximoEvento }}</span>
+          </div>
+          @if (v.vin) {
+            <div class="vc-meta-item">
+              <span class="vc-meta-label">VIN</span>
+              <span class="vc-meta-value vc-vin">{{ v.vin.slice(0,8) }}…</span>
+            </div>
+          }
         </div>
       </div>
     </div>
   }
 
-  <div class="card-add" (click)="abrirModal()">
-    <div class="add-icon">+</div>
+  <!-- Card: agregar -->
+  <div class="vehicle-card-add" (click)="abrirModal()">
+    <div class="add-plus">+</div>
     <p class="add-text">Agregar vehículo</p>
+    <p class="add-hint">VIN o búsqueda por marca</p>
   </div>
 </div>
 
-<!--modal-->
+
+<!-- ── MODAL ── -->
 @if (modalAbierto()) {
   <div class="modal-overlay" (click)="cerrarModal()">
     <div class="modal" (click)="$event.stopPropagation()">
+
       <div class="modal-header">
         <h3 class="modal-title">Agregar Vehículo</h3>
         <button class="btn-close" (click)="cerrarModal()">✕</button>
       </div>
 
       <!-- Tabs -->
-      <div class="tabs mb-20">
-        <button class="tab" [class.tab-active]="tab() === 'buscar'" (click)="tab.set('buscar')">
+      <div class="modal-tabs mb-20">
+        <button class="mtab" [class.mtab-active]="tab() === 'buscar'" (click)="tab.set('buscar')">
           Por Marca / Modelo
         </button>
-        <button class="tab" [class.tab-active]="tab() === 'vin'" (click)="tab.set('vin')">
+        <button class="mtab" [class.mtab-active]="tab() === 'vin'" (click)="tab.set('vin')">
           Por VIN
         </button>
       </div>
 
-      <!-- TAB: Buscar -->
+      <!-- ── TAB: BUSCAR ── -->
       @if (tab() === 'buscar') {
+
+        <!-- AÑO — usa ngModelChange para disparar inmediatamente sin esperar blur -->
         <div class="field">
           <label class="field-label">Año</label>
-          <select class="field-input" [(ngModel)]="form.year" (change)="cargarMarcas()">
+          <select class="field-input"
+                  [ngModel]="form.year"
+                  (ngModelChange)="onYearChange($event)">
             <option value="">Seleccionar año</option>
-            @for (a of anios; track a) {
-              <option [value]="a">{{ a }}</option>
-            }
+            @for (a of anios; track a) { <option [value]="a">{{ a }}</option> }
           </select>
         </div>
 
+        <!-- MARCA -->
         <div class="field">
-          <label class="field-label">Marca {{ cargandoMarcas ? '· cargando...' : '' }}</label>
-          <select
-            class="field-input"
-            [(ngModel)]="form.make"
-            (change)="cargarModelos()"
-            [disabled]="!form.year || cargandoMarcas"
-          >
-            <option value="">{{ cargandoMarcas ? 'Cargando...' : 'Seleccionar marca' }}</option>
+          <label class="field-label">
+            Marca
+            @if (cargandoMarcas) { <span class="loading-chip">· cargando…</span> }
+          </label>
+          <select class="field-input"
+                  [ngModel]="form.make"
+                  (ngModelChange)="onMakeChange($event)"
+                  [disabled]="!form.year || cargandoMarcas">
+            <option value="">
+              {{ cargandoMarcas ? 'Cargando marcas…' : 'Seleccionar marca' }}
+            </option>
             @for (m of marcas; track m.MakeId) {
               <option [value]="m.MakeName">{{ m.MakeName }}</option>
             }
           </select>
-          @if (errorMarcas) {
-            <span class="field-error">{{ errorMarcas }}</span>
-          }
+          @if (errorMarcas) { <span class="field-error">{{ errorMarcas }}</span> }
         </div>
 
+        <!-- MODELO -->
         <div class="field">
-          <label class="field-label">Modelo {{ cargandoModelos ? '· cargando...' : '' }}</label>
-          <select
-            class="field-input"
-            [(ngModel)]="form.model"
-            [disabled]="!form.make || cargandoModelos"
-          >
-            <option value="">{{ cargandoModelos ? 'Cargando...' : 'Seleccionar modelo' }}</option>
+          <label class="field-label">
+            Modelo
+            @if (cargandoModelos) { <span class="loading-chip">· cargando…</span> }
+          </label>
+          <select class="field-input"
+                  [(ngModel)]="form.model"
+                  [disabled]="!form.make || cargandoModelos">
+            <option value="">
+              {{ cargandoModelos ? 'Cargando modelos…' : 'Seleccionar modelo' }}
+            </option>
             @for (m of modelos; track m.Model_ID) {
               <option [value]="m.Model_Name">{{ m.Model_Name }}</option>
             }
           </select>
-          @if (errorModelos) {
-            <span class="field-error">{{ errorModelos }}</span>
-          }
+          @if (errorModelos) { <span class="field-error">{{ errorModelos }}</span> }
           @if (!cargandoModelos && modelos.length === 0 && form.make) {
             <span class="field-hint">Sin resultados para {{ form.make }} {{ form.year }}</span>
           }
         </div>
       }
 
-      <!-- TAB: VIN -->
+      <!-- ── TAB: VIN ── -->
       @if (tab() === 'vin') {
+
         <div class="field">
-          <label class="field-label">Número VIN</label>
-          <input
-            class="field-input field-mono"
-            type="text"
-            [(ngModel)]="form.vin"
-            placeholder="Ej: 1HGCM82633A004352"
-            maxlength="17"
-            (input)="form.vin = form.vin.toUpperCase(); vinInfo = null; errorVin = ''"
-          />
-          <span class="field-hint">17 caracteres · tablero lado conductor o cajuela</span>
-          <span class="field-counter" [class.field-counter-ok]="form.vin.length === 17">
-            {{ form.vin.length }}/17
-          </span>
+          <label class="field-label">Número VIN (17 caracteres)</label>
+          <input class="field-input field-mono" type="text"
+                 [(ngModel)]="form.vin"
+                 placeholder="Ej: 1HGCM82633A004352"
+                 maxlength="17"
+                 (input)="form.vin = form.vin.toUpperCase(); vinInfo = null; errorVin = ''" />
+          <div class="field-footer-row">
+            <span class="field-hint">Tablero · lado conductor o cajuela</span>
+            <span class="field-counter" [class.field-counter-ok]="form.vin.length === 17">
+              {{ form.vin.length }}/17
+            </span>
+          </div>
         </div>
 
-        <button
-          class="btn-secondary mb-14"
-          (click)="decodificarVin()"
-          [disabled]="form.vin.length !== 17"
-        >
-          <img src="/search.png" /> Decodificar VIN
+        <button class="btn-secondary mb-14" (click)="decodificarVin()"
+                [disabled]="form.vin.length !== 17 || cargandoVin">
+          {{ cargandoVin ? 'Decodificando…' : '🔍 Decodificar VIN' }}
         </button>
 
         @if (errorVin) {
-          <div class="alert-error mb-14">error icon {{ errorVin }}</div>
+          <div class="alert-error mb-14">⚠ {{ errorVin }}</div>
         }
 
         @if (vinInfo) {
           <div class="alert-success mb-14">
-            <div class="label-upper" style="color: #3a6a4a; margin-bottom: 4px">
-              Vehículo encontrado
+            <div class="vin-result-header">
+              <div class="vin-brand-avatar" [style.background]="getBrandColor(vinInfo.make)">
+                {{ getBrandInitials(vinInfo.make) }}
+              </div>
+              <div>
+                <div class="vin-make">{{ vinInfo.make }} {{ vinInfo.model }}</div>
+                <div class="vin-year">{{ vinInfo.year }} · {{ vinInfo.bodyClass }}</div>
+              </div>
             </div>
-            <div class="vin-make">{{ vinInfo.make }} {{ vinInfo.model }}</div>
-            <div class="vin-year">Año {{ vinInfo.year }}</div>
           </div>
         }
       }
 
       <!-- Placa + KM -->
-      <div class="grid-2-equal mb-14">
+      <div class="field-row mb-14">
         <div class="field">
           <label class="field-label">Placa</label>
-          <input
-            class="field-input field-mono"
-            type="text"
-            [(ngModel)]="form.placa"
-            placeholder="ABC-123-MX"
-            (input)="form.placa = form.placa.toUpperCase()"
-          />
+          <input class="field-input field-mono" type="text"
+                 [(ngModel)]="form.placa"
+                 placeholder="ABC-123-MX"
+                 (input)="form.placa = form.placa.toUpperCase()" />
         </div>
         <div class="field">
           <label class="field-label">Kilometraje</label>
-          <input class="field-input" type="number" [(ngModel)]="form.km" min="0" placeholder="0" />
+          <input class="field-input" type="number"
+                 [(ngModel)]="form.km" min="0" placeholder="0" />
         </div>
       </div>
 
       <!-- Footer -->
       <div class="modal-footer">
         <button class="btn-ghost" (click)="cerrarModal()">Cancelar</button>
-        <button
-          class="btn-primary"
-          (click)="guardarVehiculo()"
-          [disabled]="!formularioValido()"
-          [class.btn-disabled]="!formularioValido()"
-        >
+        <button class="btn-primary" (click)="guardarVehiculo()"
+                [disabled]="!formularioValido()">
           Guardar Vehículo
         </button>
       </div>
+
     </div>
   </div>
 }

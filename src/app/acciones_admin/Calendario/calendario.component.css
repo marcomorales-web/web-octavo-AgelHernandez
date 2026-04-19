@@ -17,10 +17,8 @@
   border-radius: 12px;
   border: 1px solid #e5e7eb;
   padding: 16px;
-  width: 300px;
 }
 .right-panel {
-  flex: 1;
   width: 300px;
   display: flex;
   flex-direction: column;
@@ -36,7 +34,7 @@
   font-size: 16px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
 }
 
 .btn-nueva {
@@ -45,7 +43,7 @@
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
@@ -57,7 +55,7 @@
 .fecha-label {
   font-size: 12px;
   color: #ffffff;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
   text-transform: capitalize;
 }
 
@@ -75,7 +73,7 @@
 .empty-day p {
   font-size: 13px;
   color: #aaa;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
 }
 .btn-add-hint {
   margin-top: 12px;
@@ -85,7 +83,7 @@
   color: var(--g-blue);
   border-radius: 8px;
   font-size: 12px;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
   cursor: pointer;
 }
 
@@ -107,7 +105,7 @@
   font-size: 13px;
   font-weight: 700;
   color: var(--g-blue);
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
   min-width: 44px;
 }
 .cita-info {
@@ -117,7 +115,7 @@
   font-size: 13px;
   font-weight: 600;
   color: var(--g-dark);
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
 }
 .cita-vehiculo {
   font-size: 11px;
@@ -130,11 +128,11 @@
   border-radius: 10px;
   font-weight: 600;
   white-space: nowrap;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
 }
 .badge-estado.confirmada {
   background: #dbeafe;
-  color: #1e40af;
+  color: var(--g-blue);
 }
 .badge-estado.pendiente {
   background: #fff7ed;
@@ -157,7 +155,7 @@
   gap: 5px;
   font-size: 11px;
   color: #ffffff;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
 }
 .ley-dot {
   width: 10px;
@@ -193,7 +191,7 @@
   font-size: 17px;
   font-weight: 700;
   color: var(--g-dark);
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
 }
 .btn-close {
   background: none;
@@ -206,7 +204,7 @@
   font-size: 12px;
   color: var(--g-red);
   margin-bottom: 14px;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
 }
 .field {
   margin-bottom: 14px;
@@ -219,7 +217,7 @@
   letter-spacing: 0.5px;
   color: var(--g-dark);
   margin-bottom: 5px;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
 }
 .field input,
 .field select {
@@ -227,7 +225,7 @@
   padding: 9px 12px;
   border: 1.5px solid #ddd;
   border-radius: 6px;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
   font-size: 13px;
   outline: none;
 }
@@ -245,7 +243,7 @@
   background: transparent;
   border: 1.5px solid #ddd;
   border-radius: 8px;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
   font-size: 13px;
   cursor: pointer;
 }
@@ -255,7 +253,7 @@
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-family: "Courier New", monospace;
+  font-family: "Barlow", sans-serif;
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
