@@ -8,7 +8,7 @@
     </div>
   </div>
 
-  <!-- PERFIL DE USUARIO  -->
+  <!-- PERFIL -->
   <div class="user-profile">
     <div class="user-avatar-lg">{{ nombre()[0]?.toUpperCase() }}</div>
     <div class="user-info">
@@ -20,12 +20,8 @@
 
   <!-- NAVEGACIÓN -->
   <nav class="sidebar-nav">
-    <a
-      class="nav-link"
-      routerLink="/dashboard"
-      routerLinkActive="nav-active"
-      [routerLinkActiveOptions]="{ exact: true }"
-    >
+    <a class="nav-link" routerLink="/dashboard"
+       routerLinkActive="nav-active" [routerLinkActiveOptions]="{ exact: true }">
       <img src="/car.png" class="nav-ico" alt="" />
       <span>Mis Vehículos</span>
     </a>
@@ -38,6 +34,12 @@
     <a class="nav-link" routerLink="/dashboard/Seguimiento" routerLinkActive="nav-active">
       <img src="/icons8-wrench-24.png" class="nav-ico" alt="" />
       <span>Seguimiento</span>
+    </a>
+
+    <!-- SOPORTE — nuevo -->
+    <a class="nav-link" routerLink="/dashboard/soporte" routerLinkActive="nav-active">
+      <img src="/icons8-$-24.png" class="nav-ico" alt="" />
+      <span>Soporte</span>
     </a>
   </nav>
 

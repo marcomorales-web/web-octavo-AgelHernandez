@@ -17,6 +17,7 @@ import { SeguimientoComponent } from './acciones_cliente/Respuestas/seguimiento.
 import { HistorialComponent } from './acciones_cliente/Respuestas/historial.component';
 import { ProgresoComponent } from './acciones_cliente/Respuestas/progreso.component';
 import { ReportesComponent } from './acciones_cliente/Respuestas/reportes.component';
+import { SoporteComponent }          from './acciones_cliente/soporte/soporte';
 
 
 
@@ -71,6 +72,7 @@ export const routes: Routes = [
 
       ]
     },
+    { path: 'soporte', component: SoporteComponent }, 
       
 
     ]
