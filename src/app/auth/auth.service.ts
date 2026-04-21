@@ -9,13 +9,16 @@ interface Usuario {
 }
 
 const USUARIOS: { email: string; password: string; nombre: string; role: Role }[] = [
-  { email: 'user@gmail.com',  password: '1234',     nombre: 'Angel Hernandez',    role: 'cliente' },
-  { email: 'admin@gmail.com', password: '1234',     nombre: 'Rafael Peralta',  role: 'admin'   },
+  { email: 'user@gmail.com',  password: '1234', nombre: 'Angel Hernandez', role: 'cliente' },
+  { email: 'admin@gmail.com', password: '1234', nombre: 'Rafael Peralta',  role: 'admin'   },
 ];
+
+const SESSION_KEY = 'taller_session';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private _user = signal<Usuario | null>(null);
+  // Al iniciar, se intenta restaurar la sesión desde sessionStorage
+  private _user = signal<Usuario | null>(this.cargarSesion());
 
   isLoggedIn = computed(() => !!this._user());
   role       = computed(() => this._user()?.role ?? null);
@@ -24,12 +27,25 @@ export class AuthService {
 
   login(email: string, password: string): boolean {
     const found = USUARIOS.find(u => u.email === email && u.password === password);
-    if (found) {
-      this._user.set({ nombre: found.nombre, email: found.email, role: found.role });
-      return true;
-    }
-    return false;
+    if (!found) return false;
+
+    const usuario: Usuario = { nombre: found.nombre, email: found.email, role: found.role };
+    this._user.set(usuario);
+    sessionStorage.setItem(SESSION_KEY, JSON.stringify(usuario));
+    return true;
   }
 
-  logout() { this._user.set(null); }
+  logout() {
+    this._user.set(null);
+    sessionStorage.removeItem(SESSION_KEY);
+  }
+
+  private cargarSesion(): Usuario | null {
+    try {
+      const raw = sessionStorage.getItem(SESSION_KEY);
+      return raw ? (JSON.parse(raw) as Usuario) : null;
+    } catch {
+      return null;
+    }
+  }
 }

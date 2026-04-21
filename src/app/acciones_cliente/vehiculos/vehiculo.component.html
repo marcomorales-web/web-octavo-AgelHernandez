@@ -19,16 +19,18 @@
       <div class="stat-sub green-txt">registrados</div>
     </div>
   </div>
+
   <div class="stat-card purple">
     <div class="stat-icon purple-bg">
       <img src="/icons8-wrench-24.png" />
     </div>
     <div class="stat-info">
       <div class="stat-label">En servicio</div>
-      <div class="stat-num">{{ vehiculosEnServicio }}</div>
+      <div class="stat-num">{{ vehiculosEnServicio() }}</div>
       <div class="stat-sub purple-txt">en progreso</div>
     </div>
   </div>
+
   <div class="stat-card orange">
     <div class="stat-icon orange-bg">
       <img src="/icons8-calendar-24.png" />
@@ -51,11 +53,9 @@
   @for (v of vehiculos(); track v.id) {
     <div class="vehicle-card" [style.--brand-color]="getBrandColor(v.make)">
 
-      <!-- Franja de color del fabricante -->
       <div class="brand-stripe"></div>
 
       <div class="vehicle-card-body">
-        <!-- Header: avatar de marca + badge estado -->
         <div class="vc-top">
           <div class="brand-avatar" [style.background]="getBrandColor(v.make)">
             {{ getBrandInitials(v.make) }}
@@ -65,25 +65,24 @@
           </span>
         </div>
 
-        <!-- Nombre y placa -->
         <div class="vc-name">{{ v.make }} {{ v.model }}</div>
         <div class="vc-year">{{ v.year }}</div>
         <div class="vc-plate">{{ v.placa }}</div>
 
-        <!-- Métricas -->
         <div class="vc-meta">
           <div class="vc-meta-item">
             <span class="vc-meta-label">Km</span>
             <span class="vc-meta-value">{{ v.km | number }}</span>
           </div>
+
           <div class="vc-meta-item">
             <span class="vc-meta-label">Próx. evento</span>
             <span class="vc-meta-value">{{ v.proximoEvento }}</span>
           </div>
+
           @if (v.vin) {
             <div class="vc-meta-item">
               <span class="vc-meta-label">VIN</span>
-              <span class="vc-meta-value vc-vin">{{ v.vin.slice(0,8) }}…</span>
             </div>
           }
         </div>
@@ -91,7 +90,6 @@
     </div>
   }
 
-  <!-- Card: agregar -->
   <div class="vehicle-card-add" (click)="abrirModal()">
     <div class="add-plus">+</div>
     <p class="add-text">Agregar vehículo</p>
@@ -99,8 +97,7 @@
   </div>
 </div>
 
-
-<!-- ── MODAL ── -->
+<!-- MODAL -->
 @if (modalAbierto()) {
   <div class="modal-overlay" (click)="cerrarModal()">
     <div class="modal" (click)="$event.stopPropagation()">
@@ -120,17 +117,18 @@
         </button>
       </div>
 
-      <!-- ── TAB: BUSCAR ── -->
+      <!-- TAB BUSCAR -->
       @if (tab() === 'buscar') {
 
-        <!-- AÑO — usa ngModelChange para disparar inmediatamente sin esperar blur -->
         <div class="field">
           <label class="field-label">Año</label>
           <select class="field-input"
                   [ngModel]="form.year"
                   (ngModelChange)="onYearChange($event)">
             <option value="">Seleccionar año</option>
-            @for (a of anios; track a) { <option [value]="a">{{ a }}</option> }
+            @for (a of anios; track a) {
+              <option [value]="a">{{ a }}</option>
+            }
           </select>
         </div>
 
@@ -138,55 +136,73 @@
         <div class="field">
           <label class="field-label">
             Marca
-            @if (cargandoMarcas) { <span class="loading-chip">· cargando…</span> }
+            @if (loading.marcas) { <span class="loading-chip">· cargando…</span> }
           </label>
+
           <select class="field-input"
                   [ngModel]="form.make"
                   (ngModelChange)="onMakeChange($event)"
-                  [disabled]="!form.year || cargandoMarcas">
+                  [disabled]="!form.year || loading.marcas">
+
             <option value="">
-              {{ cargandoMarcas ? 'Cargando marcas…' : 'Seleccionar marca' }}
+              {{ loading.marcas ? 'Cargando marcas…' : 'Seleccionar marca' }}
             </option>
+
             @for (m of marcas; track m.MakeId) {
               <option [value]="m.MakeName">{{ m.MakeName }}</option>
             }
           </select>
-          @if (errorMarcas) { <span class="field-error">{{ errorMarcas }}</span> }
+
+          @if (errors.marcas) {
+            <span class="field-error">{{ errors.marcas }}</span>
+          }
         </div>
 
         <!-- MODELO -->
         <div class="field">
           <label class="field-label">
             Modelo
-            @if (cargandoModelos) { <span class="loading-chip">· cargando…</span> }
+            @if (loading.modelos) { <span class="loading-chip">· cargando…</span> }
           </label>
+
           <select class="field-input"
                   [(ngModel)]="form.model"
-                  [disabled]="!form.make || cargandoModelos">
+                  [disabled]="!form.make || loading.modelos">
+
             <option value="">
-              {{ cargandoModelos ? 'Cargando modelos…' : 'Seleccionar modelo' }}
+              {{ loading.modelos ? 'Cargando modelos…' : 'Seleccionar modelo' }}
             </option>
+
             @for (m of modelos; track m.Model_ID) {
               <option [value]="m.Model_Name">{{ m.Model_Name }}</option>
             }
           </select>
-          @if (errorModelos) { <span class="field-error">{{ errorModelos }}</span> }
-          @if (!cargandoModelos && modelos.length === 0 && form.make) {
-            <span class="field-hint">Sin resultados para {{ form.make }} {{ form.year }}</span>
+
+          @if (errors.modelos) {
+            <span class="field-error">{{ errors.modelos }}</span>
+          }
+
+          @if (!loading.modelos && modelos.length === 0 && form.make) {
+            <span class="field-hint">
+              Sin resultados para {{ form.make }} {{ form.year }}
+            </span>
           }
         </div>
       }
 
-      <!-- ── TAB: VIN ── -->
+      <!-- TAB VIN -->
       @if (tab() === 'vin') {
 
         <div class="field">
           <label class="field-label">Número VIN (17 caracteres)</label>
-          <input class="field-input field-mono" type="text"
+
+          <input class="field-input field-mono"
+                 type="text"
                  [(ngModel)]="form.vin"
-                 placeholder="Ej: 1HGCM82633A004352"
                  maxlength="17"
-                 (input)="form.vin = form.vin.toUpperCase(); vinInfo = null; errorVin = ''" />
+                 placeholder="Ej: 1HGCM82633A004352"
+                 (input)="form.vin = form.vin.toUpperCase(); vinInfo = null; errors.vin = ''" />
+
           <div class="field-footer-row">
             <span class="field-hint">Tablero · lado conductor o cajuela</span>
             <span class="field-counter" [class.field-counter-ok]="form.vin.length === 17">
@@ -195,21 +211,20 @@
           </div>
         </div>
 
-        <button class="btn-secondary mb-14" (click)="decodificarVin()"
-                [disabled]="form.vin.length !== 17 || cargandoVin">
-          {{ cargandoVin ? 'Decodificando…' : '🔍 Decodificar VIN' }}
+        <button class="btn-secondary mb-14"
+                (click)="decodificarVin()"
+                [disabled]="form.vin.length !== 17 || loading.vin">
+
+          {{ loading.vin ? 'Decodificando…' : ' Decodificar VIN' }}
         </button>
 
-        @if (errorVin) {
-          <div class="alert-error mb-14">⚠ {{ errorVin }}</div>
+        @if (errors.vin) {
+          <div class="alert-error mb-14">⚠ {{ errors.vin }}</div>
         }
 
         @if (vinInfo) {
           <div class="alert-success mb-14">
             <div class="vin-result-header">
-              <div class="vin-brand-avatar" [style.background]="getBrandColor(vinInfo.make)">
-                {{ getBrandInitials(vinInfo.make) }}
-              </div>
               <div>
                 <div class="vin-make">{{ vinInfo.make }} {{ vinInfo.model }}</div>
                 <div class="vin-year">{{ vinInfo.year }} · {{ vinInfo.bodyClass }}</div>
@@ -223,22 +238,26 @@
       <div class="field-row mb-14">
         <div class="field">
           <label class="field-label">Placa</label>
-          <input class="field-input field-mono" type="text"
+          <input class="field-input field-mono"
+                 type="text"
                  [(ngModel)]="form.placa"
-                 placeholder="ABC-123-MX"
                  (input)="form.placa = form.placa.toUpperCase()" />
         </div>
+
         <div class="field">
           <label class="field-label">Kilometraje</label>
-          <input class="field-input" type="number"
-                 [(ngModel)]="form.km" min="0" placeholder="0" />
+          <input class="field-input"
+                 type="number"
+                 [(ngModel)]="form.km"
+                 min="0" />
         </div>
       </div>
 
       <!-- Footer -->
       <div class="modal-footer">
         <button class="btn-ghost" (click)="cerrarModal()">Cancelar</button>
-        <button class="btn-primary" (click)="guardarVehiculo()"
+        <button class="btn-primary"
+                (click)="guardarVehiculo()"
                 [disabled]="!formularioValido()">
           Guardar Vehículo
         </button>

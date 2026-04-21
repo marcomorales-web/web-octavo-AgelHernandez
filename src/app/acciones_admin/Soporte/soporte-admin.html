@@ -1,0 +1,79 @@
+<section class="soporte-admin-page">
+
+  <div class="page-header">
+    <div>
+      <h2>Mensajes de clientes</h2>
+      <p>Lee los mensajes y responde directamente a cada cliente</p>
+    </div>
+    @if (taller.mensajesSinRespuesta() > 0) {
+      <span class="badge-pendiente">{{ taller.mensajesSinRespuesta() }} sin responder</span>
+    }
+  </div>
+
+  @if (mensajes().length === 0) {
+    <div class="empty-msg">Aún no hay mensajes de clientes.</div>
+  }
+
+  <div class="lista">
+    @for (m of mensajes(); track m.id) {
+      <div class="msg-fila" [class.sin-resp]="!tieneRespuesta(m)" (click)="abrir(m)">
+        <div class="msg-fila-izq">
+          <div class="msg-nombre">{{ m.clienteNombre }}</div>
+          <div class="msg-asunto">{{ m.asunto }}</div>
+          <div class="msg-preview">{{ m.mensaje | slice:0:90 }}{{ m.mensaje.length > 90 ? '…' : '' }}</div>
+        </div>
+        <div class="msg-fila-der">
+          <span class="msg-fecha">{{ m.fecha }}</span>
+          @if (!tieneRespuesta(m)) {
+            <span class="badge-nuevo">Sin responder</span>
+          } @else {
+            <span class="badge-ok">Respondido</span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+</section>
+
+<!-- PANEL DE RESPUESTA -->
+@if (msgSeleccionado(); as m) {
+  <div class="panel-overlay" (click)="cerrar()">
+    <div class="panel" (click)="$event.stopPropagation()">
+
+      <div class="panel-head">
+        <div>
+          <h3>{{ m.asunto }}</h3>
+          <p class="panel-meta">{{ m.clienteNombre }} · {{ m.clienteEmail }} · {{ m.fecha }}</p>
+        </div>
+        <button class="btn-close" (click)="cerrar()">✕</button>
+      </div>
+
+      <!-- Mensaje del cliente -->
+      <div class="bloque-cliente">
+        <div class="bloque-label">Mensaje del cliente</div>
+        <p class="bloque-texto">{{ m.mensaje }}</p>
+      </div>
+
+      <!-- Campo de respuesta -->
+      <div class="campo-resp">
+        <label>Tu respuesta</label>
+        <textarea [(ngModel)]="textoRespuesta" rows="5"
+                  placeholder="Escribe aquí tu respuesta para el cliente..."></textarea>
+      </div>
+
+      @if (guardado()) {
+        <div class="alert-ok">✓ Respuesta guardada. El cliente la verá al ingresar a Soporte.</div>
+      }
+
+      <div class="panel-footer">
+        <button class="btn-ghost" (click)="cerrar()">Cancelar</button>
+        <button class="btn-primary" (click)="guardarRespuesta()"
+                [disabled]="!textoRespuesta.trim()">
+          Guardar respuesta
+        </button>
+      </div>
+
+    </div>
+  </div>
+}

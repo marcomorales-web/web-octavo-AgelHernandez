@@ -24,8 +24,6 @@
 
         @if (perfilAbierto()) {
           <div class="perfil-dropdown" (click)="$event.stopPropagation()">
-
-            <!-- Header con espaciado correcto entre nombre / email / badge -->
             <div class="perfil-header">
               <div class="perfil-avatar">{{ nombre()[0] }}</div>
               <div class="perfil-info">
@@ -34,8 +32,6 @@
                 <span class="perfil-badge">Administrador</span>
               </div>
             </div>
-
-            <!-- Menú de acciones -->
             <div class="perfil-menu">
               <button class="perfil-item" (click)="perfilAbierto.set(false)">
                 👤 Mi perfil
@@ -48,7 +44,6 @@
                 ⏻ Cerrar sesión
               </button>
             </div>
-
           </div>
         }
       </div>
@@ -60,6 +55,12 @@
       <a routerLink="calendario" routerLinkActive="active">Calendario</a>
       <a routerLink="inventario" routerLinkActive="active">Inventario</a>
       <a routerLink="analisis"   routerLinkActive="active">Análisis</a>
+      <a routerLink="soporte"    routerLinkActive="active">
+        Soporte
+        @if (mensajesSinRespuesta() > 0) {
+          <span class="tab-badge">{{ mensajesSinRespuesta() }}</span>
+        }
+      </a>
     </nav>
 
     <router-outlet></router-outlet>

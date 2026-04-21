@@ -1,87 +1,122 @@
 <div class="soporte-page">
-
-  <!-- HEADER -->
   <div class="topbar">
     <div>
       <h2 class="page-title">Soporte</h2>
-      <p class="page-sub">Envía un mensaje y te responderemos a la brevedad</p>
+      <p class="page-sub">Escríbenos tu consulta y te respondemos a la brevedad</p>
     </div>
   </div>
 
-  <!-- ALERTA ENVIADO -->
+  <!-- DATOS DE CONTACTO -->
+  <div class="contact-row">
+    <div class="contact-card">
+      <span class="contact-icon"><img src="icons8-gmail-32.png"/></span>
+      <div>
+        <div class="contact-label">Correo</div>
+        <div class="contact-val">soporte&#64;jirafitasgarage.com</div>
+      </div>
+    </div>
+    <div class="contact-card">
+      <span class="contact-icon"><img src="icons8-teléfono-24.png"/></span>
+      <div>
+        <div class="contact-label">Teléfono</div>
+        <div class="contact-val">782 123 4567</div>
+      </div>
+    </div>
+    <div class="contact-card">
+      <span class="contact-icon"><img src="icons8-despertador-24.png"/></span>
+      <div>
+        <div class="contact-label">Horario</div>
+        <div class="contact-val">Lun – Sáb · 8:00 – 18:00</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFIRMACIÓN DE ENVÍO -->
   @if (enviado()) {
     <div class="alert-success">
-      ✓ Tu mensaje fue enviado. Te responderemos en menos de 24 horas a <strong>{{ email() }}</strong>.
+      ✓ Mensaje enviado. El equipo revisará tu consulta y te responderá a
+      <strong>{{ email() }}</strong
+      >.
     </div>
   }
 
-  <!-- ERROR -->
   @if (error()) {
     <div class="alert-error">{{ error() }}</div>
   }
 
-  <!-- FORMULARIO NUEVO TICKET -->
+  <!-- FORMULARIO -->
   <div class="form-card">
-    <h3 class="form-section-title">Nuevo mensaje</h3>
+    <h3 class="form-title">Enviar un mensaje</h3>
+
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label>Tu nombre</label>
+        <input type="text" [value]="nombre()" readonly class="field-readonly" />
+      </div>
+      <div class="form-group">
+        <label>Tu correo</label>
+        <input type="email" [value]="email()" readonly class="field-readonly" />
+      </div>
+    </div>
 
     <div class="form-group">
       <label>Asunto</label>
-      <select [(ngModel)]="form.asunto">
-        <option value="">Selecciona un tema</option>
-        @for (op of asuntoOpciones; track op) {
-          <option [value]="op">{{ op }}</option>
-        }
-      </select>
+      <input
+        type="text"
+        [(ngModel)]="form.asunto"
+        placeholder="Ej: Consulta sobre mi servicio de frenos"
+      />
     </div>
 
     <div class="form-group">
       <label>Mensaje</label>
-      <textarea [(ngModel)]="form.mensaje" rows="5"
-                placeholder="Describe tu problema o pregunta con el mayor detalle posible..."></textarea>
-      <span class="char-hint">{{ form.mensaje.length }} caracteres (mín. 10)</span>
+      <textarea
+        [(ngModel)]="form.mensaje"
+        rows="5"
+        placeholder="Escribe aquí tu pregunta, duda o comentario con todos los detalles que consideres importantes..."
+      >
+      </textarea>
     </div>
 
     <div class="form-footer">
-      <button class="btn-primary" (click)="enviar()" [disabled]="!valido()">
-        Enviar mensaje
-      </button>
+      <button class="btn-primary" (click)="enviar()" [disabled]="!valido()">Enviar mensaje</button>
     </div>
   </div>
 
-  <!-- MIS TICKETS -->
-  @if (misTickets().length > 0) {
-    <div class="tickets-section">
-      <h3 class="section-title">Mis solicitudes anteriores</h3>
+  <!-- RESPUESTAS RECIBIDAS DEL TALLER -->
+  @if (misConversaciones().length > 0) {
+    <div class="respuestas-section">
+      <h3 class="section-label">Respuestas recibidas</h3>
 
-      <div class="tickets-list">
-        @for (t of misTickets(); track t.id) {
-          <div class="ticket-card" [class]="t.estado">
-
-            <div class="ticket-head">
-              <div class="ticket-subject">{{ t.asunto }}</div>
-              <span class="ticket-badge" [class]="'badge-' + t.estado">
-                {{ t.estado === 'abierto' ? 'Abierto' : t.estado === 'respondido' ? 'Respondido' : 'Cerrado' }}
-              </span>
+      <div class="conv-list">
+        @for (m of misConversaciones(); track m.id) {
+          <div class="conv-card">
+            <!-- Lo que escribió el cliente -->
+            <div class="conv-cliente">
+              <div class="conv-head">
+                <span class="conv-asunto">{{ m.asunto }}</span>
+                <span class="conv-fecha">{{ m.fecha }}</span>
+              </div>
+              <p class="conv-texto">{{ m.mensaje }}</p>
             </div>
 
-            <div class="ticket-msg">{{ t.mensaje }}</div>
-            <div class="ticket-date">Enviado el {{ t.fecha }}</div>
-
-            <!-- Respuesta del soporte -->
-            @if (t.respuesta) {
-              <div class="ticket-reply">
-                <div class="reply-header">
-                  <span class="reply-label">Respuesta del taller</span>
-                  <span class="reply-date">{{ t.fechaRespuesta }}</span>
+            <!-- Respuesta del taller (si existe) -->
+            @if (m.respuesta) {
+              <div class="conv-taller">
+                <div class="conv-head">
+                  <span class="conv-quien">Jirafita's Garage</span>
+                  <span class="conv-fecha">{{ m.fechaRespuesta }}</span>
                 </div>
-                <p class="reply-text">{{ t.respuesta }}</p>
+                <p class="conv-texto">{{ m.respuesta }}</p>
               </div>
+            } @else {
+              <p class="conv-pendiente">
+                Pendiente de respuesta — te notificaremos por correo cuando el equipo responda.
+              </p>
             }
-
           </div>
         }
       </div>
     </div>
   }
-
 </div>

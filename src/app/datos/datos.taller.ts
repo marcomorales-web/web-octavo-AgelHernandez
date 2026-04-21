@@ -11,6 +11,7 @@ export interface Vehiculo {
   proximoEvento: string;
   vin?: string;
 }
+
 export interface Cita {
   id: string;
   vehiculoId: string;
@@ -22,6 +23,7 @@ export interface Cita {
   costo?: number;
   notas?: string;
 }
+
 export interface Servicio {
   id: string;
   vehiculoId: string;
@@ -35,6 +37,7 @@ export interface Servicio {
   entrega?: string;
   cliente?: string;
 }
+
 export interface ProductoInventario {
   id: number;
   nombre: string;
@@ -44,6 +47,7 @@ export interface ProductoInventario {
   precio: number;
   unidad: string;
 }
+
 export interface Cotizacion {
   id: string;
   vehiculoId: string;
@@ -56,16 +60,19 @@ export interface Cotizacion {
   monto?: number;
 }
 
-/** Ticket de soporte — cliente lo crea, admin responde */
-export interface TicketSoporte {
+/**
+ * Mensaje de soporte — el cliente escribe su consulta,
+ * el admin la lee en su panel y escribe una respuesta manual.
+ * Sin estados automáticos, sin tickets, sin flujos de aprobación.
+ */
+export interface MensajeSoporte {
   id: string;
   clienteNombre: string;
   clienteEmail: string;
   asunto: string;
   mensaje: string;
   fecha: string;
-  estado: 'abierto' | 'respondido' | 'cerrado';
-  respuesta?: string;
+  respuesta?: string; // escrita manualmente por el admin
   fechaRespuesta?: string;
 }
 
@@ -177,19 +184,18 @@ export class TallerService {
     },
   ]);
 
-  /** Tickets de soporte — compartidos entre cliente y admin */
-  tickets = signal<TicketSoporte[]>([
+  /** Mensajes de soporte — el cliente escribe, el admin responde manualmente */
+  mensajesSoporte = signal<MensajeSoporte[]>([
     {
-      id: 't1',
+      id: 'demo-1',
       clienteNombre: 'Angel Hernandez',
       clienteEmail: 'user@gmail.com',
       asunto: 'Pregunta sobre garantía de frenos',
       mensaje:
-        'Quisiera saber cuánto tiempo cubre la garantía del cambio de frenos que me realizaron.',
+        'Quisiera saber cuánto tiempo cubre la garantía del cambio de frenos que me realizaron el mes pasado.',
       fecha: '15 Abr 2026',
-      estado: 'respondido',
       respuesta:
-        'La garantía cubre 6 meses o 10,000 km, lo que ocurra primero. Cualquier problema contáctenos.',
+        'La garantía cubre 6 meses o 10,000 km, lo que ocurra primero. Si tienes algún problema, visítanos o llámanos.',
       fechaRespuesta: '15 Abr 2026',
     },
   ]);
@@ -270,7 +276,7 @@ export class TallerService {
     },
   ]);
 
-  // ── Computed stats admin ──────────────────────────────────
+  // ── Computed stats ────────────────────────────────────────
   totalProductos = computed(() => this.inventario().length);
   stockBajo = computed(() => this.inventario().filter((p) => p.cantidad <= p.minimo).length);
   valorInventario = computed(() =>
@@ -283,7 +289,7 @@ export class TallerService {
       .filter((s) => s.estado === 'completado')
       .reduce((a, s) => a + s.costo, 0),
   );
-  ticketsAbiertos = computed(() => this.tickets().filter((t) => t.estado === 'abierto').length);
+  mensajesSinRespuesta = computed(() => this.mensajesSoporte().filter((m) => !m.respuesta).length);
 
   // ── Mutaciones ────────────────────────────────────────────
   agregarVehiculo(v: Vehiculo) {
@@ -305,17 +311,18 @@ export class TallerService {
     this.inventario.update((l) => l.filter((p) => p.id !== id));
   }
 
-  agregarTicket(t: TicketSoporte) {
-    this.tickets.update((l) => [t, ...l]);
+  /** Cliente envía un mensaje de soporte */
+  enviarMensajeSoporte(m: MensajeSoporte) {
+    this.mensajesSoporte.update((l) => [m, ...l]);
   }
 
-  responderTicket(id: string, respuesta: string) {
-    this.tickets.update((l) =>
-      l.map((t) =>
-        t.id === id
+  /** Admin responde manualmente un mensaje */
+  responderMensaje(id: string, respuesta: string) {
+    this.mensajesSoporte.update((l) =>
+      l.map((m) =>
+        m.id === id
           ? {
-              ...t,
-              estado: 'respondido',
+              ...m,
               respuesta,
               fechaRespuesta: new Date().toLocaleDateString('es-MX', {
                 day: '2-digit',
@@ -323,13 +330,9 @@ export class TallerService {
                 year: 'numeric',
               }),
             }
-          : t,
+          : m,
       ),
     );
-  }
-
-  cerrarTicket(id: string) {
-    this.tickets.update((l) => l.map((t) => (t.id === id ? { ...t, estado: 'cerrado' } : t)));
   }
 
   responderCotizacion(id: string, respuesta: string, monto: number) {
