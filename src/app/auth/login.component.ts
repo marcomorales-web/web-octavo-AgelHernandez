@@ -20,6 +20,7 @@ export class LoginComponent {
   pass = '';
   loading = signal(false);
   error = signal(false);
+  mostrarPass = signal(false);
 
   async login() {
     this.error.set(false);

@@ -44,6 +44,11 @@
   flex: 1;
   min-width: 150px;
 }
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
 .contact-icon {
   font-size: 20px;
   flex-shrink: 0;

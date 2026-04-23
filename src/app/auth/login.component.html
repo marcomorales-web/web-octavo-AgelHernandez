@@ -16,13 +16,15 @@
   <div class="input-group animate__animated animate__backInLeft">
     <img src="/icons8-password-48.png" class="icon-input" alt="" />
     <label>Contraseña</label>
-    <input [(ngModel)]="pass" type="password" placeholder="••••••••" (keyup.enter)="login()" />
+    <input [(ngModel)]="pass" 
+    [type]="mostrarPass() ? 'text' : 'password'" type="password" placeholder="••••••••" (keyup.enter)="login()" />
   </div>
 
   <button
     (click)="login()"
     [disabled]="loading() || !correo || !pass"
     class="animate__animated animate__fadeIn"
+    
   >
     @if (loading()) {
       <img src="/loading.gif" class="login-gif" alt="Cargando..." />

@@ -34,7 +34,7 @@
   <!-- CONFIRMACIÓN DE ENVÍO -->
   @if (enviado()) {
     <div class="alert-success">
-      ✓ Mensaje enviado. El equipo revisará tu consulta y te responderá a
+      Mensaje enviado. El equipo revisará tu consulta y te responderá a
       <strong>{{ email() }}</strong
       >.
     </div>
@@ -64,7 +64,7 @@
       <input
         type="text"
         [(ngModel)]="form.asunto"
-        placeholder="Ej: Consulta sobre mi servicio de frenos"
+        placeholder="..."
       />
     </div>
 
@@ -73,50 +73,15 @@
       <textarea
         [(ngModel)]="form.mensaje"
         rows="5"
-        placeholder="Escribe aquí tu pregunta, duda o comentario con todos los detalles que consideres importantes..."
+        placeholder="....."
       >
       </textarea>
     </div>
 
     <div class="form-footer">
-      <button class="btn-primary" (click)="enviar()" [disabled]="!valido()">Enviar mensaje</button>
+      <button class="btn-primary" >Enviar mensaje</button>
     </div>
   </div>
 
-  <!-- RESPUESTAS RECIBIDAS DEL TALLER -->
-  @if (misConversaciones().length > 0) {
-    <div class="respuestas-section">
-      <h3 class="section-label">Respuestas recibidas</h3>
 
-      <div class="conv-list">
-        @for (m of misConversaciones(); track m.id) {
-          <div class="conv-card">
-            <!-- Lo que escribió el cliente -->
-            <div class="conv-cliente">
-              <div class="conv-head">
-                <span class="conv-asunto">{{ m.asunto }}</span>
-                <span class="conv-fecha">{{ m.fecha }}</span>
-              </div>
-              <p class="conv-texto">{{ m.mensaje }}</p>
-            </div>
-
-            <!-- Respuesta del taller (si existe) -->
-            @if (m.respuesta) {
-              <div class="conv-taller">
-                <div class="conv-head">
-                  <span class="conv-quien">Jirafita's Garage</span>
-                  <span class="conv-fecha">{{ m.fechaRespuesta }}</span>
-                </div>
-                <p class="conv-texto">{{ m.respuesta }}</p>
-              </div>
-            } @else {
-              <p class="conv-pendiente">
-                Pendiente de respuesta — te notificaremos por correo cuando el equipo responda.
-              </p>
-            }
-          </div>
-        }
-      </div>
-    </div>
-  }
 </div>

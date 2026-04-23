@@ -17,7 +17,7 @@ const SESSION_KEY = 'taller_session';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  // Al iniciar, se intenta restaurar la sesión desde sessionStorage
+  
   private _user = signal<Usuario | null>(this.cargarSesion());
 
   isLoggedIn = computed(() => !!this._user());
